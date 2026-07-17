@@ -1548,8 +1548,8 @@
       wireParam('nn-p-lr', 'nn-v-lr', function (v) { return (v / 100).toFixed(2); });
       wireParam('nn-p-hidden', 'nn-v-hidden', function (v) { return v; });
 
-      function cw(c) { return c._logW || c.width; }
-      function ch(c) { return c._logH || c.height; }
+      function logW(c) { return c._logW || c.width; }
+      function logH(c) { return c._logH || c.height; }
 
       /* Auto-size canvases to match their CSS display size with DPR scaling */
       (function () {
@@ -2621,7 +2621,7 @@
         function pokerDrawTable() {
           var st = pokerSt;
           if (!st) return;
-          var ctx = probCtx, w = cw(probC), h = ch(probC);
+          var ctx = probCtx, w = logW(probC), h = logH(probC);
           ctx.clearRect(0, 0, w, h);
 
           // Background
@@ -2759,7 +2759,7 @@
         }
 
         function pokerDrawInfo() {
-          var ctx = treeCtx, w = cw(treeC), h = ch(treeC);
+          var ctx = treeCtx, w = logW(treeC), h = logH(treeC);
           ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#1e1e2e'; ctx.fillRect(0, 0, w, h);
           if (!pokerSt) return;
           var st = pokerSt;
@@ -3118,12 +3118,12 @@
             pokerSt = null; rebelStates = []; rebelState = null;
             pokerLastDecision = null;
             pokerMode = document.getElementById('poker-mode').value;
-            treeCtx.clearRect(0, 0, cw(treeC), ch(treeC));
-            treeCtx.fillStyle = '#1e1e2e'; treeCtx.fillRect(0, 0, cw(treeC), ch(treeC));
-            probCtx.clearRect(0, 0, cw(probC), ch(probC));
-            probCtx.fillStyle = '#0d1117'; probCtx.fillRect(0, 0, cw(probC), ch(probC));
+            treeCtx.clearRect(0, 0, logW(treeC), logH(treeC));
+            treeCtx.fillStyle = '#1e1e2e'; treeCtx.fillRect(0, 0, logW(treeC), logH(treeC));
+            probCtx.clearRect(0, 0, logW(probC), logH(probC));
+            probCtx.fillStyle = '#0d1117'; probCtx.fillRect(0, 0, logW(probC), logH(probC));
             treeCtx.fillStyle = '#94a3b8'; treeCtx.font = '500 14px Inter,sans-serif';
-            treeCtx.textAlign = 'center'; treeCtx.fillText('Click "Deal" to start', cw(treeC) / 2, ch(treeC) / 2);
+            treeCtx.textAlign = 'center'; treeCtx.fillText('Click "Deal" to start', logW(treeC) / 2, logH(treeC) / 2);
             document.getElementById('poker-stat').textContent = 'Click Deal to start';
             return;
           }
@@ -3246,7 +3246,7 @@
           }
 
           stat.textContent = 'Simulations: ' + simCount;
-          layoutTree(root, 0, 5, cw(treeC) - 5);
+          layoutTree(root, 0, 5, logW(treeC) - 5);
           drawTree(); drawProblem();
           setTimeout(function () { highlight('mcts', 4); }, 300);
           setTimeout(function () {
@@ -3271,7 +3271,7 @@
         }
 
         function drawTree() {
-          var w = cw(treeC), h = ch(treeC);
+          var w = logW(treeC), h = logH(treeC);
           treeCtx.clearRect(0, 0, w, h); treeCtx.fillStyle = '#1e1e2e'; treeCtx.fillRect(0, 0, w, h);
           var nodes = allNodes(root);
           for (var i = 0; i < nodes.length; i++) {
@@ -3289,15 +3289,15 @@
         }
 
         function drawProblem() {
-          game.drawBoard(probCtx, state, cw(probC), ch(probC), bestMove);
+          game.drawBoard(probCtx, state, logW(probC), logH(probC), bestMove);
         }
 
         probC.addEventListener('click', function (e) {
           if (isPoker || gameOver) return;
           var rect = probC.getBoundingClientRect();
-          var mx = (e.clientX - rect.left) * (cw(probC) / rect.width);
-          var my = (e.clientY - rect.top) * (ch(probC) / rect.height);
-          var m = game.clickToMove(state, mx, my, cw(probC), ch(probC));
+          var mx = (e.clientX - rect.left) * (logW(probC) / rect.width);
+          var my = (e.clientY - rect.top) * (logH(probC) / rect.height);
+          var m = game.clickToMove(state, mx, my, logW(probC), logH(probC));
           if (m >= 0) applyMove(m);
         });
 
@@ -3608,7 +3608,7 @@
 
         /* --- Draw fitness canvas (top) --- */
         function drawFitness() {
-          var w = cw(fitC), h = ch(fitC);
+          var w = logW(fitC), h = logH(fitC);
           var pad = 20, gw = w - pad * 2, gh = h - pad * 2 - 14;
           fitCtx.clearRect(0, 0, w, h); fitCtx.fillStyle = '#1e1e2e'; fitCtx.fillRect(0, 0, w, h);
 
@@ -3715,7 +3715,7 @@
 
         /* --- Draw problem canvas (bottom) --- */
         function drawProblem() {
-          var w = cw(probC), h = ch(probC);
+          var w = logW(probC), h = logH(probC);
           probCtx.clearRect(0, 0, w, h); probCtx.fillStyle = '#1e1e2e'; probCtx.fillRect(0, 0, w, h);
 
           var b = findBest();
@@ -4119,10 +4119,10 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
 
         function canvasToGrid(e) {
           var rect = drawC.getBoundingClientRect();
-          var mx = (e.clientX - rect.left) * (cw(drawC) / rect.width);
-          var my = (e.clientY - rect.top) * (ch(drawC) / rect.height);
-          var pixSz = Math.min(Math.floor((cw(drawC) * 0.6) / GW), Math.floor((ch(drawC) - 20) / GH));
-          var ox = 10, oy = (ch(drawC) - GH * pixSz) / 2;
+          var mx = (e.clientX - rect.left) * (logW(drawC) / rect.width);
+          var my = (e.clientY - rect.top) * (logH(drawC) / rect.height);
+          var pixSz = Math.min(Math.floor((logW(drawC) * 0.6) / GW), Math.floor((logH(drawC) - 20) / GH));
+          var ox = 10, oy = (logH(drawC) - GH * pixSz) / 2;
           var gx = Math.floor((mx - ox) / pixSz), gy = Math.floor((my - oy) / pixSz);
           return { gx: gx, gy: gy };
         }
@@ -4136,7 +4136,7 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
         drawC.addEventListener('touchend', function () { drawing = false; });
 
         function drawDrawCanvas() {
-          var w = cw(drawC), h = ch(drawC);
+          var w = logW(drawC), h = logH(drawC);
           drawCtx.clearRect(0, 0, w, h); drawCtx.fillStyle = '#1e1e2e'; drawCtx.fillRect(0, 0, w, h);
 
           var pixSz = Math.min(Math.floor((w * 0.6) / GW), Math.floor((h - 20) / GH));
@@ -4185,7 +4185,7 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
         }
 
         function drawHeatmap() {
-          var w = cw(drawC), h = ch(drawC);
+          var w = logW(drawC), h = logH(drawC);
           var pad = 35;
           var gw = w - pad * 2, gh = h - pad * 2;
 
@@ -4435,7 +4435,7 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
         }
 
         function drawGraph() {
-          var w = cw(graphC), h = ch(graphC);
+          var w = logW(graphC), h = logH(graphC);
           graphCtx.clearRect(0, 0, w, h); graphCtx.fillStyle = '#1e1e2e'; graphCtx.fillRect(0, 0, w, h);
 
           /* Use left 55% for graph, right 40% for network diagram */
