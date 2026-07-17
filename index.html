@@ -16,7 +16,40 @@
       --card-bg: #fff;
       --tag-bg: #eef2ff;
       --tag-text: #3730a3;
+      --tag-hover-bg: #dbeafe;
+      --entry-text: #333;
+      --thesis-strong: #444;
       --section-gap: 3rem;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0f0f0f;
+      --text: #e4e4e7;
+      --muted: #a1a1aa;
+      --accent: #60a5fa;
+      --accent-hover: #93c5fd;
+      --border: #27272a;
+      --card-bg: #18181b;
+      --tag-bg: #1e1b4b;
+      --tag-text: #a5b4fc;
+      --tag-hover-bg: #312e81;
+      --entry-text: #d4d4d8;
+      --thesis-strong: #d4d4d8;
+    }
+
+    [data-theme="light"] {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --border: #e0e0e0;
+      --card-bg: #fff;
+      --tag-bg: #eef2ff;
+      --tag-text: #3730a3;
+      --tag-hover-bg: #dbeafe;
+      --entry-text: #333;
+      --thesis-strong: #444;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -144,7 +177,7 @@
     .entry p,
     .entry li {
       font-size: 0.95rem;
-      color: #333;
+      color: var(--entry-text);
     }
 
     .entry ul {
@@ -176,7 +209,7 @@
       margin-top: 0.3rem;
     }
 
-    .thesis strong { font-weight: 600; color: #444; }
+    .thesis strong { font-weight: 600; color: var(--thesis-strong); }
 
     /* ── Tags ── */
     .tags {
@@ -199,12 +232,17 @@
     a.tag {
       text-decoration: none;
       color: var(--tag-text);
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  color 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1),
+                  box-shadow 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     a.tag:hover {
-      background: #dbeafe;
+      background: var(--tag-hover-bg);
       color: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
     }
 
     /* ── Open Source ── */
@@ -229,7 +267,7 @@
 
     .oss-project p {
       font-size: 0.95rem;
-      color: #333;
+      color: var(--entry-text);
       margin-bottom: 0.5rem;
     }
 
@@ -315,6 +353,56 @@
       color: var(--muted);
     }
 
+    /* ── Theme toggle ── */
+    .theme-toggle {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--card-bg);
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+      z-index: 100;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .theme-toggle svg { width: 18px; height: 18px; }
+
+    .theme-toggle .icon-moon { display: block; }
+    .theme-toggle .icon-sun { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+    /* ── Flashlight ── */
+    .flashlight {
+      position: fixed;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 50;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255, 210, 100, 0.12) 0%, rgba(255, 210, 100, 0.04) 40%, transparent 70%);
+      mix-blend-mode: screen;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      left: -200px;
+      top: -200px;
+    }
+
+    [data-theme="dark"] .flashlight { opacity: 1; }
+
     /* ── Print ── */
     @media print {
       body { background: #fff; }
@@ -322,6 +410,7 @@
       header { padding-top: 0; }
       a { color: var(--text); }
       .pr-link { border-color: #ccc; }
+      .theme-toggle { display: none; }
     }
 
     /* ── Responsive ── */
@@ -639,5 +728,104 @@
     </footer>
 
   </div>
+
+  <div class="flashlight"></div>
+  <button class="theme-toggle" aria-label="Toggle dark mode">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+
+  <script>
+    (function () {
+      var toggle = document.querySelector('.theme-toggle');
+      var root = document.documentElement;
+      var animating = false;
+
+      var stored = localStorage.getItem('theme');
+      if (stored) {
+        if (stored === 'dark') root.setAttribute('data-theme', 'dark');
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        root.setAttribute('data-theme', 'dark');
+      }
+
+      var flashlight = document.querySelector('.flashlight');
+      document.addEventListener('mousemove', function (e) {
+        flashlight.style.left = e.clientX + 'px';
+        flashlight.style.top = e.clientY + 'px';
+      });
+      document.addEventListener('mouseleave', function () {
+        flashlight.style.opacity = '0';
+      });
+      document.addEventListener('mouseenter', function () {
+        if (root.getAttribute('data-theme') === 'dark') {
+          flashlight.style.opacity = '1';
+        }
+      });
+
+      toggle.addEventListener('click', function () {
+        if (animating) return;
+        animating = true;
+
+        var isDark = root.getAttribute('data-theme') === 'dark';
+        var next = isDark ? 'light' : 'dark';
+
+        var rect = toggle.getBoundingClientRect();
+        var x = rect.left + rect.width / 2;
+        var y = rect.top + rect.height / 2;
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var maxR = Math.ceil(Math.hypot(
+          Math.max(x, innerWidth - x),
+          Math.max(y, innerHeight - y)
+        ));
+
+        var wrapper = document.createElement('div');
+        wrapper.setAttribute('data-theme', next);
+        wrapper.style.cssText =
+          'position:fixed;top:0;left:0;width:100%;height:100%;' +
+          'z-index:99;pointer-events:none;overflow:hidden;' +
+          'background:var(--bg);color:var(--text);' +
+          'clip-path:circle(0px at ' + x + 'px ' + y + 'px)';
+
+        var scrollDiv = document.createElement('div');
+        scrollDiv.style.transform = 'translateY(' + (-scrollTop) + 'px)';
+        scrollDiv.appendChild(document.querySelector('.container').cloneNode(true));
+        wrapper.appendChild(scrollDiv);
+
+        var btnClone = toggle.cloneNode(true);
+        wrapper.appendChild(btnClone);
+
+        document.body.appendChild(wrapper);
+
+        requestAnimationFrame(function () {
+          wrapper.style.transition = 'clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+          wrapper.style.clipPath = 'circle(' + maxR + 'px at ' + x + 'px ' + y + 'px)';
+        });
+
+        wrapper.addEventListener('transitionend', function (e) {
+          if (e.target !== wrapper) return;
+          root.style.setProperty('transition', 'none', 'important');
+          document.querySelectorAll('*').forEach(function (el) {
+            el.style.setProperty('transition', 'none', 'important');
+          });
+          if (next === 'light') {
+            root.removeAttribute('data-theme');
+          } else {
+            root.setAttribute('data-theme', 'dark');
+          }
+          localStorage.setItem('theme', next);
+          wrapper.remove();
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              root.style.removeProperty('transition');
+              document.querySelectorAll('*').forEach(function (el) {
+                el.style.removeProperty('transition');
+              });
+              animating = false;
+            });
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
