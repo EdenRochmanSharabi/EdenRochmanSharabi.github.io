@@ -14,9 +14,9 @@
       --accent-hover: #1d4ed8;
       --border: #e0e0e0;
       --card-bg: #fff;
-      --tag-bg: #eef2ff;
-      --tag-text: #3730a3;
-      --tag-hover-bg: #dbeafe;
+      --tag-bg: #e0e7ff;
+      --tag-text: #312e81;
+      --tag-hover-bg: #c7d2fe;
       --entry-text: #333;
       --thesis-strong: #444;
       --section-gap: 3rem;
@@ -45,9 +45,9 @@
       --accent-hover: #1d4ed8;
       --border: #e0e0e0;
       --card-bg: #fff;
-      --tag-bg: #eef2ff;
-      --tag-text: #3730a3;
-      --tag-hover-bg: #dbeafe;
+      --tag-bg: #e0e7ff;
+      --tag-text: #312e81;
+      --tag-hover-bg: #c7d2fe;
       --entry-text: #333;
       --thesis-strong: #444;
     }
@@ -66,7 +66,7 @@
     a:hover { color: var(--accent-hover); }
 
     .container {
-      max-width: 800px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 2rem 1.5rem 4rem;
     }
@@ -384,6 +384,296 @@
     [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
     [data-theme="dark"] .theme-toggle .icon-sun { display: block; }
 
+    /* ── Showcase toggle ── */
+    .showcase-toggle {
+      position: fixed;
+      top: 1.2rem;
+      left: 1.2rem;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: var(--card-bg);
+      color: var(--muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+      z-index: 100;
+    }
+    .showcase-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .showcase-toggle svg { width: 18px; height: 18px; }
+    .showcase-toggle.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--tag-bg);
+    }
+
+    /* ── Showcase ── */
+    #showcase {
+      display: none;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      padding: 2.5rem 2.5rem 4rem;
+      box-sizing: border-box;
+    }
+
+    #showcase > h2 {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .showcase-item {
+      margin-bottom: 3.5rem;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .showcase-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .showcase-item > h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .showcase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .showcase-header h3 {
+      margin-bottom: 0;
+      font-size: 1.3rem;
+    }
+
+    .problem-tabs {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .problem-tab {
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.7rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .problem-tab:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .problem-tab.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .showcase-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      line-height: 1.65;
+    }
+
+    .showcase-desc strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .showcase-layout {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 1.8rem;
+      align-items: start;
+    }
+
+    .showcase-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: sticky;
+      top: 1rem;
+    }
+
+    @media (max-width: 750px) {
+      .showcase-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .showcase-canvases {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .showcase-canvases canvas {
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 3 / 2;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #1e1e2e;
+      cursor: crosshair;
+    }
+
+    .canvas-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .showcase-params {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1rem;
+      padding: 0.7rem 0.9rem;
+      border-radius: 8px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+    }
+
+    .param-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .param-group label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      white-space: nowrap;
+      min-width: 4.5em;
+    }
+
+    .param-group input[type="range"] {
+      flex: 1;
+      min-width: 50px;
+      height: 4px;
+      accent-color: var(--accent);
+    }
+
+    .param-group .param-val {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text);
+      min-width: 2.2rem;
+      text-align: right;
+    }
+
+    .showcase-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .showcase-btn {
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.9rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .showcase-btn:hover {
+      border-color: var(--accent);
+      background: var(--tag-bg);
+    }
+
+    .showcase-btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .showcase-btn.active {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .showcase-stat {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-left: auto;
+    }
+
+    .showcase-code {
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #1e1e2e;
+      padding: 1rem 1.2rem;
+      overflow-x: auto;
+      font-size: 0.78rem;
+      line-height: 1.7;
+      align-self: center;
+    }
+
+    .showcase-code pre {
+      margin: 0;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+    }
+
+    .showcase-code code {
+      color: #cdd6f4;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .showcase-code .kw { color: #cba6f7; }
+    .showcase-code .fn { color: #89b4fa; }
+    .showcase-code .cm { color: #6c7086; font-style: italic; }
+    .showcase-code .nr { color: #fab387; }
+    .showcase-code .st { color: #a6e3a1; }
+
+    .cl {
+      display: inline;
+    }
+
+    .cl-wrap {
+      display: block;
+      padding: 1px 0.4rem;
+      margin: 0 -0.4rem;
+      border-radius: 3px;
+      border-left: 2px solid transparent;
+      transition: background 0.35s ease, border-color 0.35s ease;
+    }
+
+    .cl-wrap.active {
+      background: rgba(96, 165, 250, 0.12);
+      border-left-color: #60a5fa;
+    }
+
     /* ── Flashlight ── */
     .flashlight {
       position: fixed;
@@ -405,12 +695,14 @@
 
     /* ── Print ── */
     @media print {
-      body { background: #fff; }
-      .container { padding: 0; }
+      body { background: #fff; color: #000; }
+      .container { padding: 0; max-width: 100%; }
       header { padding-top: 0; }
-      a { color: var(--text); }
+      a { color: #000; text-decoration: underline; }
       .pr-link { border-color: #ccc; }
-      .theme-toggle { display: none; }
+      .theme-toggle, .showcase-toggle, .flashlight, .showcase-item, h2:last-of-type { display: none; }
+      .tag { border: 1px solid #ccc; background: #f5f5f5; color: #333; }
+      section { break-inside: avoid; }
     }
 
     /* ── Responsive ── */
@@ -419,6 +711,9 @@
       .entry-header { flex-direction: column; }
       .entry-meta { flex-direction: column; }
       .skills-grid { grid-template-columns: 1fr; }
+      .showcase-params { grid-template-columns: 1fr; }
+      .showcase-layout { gap: 0.8rem; }
+      #showcase { padding: 2rem 1rem 3rem; }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -433,16 +728,16 @@
       <h1>Eden Rochman</h1>
       <p class="subtitle">Data Engineer &amp; AI &middot; Open Source Contributor</p>
       <div class="contact-links">
-        <a href="mailto:erochman@protonmail.com">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        <a href="mailto:erochman@protonmail.com" aria-label="Email Eden Rochman">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
           erochman@protonmail.com
         </a>
-        <a href="https://linkedin.com/in/edenrochman" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+        <a href="https://linkedin.com/in/edenrochman" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
           LinkedIn
         </a>
-        <a href="https://github.com/EdenRochmanSharabi" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        <a href="https://github.com/EdenRochmanSharabi" target="_blank" rel="noopener" aria-label="GitHub profile">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
           GitHub
         </a>
         <span>
@@ -723,6 +1018,191 @@
       </div>
     </section>
 
+    <!-- ── Showcase ── -->
+    <section id="showcase">
+      <h2>Algorithm Showcase</h2>
+
+      <!-- ── MCTS ── -->
+      <div class="showcase-item">
+        <div class="showcase-header">
+          <h3>Monte Carlo Tree Search</h3>
+          <div class="problem-tabs">
+            <button class="problem-tab active" data-problem="mcts-p0">Tic-Tac-Toe</button>
+            <button class="problem-tab" data-problem="mcts-p1">Nim</button>
+            <button class="problem-tab" data-problem="mcts-p2">Connect 4</button>
+          </div>
+        </div>
+        <p class="showcase-desc" data-problem="mcts-p0"><strong>Problem:</strong> Choosing the best move in a board game with millions of possible positions. <strong>Real-world:</strong> This is how AlphaGo defeated the world champion at Go. <strong>How MCTS solves it:</strong> It builds a decision tree by simulating thousands of random games from each possible move, tracking win rates per branch, and balancing exploration of new moves vs. exploitation of proven ones. Click the board to place a piece, or use Auto-run to watch it play against itself.</p>
+        <p class="showcase-desc" data-problem="mcts-p1" style="display:none"><strong>Problem:</strong> Nim — a pile of 12 stones. Each player takes 1–3 stones per turn; whoever takes the last stone loses. <strong>Real-world:</strong> Nim has a perfect mathematical strategy, making it a great test for whether MCTS converges to optimal play. <strong>How MCTS solves it:</strong> It simulates thousands of games from the current pile size, learning that keeping the pile at multiples of 4 is the winning strategy.</p>
+        <p class="showcase-desc" data-problem="mcts-p2" style="display:none"><strong>Problem:</strong> Connect 4 — drop discs into a 7×6 grid, first to get 4 in a row wins. <strong>Real-world:</strong> Connect 4 is a solved game but has over 4 trillion possible positions. Brute-force search is impossible; MCTS approximates optimal play. <strong>How MCTS solves it:</strong> It builds a search tree from the current board, simulating random games down each column to estimate the best drop position.</p>
+        <div class="showcase-layout">
+          <div class="showcase-canvases">
+            <div><div class="canvas-label" id="mcts-label-problem">Board State</div><canvas id="mcts-problem" width="720" height="480"></canvas></div>
+            <div><div class="canvas-label">Search Tree</div><canvas id="mcts-canvas" width="720" height="480"></canvas></div>
+          </div>
+          <div class="showcase-right">
+            <div class="showcase-code">
+            <pre><code><span class="cl-wrap"><span class="kw">def</span> <span class="fn">mcts</span>(root, n_simulations):</span>
+<span class="cl-wrap">    <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(n_simulations):</span>
+<span class="cl-wrap">        node = root</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="mcts-1">        <span class="cm"># 1. Selection: pick promising child</span></span>
+<span class="cl-wrap" data-g="mcts-1">        <span class="kw">while</span> node.children:</span>
+<span class="cl-wrap" data-g="mcts-1">            node = <span class="fn">best_ucb</span>(node)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="mcts-2">        <span class="cm"># 2. Expansion: add a new child</span></span>
+<span class="cl-wrap" data-g="mcts-2">        <span class="kw">if</span> node.visits &gt; <span class="nr">0</span>:</span>
+<span class="cl-wrap" data-g="mcts-2">            node = node.<span class="fn">expand</span>()</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="mcts-3">        <span class="cm"># 3. Simulation: random playout</span></span>
+<span class="cl-wrap" data-g="mcts-3">        result = <span class="fn">simulate</span>(node)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="mcts-4">        <span class="cm"># 4. Backpropagation: update ancestors</span></span>
+<span class="cl-wrap" data-g="mcts-4">        <span class="kw">while</span> node:</span>
+<span class="cl-wrap" data-g="mcts-4">            node.visits += <span class="nr">1</span></span>
+<span class="cl-wrap" data-g="mcts-4">            node.wins += result</span>
+<span class="cl-wrap" data-g="mcts-4">            node = node.parent</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap">    <span class="kw">return</span> root.<span class="fn">best_child</span>()</span></code></pre>
+            </div>
+            <div class="showcase-params">
+              <div class="param-group"><label>Exploration (C)</label><input type="range" id="mcts-p-explore" min="50" max="300" value="141"><span class="param-val" id="mcts-v-explore">1.41</span></div>
+              <div class="param-group"><label>Sims/step</label><input type="range" id="mcts-p-depth" min="10" max="10000" value="200" step="10"><span class="param-val" id="mcts-v-depth">200</span></div>
+              <div class="param-group" data-mcts-problem="0"><label>Board size</label><input type="range" id="mcts-p-bsize" min="3" max="6" value="3"><span class="param-val" id="mcts-v-bsize">3×3</span></div>
+            </div>
+            <div class="showcase-controls">
+              <button class="showcase-btn" id="mcts-step">Step</button>
+              <button class="showcase-btn" id="mcts-run">Auto-run</button>
+              <button class="showcase-btn" id="mcts-reset">Reset</button>
+              <span class="showcase-stat" id="mcts-stat">Simulations: 0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Genetic Algorithm ── -->
+      <div class="showcase-item">
+        <div class="showcase-header">
+          <h3>Genetic Algorithm</h3>
+          <div class="problem-tabs">
+            <button class="problem-tab active" data-problem="ga-p0">Engineering Design</button>
+            <button class="problem-tab" data-problem="ga-p1">Scheduling</button>
+            <button class="problem-tab" data-problem="ga-p2">Portfolio Optimization</button>
+          </div>
+        </div>
+        <p class="showcase-desc" data-problem="ga-p0"><strong>Problem:</strong> Finding the optimal shape for an aircraft wing from millions of design parameters. <strong>Real-world:</strong> NASA and automotive companies use GAs to evolve aerodynamic designs that no human engineer would think of. <strong>How GA solves it:</strong> A population of candidate designs evolves over generations: the fittest survive, pairs crossover their traits, and random mutations introduce novelty, converging on the optimal design.</p>
+        <p class="showcase-desc" data-problem="ga-p1" style="display:none"><strong>Problem:</strong> Assigning hundreds of flights to gates, crews, and time slots while minimizing delays and costs. <strong>Real-world:</strong> Airlines use evolutionary optimization for crew scheduling, a problem so complex that brute force would take longer than the age of the universe. <strong>How GA solves it:</strong> Each individual encodes a full schedule. Selection favors low-cost schedules, crossover combines good partial assignments from two parents, and mutation swaps random slots to escape local optima.</p>
+        <p class="showcase-desc" data-problem="ga-p2" style="display:none"><strong>Problem:</strong> Allocating capital across hundreds of assets to maximize return while controlling risk. <strong>Real-world:</strong> Hedge funds and robo-advisors use evolutionary strategies to find portfolio weights that balance the Sharpe ratio across thousands of market scenarios. <strong>How GA solves it:</strong> Each individual is a vector of asset weights. Fitness is risk-adjusted return. Crossover blends two portfolios, mutation tweaks allocations, and the population converges on efficient-frontier solutions.</p>
+        <div class="showcase-layout">
+          <div class="showcase-canvases">
+            <div><div class="canvas-label" id="ga-label-problem">Wing Profile</div><canvas id="ga-problem" width="720" height="480"></canvas></div>
+            <div><div class="canvas-label">Fitness Landscape</div><canvas id="ga-canvas" width="720" height="480"></canvas></div>
+          </div>
+          <div class="showcase-right">
+            <div class="showcase-code">
+            <pre><code><span class="cl-wrap"><span class="kw">def</span> <span class="fn">genetic_algorithm</span>(pop, generations):</span>
+<span class="cl-wrap">    <span class="kw">for</span> gen <span class="kw">in</span> <span class="fn">range</span>(generations):</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="ga-1">        <span class="cm"># 1. Evaluate fitness</span></span>
+<span class="cl-wrap" data-g="ga-1">        scores = [<span class="fn">fitness</span>(ind) <span class="kw">for</span> ind <span class="kw">in</span> pop]</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="ga-2">        <span class="cm"># 2. Selection: tournament pick</span></span>
+<span class="cl-wrap" data-g="ga-2">        parents = <span class="fn">tournament_select</span>(pop, scores)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="ga-3">        <span class="cm"># 3. Crossover: combine parents</span></span>
+<span class="cl-wrap" data-g="ga-3">        offspring = []</span>
+<span class="cl-wrap" data-g="ga-3">        <span class="kw">for</span> p1, p2 <span class="kw">in</span> <span class="fn">pairs</span>(parents):</span>
+<span class="cl-wrap" data-g="ga-3">            child = <span class="fn">crossover</span>(p1, p2)</span>
+<span class="cl-wrap" data-g="ga-3">            offspring.<span class="fn">append</span>(child)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="ga-4">        <span class="cm"># 4. Mutation: random tweaks</span></span>
+<span class="cl-wrap" data-g="ga-4">        <span class="kw">for</span> ind <span class="kw">in</span> offspring:</span>
+<span class="cl-wrap" data-g="ga-4">            <span class="kw">if</span> <span class="fn">random</span>() &lt; mutation_rate:</span>
+<span class="cl-wrap" data-g="ga-4">                <span class="fn">mutate</span>(ind)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap">        pop = offspring</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap">    <span class="kw">return</span> <span class="fn">best</span>(pop)</span></code></pre>
+            </div>
+            <div class="showcase-params">
+              <div class="param-group"><label>Population</label><input type="range" id="ga-p-pop" min="10" max="80" value="30"><span class="param-val" id="ga-v-pop">30</span></div>
+              <div class="param-group"><label>Mutation</label><input type="range" id="ga-p-mut" min="1" max="40" value="15"><span class="param-val" id="ga-v-mut">15%</span></div>
+              <div class="param-group ga-param-wing" data-ga-problem="0"><label>Altitude</label><input type="range" id="ga-p-alt" min="0" max="12000" value="3000" step="500"><span class="param-val" id="ga-v-alt">3000m</span></div>
+              <div class="param-group ga-param-wing" data-ga-problem="0"><label>Airspeed</label><input type="range" id="ga-p-speed" min="20" max="150" value="60" step="5"><span class="param-val" id="ga-v-speed">60 m/s</span></div>
+              <div class="param-group ga-param-sched" data-ga-problem="1" style="display:none"><label>Flights</label><input type="range" id="ga-p-flights" min="4" max="10" value="6"><span class="param-val" id="ga-v-flights">6</span></div>
+              <div class="param-group ga-param-sched" data-ga-problem="1" style="display:none"><label>Gates</label><input type="range" id="ga-p-gates" min="2" max="6" value="4"><span class="param-val" id="ga-v-gates">4</span></div>
+              <div class="param-group ga-param-port" data-ga-problem="2" style="display:none"><label>Risk-free rate</label><input type="range" id="ga-p-rf" min="0" max="10" value="2"><span class="param-val" id="ga-v-rf">2%</span></div>
+            </div>
+            <div class="showcase-controls">
+              <button class="showcase-btn" id="ga-step">Generation</button>
+              <button class="showcase-btn" id="ga-run">Auto-run</button>
+
+
+              <button class="showcase-btn" id="ga-reset">Reset</button>
+              <span class="showcase-stat" id="ga-stat">Gen: 0 | Best: 0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Neural Network ── -->
+      <div class="showcase-item">
+        <div class="showcase-header">
+          <h3>Neural Network</h3>
+          <div class="problem-tabs">
+            <button class="problem-tab active" data-problem="nn-p0">Digit Recognition</button>
+            <button class="problem-tab" data-problem="nn-p1">Tumor Classification</button>
+            <button class="problem-tab" data-problem="nn-p2">Fraud Detection</button>
+          </div>
+        </div>
+        <p class="showcase-desc" data-problem="nn-p0"><strong>Problem:</strong> Recognizing handwritten digits (0–9) from pixel grids. <strong>Real-world:</strong> This is the classic MNIST benchmark — postal services, banks, and mobile keyboards use neural networks to read handwriting. <strong>How NN solves it:</strong> Train the network, then draw a digit on the canvas and watch it classify in real time. The learning graph shows accuracy improving over epochs.</p>
+        <p class="showcase-desc" data-problem="nn-p1" style="display:none"><strong>Problem:</strong> Classifying tumors as benign or malignant from cell measurements. <strong>Real-world:</strong> Neural networks assist pathologists in cancer diagnosis, analyzing features like cell radius, texture, and symmetry from biopsy images. <strong>How NN solves it:</strong> The network learns a decision boundary in 2D feature space (cell radius vs. texture). Watch the heatmap evolve as training progresses — blue regions are classified benign, red regions malignant.</p>
+        <p class="showcase-desc" data-problem="nn-p2" style="display:none"><strong>Problem:</strong> Detecting fraudulent transactions from spending patterns. <strong>Real-world:</strong> Banks process millions of transactions daily — neural networks flag suspicious ones in real time by learning patterns that distinguish fraud from legitimate purchases. <strong>How NN solves it:</strong> The network learns to separate fraud from legit transactions in 2D space (amount vs. frequency). The heatmap shows the decision boundary evolving during training.</p>
+        <div class="showcase-layout">
+          <div class="showcase-canvases">
+            <div><div class="canvas-label" id="nn-label-top">Draw a digit</div><canvas id="nn-draw" width="720" height="480"></canvas></div>
+            <div><div class="canvas-label" id="nn-label-bottom">Learning Progress</div><canvas id="nn-graph" width="720" height="480"></canvas></div>
+          </div>
+          <div class="showcase-right">
+            <div class="showcase-code">
+            <pre><code><span class="cl-wrap" data-g="nn-1"><span class="kw">def</span> <span class="fn">forward</span>(x, weights):</span>
+<span class="cl-wrap" data-g="nn-1">    <span class="cm"># Hidden layer: learn features</span></span>
+<span class="cl-wrap" data-g="nn-1">    h = x @ weights[<span class="nr">0</span>] + bias[<span class="nr">0</span>]</span>
+<span class="cl-wrap" data-g="nn-1">    h = <span class="fn">relu</span>(h)</span>
+<span class="cl-wrap" data-g="nn-1">&nbsp;</span>
+<span class="cl-wrap" data-g="nn-1">    <span class="cm"># Output layer: class scores</span></span>
+<span class="cl-wrap" data-g="nn-1">    out = h @ weights[<span class="nr">1</span>] + bias[<span class="nr">1</span>]</span>
+<span class="cl-wrap" data-g="nn-1">    <span class="kw">return</span> <span class="fn">softmax</span>(out)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap"><span class="kw">def</span> <span class="fn">train</span>(network, data, epochs):</span>
+<span class="cl-wrap">    <span class="kw">for</span> epoch <span class="kw">in</span> <span class="fn">range</span>(epochs):</span>
+<span class="cl-wrap" data-g="nn-1">        <span class="kw">for</span> x, y <span class="kw">in</span> data:</span>
+<span class="cl-wrap" data-g="nn-1">            pred = <span class="fn">forward</span>(x, network)</span>
+<span class="cl-wrap" data-g="nn-2">            loss = <span class="fn">cross_entropy</span>(pred, y)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="nn-2">            <span class="cm"># Backpropagation: compute gradients</span></span>
+<span class="cl-wrap" data-g="nn-2">            grads = <span class="fn">backward</span>(loss, network)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap" data-g="nn-3">            <span class="cm"># Update weights via SGD</span></span>
+<span class="cl-wrap" data-g="nn-3">            <span class="kw">for</span> w, g <span class="kw">in</span> <span class="fn">zip</span>(network, grads):</span>
+<span class="cl-wrap" data-g="nn-3">                w -= learning_rate * g</span></code></pre>
+            </div>
+            <div class="showcase-params">
+              <div class="param-group"><label>Learning rate</label><input type="range" id="nn-p-lr" min="1" max="100" value="50"><span class="param-val" id="nn-v-lr">0.50</span></div>
+              <div class="param-group"><label>Hidden units</label><input type="range" id="nn-p-hidden" min="8" max="128" value="64"><span class="param-val" id="nn-v-hidden">64</span></div>
+            </div>
+            <div class="showcase-controls">
+              <button class="showcase-btn" id="nn-train">Train 50 epochs</button>
+              <button class="showcase-btn" id="nn-run">Auto-run</button>
+              <button class="showcase-btn" id="nn-clear">Clear drawing</button>
+              <button class="showcase-btn" id="nn-reset">Reset</button>
+              <span class="showcase-stat" id="nn-stat">Ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <p>Eden Rochman &middot; <a href="mailto:erochman@protonmail.com">erochman@protonmail.com</a></p>
     </footer>
@@ -730,6 +1210,9 @@
   </div>
 
   <div class="flashlight"></div>
+  <button class="showcase-toggle" aria-label="Algorithm showcase" title="Algorithm Showcase">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="14" width="13" height="3" rx="1"/><line x1="8" y1="14" x2="8" y2="17"/><rect x="17" y="13.5" width="3" height="4" rx="1" opacity="0.5"/><path d="M19.5 12c0-2 1.5-3 1.5-5" stroke-width="1.5" opacity="0.5"/><path d="M21 13c0-1.5 1.5-2.5 1.5-4.5" stroke-width="1.5" opacity="0.4"/></svg>
+  </button>
   <button class="theme-toggle" aria-label="Toggle dark mode">
     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
@@ -823,6 +1306,1888 @@
               animating = false;
             });
           });
+        });
+      });
+    })();
+
+    /* ═══════════════════════════════════════════
+       SHOWCASE VISUALIZATIONS
+       ═══════════════════════════════════════════ */
+
+    (function () {
+      function highlight(prefix, step) {
+        document.querySelectorAll('[data-g^="' + prefix + '-"]').forEach(function (el) { el.classList.remove('active'); });
+        if (step !== null) document.querySelectorAll('[data-g="' + prefix + '-' + step + '"]').forEach(function (el) { el.classList.add('active'); });
+      }
+
+      function wireParam(inputId, valId, fmt) {
+        var inp = document.getElementById(inputId), val = document.getElementById(valId);
+        inp.addEventListener('input', function () { val.textContent = fmt(inp.value); });
+      }
+      wireParam('mcts-p-explore', 'mcts-v-explore', function (v) { return (v / 100).toFixed(2); });
+      wireParam('mcts-p-depth', 'mcts-v-depth', function (v) { return v; });
+      wireParam('mcts-p-bsize', 'mcts-v-bsize', function (v) { return v + '×' + v; });
+      wireParam('ga-p-pop', 'ga-v-pop', function (v) { return v; });
+      wireParam('ga-p-mut', 'ga-v-mut', function (v) { return v + '%'; });
+      wireParam('ga-p-alt', 'ga-v-alt', function (v) { return v + 'm'; });
+      wireParam('ga-p-speed', 'ga-v-speed', function (v) { return v + ' m/s'; });
+      wireParam('ga-p-flights', 'ga-v-flights', function (v) { return v; });
+      wireParam('ga-p-gates', 'ga-v-gates', function (v) { return v; });
+      wireParam('ga-p-rf', 'ga-v-rf', function (v) { return v + '%'; });
+      wireParam('nn-p-lr', 'nn-v-lr', function (v) { return (v / 100).toFixed(2); });
+      wireParam('nn-p-hidden', 'nn-v-hidden', function (v) { return v; });
+
+      /* Auto-size canvases to match their CSS display size */
+      (function () {
+        document.querySelectorAll('.showcase-canvases canvas').forEach(function (c) {
+          var rect = c.getBoundingClientRect();
+          if (rect.width > 0 && rect.height > 0) {
+            c.width = Math.round(rect.width);
+            c.height = Math.round(rect.height);
+          }
+        });
+      })();
+
+      var resets = {};
+
+      /* ══════════════════════════ MCTS ══════════════════════════ */
+      (function () {
+        var treeC = document.getElementById('mcts-canvas'), treeCtx = treeC.getContext('2d');
+        var probC = document.getElementById('mcts-problem'), probCtx = probC.getContext('2d');
+        var stepBtn = document.getElementById('mcts-step'), runBtn = document.getElementById('mcts-run'), resetBtn = document.getElementById('mcts-reset');
+        var stat = document.getElementById('mcts-stat'), probLabel = document.getElementById('mcts-label-problem');
+        var running = false, timer = null, simCount = 0, nodeId = 0, problemIdx = 0;
+
+        var state, bestMove, gameOver;
+
+        function getC() { return parseInt(document.getElementById('mcts-p-explore').value) / 100; }
+        function getSims() { return parseInt(document.getElementById('mcts-p-depth').value); }
+
+        /* ── Game 1: Tic-Tac-Toe (N×N, win=N for 3-4, win=4 for 5-6) ── */
+        function getBoardSize() { return parseInt(document.getElementById('mcts-p-bsize').value); }
+        function getWinK(n) { return n <= 4 ? n : 4; }
+
+        function buildWins(n, k) {
+          var wins = [];
+          for (var r = 0; r < n; r++) for (var c = 0; c <= n - k; c++) { var w = []; for (var i = 0; i < k; i++) w.push(r * n + c + i); wins.push(w); }
+          for (var c = 0; c < n; c++) for (var r = 0; r <= n - k; r++) { var w = []; for (var i = 0; i < k; i++) w.push((r + i) * n + c); wins.push(w); }
+          for (var r = 0; r <= n - k; r++) for (var c = 0; c <= n - k; c++) { var w = []; for (var i = 0; i < k; i++) w.push((r + i) * n + c + i); wins.push(w); }
+          for (var r = 0; r <= n - k; r++) for (var c = k - 1; c < n; c++) { var w = []; for (var i = 0; i < k; i++) w.push((r + i) * n + c - i); wins.push(w); }
+          return wins;
+        }
+
+        var tttGame = {
+          label: 'Board State',
+          _N: 3, _K: 3, _wins: buildWins(3, 3),
+          _rebuild: function () { this._N = getBoardSize(); this._K = getWinK(this._N); this._wins = buildWins(this._N, this._K); },
+          init: function () { this._rebuild(); var b = []; for (var i = 0; i < this._N * this._N; i++) b.push(0); return { board: b, player: 1 }; },
+          legalMoves: function (s) { var e = []; for (var i = 0; i < s.board.length; i++) if (s.board[i] === 0) e.push(i); return e; },
+          makeMove: function (s, m) { var b = s.board.slice(); b[m] = s.player; return { board: b, player: s.player === 1 ? 2 : 1 }; },
+          _checkWin: function (b, p) { for (var i = 0; i < this._wins.length; i++) { var w = this._wins[i]; var ok = true; for (var j = 0; j < w.length; j++) if (b[w[j]] !== p) { ok = false; break; } if (ok) return true; } return false; },
+          isTerminal: function (s) { return this._checkWin(s.board, 1) || this._checkWin(s.board, 2) || this.legalMoves(s).length === 0; },
+          getResult: function (s) {
+            if (this._checkWin(s.board, 1)) return 1;
+            if (this._checkWin(s.board, 2)) return -1;
+            return 0;
+          },
+          statusText: function (s) {
+            if (this._checkWin(s.board, 1)) return 'X wins!';
+            if (this._checkWin(s.board, 2)) return 'O wins!';
+            if (this.legalMoves(s).length === 0) return 'Draw!';
+            return (s.player === 1 ? 'X' : 'O') + ' to move' + (this._N > 4 ? ' (' + this._K + ' in a row)' : '');
+          },
+          drawBoard: function (ctx, s, w, h, bm) {
+            var n = this._N;
+            ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#1e1e2e'; ctx.fillRect(0, 0, w, h);
+            var sz = Math.min(Math.floor((w - 40) / n), Math.floor((h - 40) / n));
+            var ox = (w - sz * n) / 2, oy = (h - sz * n) / 2;
+            ctx.strokeStyle = '#3f3f46'; ctx.lineWidth = 2;
+            for (var i = 1; i < n; i++) {
+              ctx.beginPath(); ctx.moveTo(ox + i * sz, oy); ctx.lineTo(ox + i * sz, oy + sz * n); ctx.stroke();
+              ctx.beginPath(); ctx.moveTo(ox, oy + i * sz); ctx.lineTo(ox + sz * n, oy + i * sz); ctx.stroke();
+            }
+            var mkFont = Math.max(8, Math.min(10, Math.floor(sz * 0.15)));
+            for (var i = 0; i < n * n; i++) {
+              var cx = ox + (i % n) * sz + sz / 2, cy = oy + Math.floor(i / n) * sz + sz / 2;
+              var mk = sz * 0.3;
+              if (s.board[i] === 1) {
+                ctx.strokeStyle = '#60a5fa'; ctx.lineWidth = Math.max(2, Math.min(3, sz * 0.04));
+                ctx.beginPath(); ctx.moveTo(cx - mk, cy - mk); ctx.lineTo(cx + mk, cy + mk); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(cx + mk, cy - mk); ctx.lineTo(cx - mk, cy + mk); ctx.stroke();
+              } else if (s.board[i] === 2) {
+                ctx.strokeStyle = '#f87171'; ctx.lineWidth = Math.max(2, Math.min(3, sz * 0.04));
+                ctx.beginPath(); ctx.arc(cx, cy, mk, 0, Math.PI * 2); ctx.stroke();
+              }
+              if (i === bm && s.board[i] === 0) {
+                ctx.fillStyle = 'rgba(96,165,250,0.2)';
+                ctx.fillRect(ox + (i % n) * sz + 2, oy + Math.floor(i / n) * sz + 2, sz - 4, sz - 4);
+                ctx.fillStyle = '#60a5fa'; ctx.font = '600 ' + mkFont + 'px Inter,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.fillText('best', cx, cy);
+              }
+            }
+            ctx.fillStyle = '#6c7086'; ctx.font = '500 10px Inter,sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText(this.statusText(s), w / 2, h - 8);
+          },
+          clickToMove: function (s, mx, my, w, h) {
+            var n = this._N;
+            var sz = Math.min(Math.floor((w - 40) / n), Math.floor((h - 40) / n));
+            var ox = (w - sz * n) / 2, oy = (h - sz * n) / 2;
+            var col = Math.floor((mx - ox) / sz), row = Math.floor((my - oy) / sz);
+            if (col >= 0 && col < n && row >= 0 && row < n) {
+              var idx = row * n + col;
+              if (s.board[idx] === 0) return idx;
+            }
+            return -1;
+          }
+        };
+
+        /* ── Game 2: Nim ── */
+        var nimGame = {
+          label: 'Stone Pile',
+          init: function () { return { stones: 12, player: 1 }; },
+          legalMoves: function (s) { var m = []; for (var i = 1; i <= Math.min(3, s.stones); i++) m.push(i); return m; },
+          makeMove: function (s, m) { return { stones: s.stones - m, player: s.player === 1 ? 2 : 1 }; },
+          isTerminal: function (s) { return s.stones === 0; },
+          getResult: function (s) {
+            /* When stones===0, the player who just moved took the last stone and loses.
+               The current s.player is the one whose turn it would be (didn't move).
+               So the player who moved = other player = (s.player===1 ? 2 : 1).
+               That player loses. */
+            if (s.stones !== 0) return 0;
+            /* The mover (who took last stone) loses */
+            var mover = s.player === 1 ? 2 : 1;
+            return mover === 1 ? -1 : 1;
+          },
+          statusText: function (s) {
+            if (s.stones === 0) {
+              var mover = s.player === 1 ? 2 : 1;
+              return 'Player ' + mover + ' took the last stone — Player ' + s.player + ' wins!';
+            }
+            return 'Player ' + s.player + ' to move — ' + s.stones + ' stones left';
+          },
+          drawBoard: function (ctx, s, w, h, bm) {
+            ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#1e1e2e'; ctx.fillRect(0, 0, w, h);
+
+            /* Draw stones as circles */
+            var totalStones = s.stones;
+            var cols = 4, stoneR = Math.min(w, h * 0.6) / (cols * 2 + 2);
+            if (stoneR > 18) stoneR = 18;
+            var rows = Math.ceil(totalStones / cols);
+            var gridW = cols * stoneR * 2.4;
+            var gridH = rows * stoneR * 2.4;
+            var startX = (w - gridW) / 2 + stoneR * 1.2;
+            var startY = (h - gridH) / 2 - 10 + stoneR * 1.2;
+            if (startY < 20) startY = 20;
+
+            for (var i = 0; i < totalStones; i++) {
+              var col = i % cols, row = Math.floor(i / cols);
+              var cx = startX + col * stoneR * 2.4;
+              var cy = startY + row * stoneR * 2.4;
+              /* Highlight stones that would be taken by bestMove */
+              var wouldBeTaken = (bm > 0 && i >= totalStones - bm);
+              ctx.beginPath(); ctx.arc(cx, cy, stoneR, 0, Math.PI * 2);
+              ctx.fillStyle = wouldBeTaken ? '#fbbf24' : '#a78bfa';
+              ctx.fill();
+              ctx.strokeStyle = wouldBeTaken ? '#f59e0b' : '#7c3aed';
+              ctx.lineWidth = 2; ctx.stroke();
+            }
+
+            /* Draw take buttons at bottom */
+            var btnY = h - 35, btnW = 60, btnH = 22, gap = 10;
+            var totalBtnW = 3 * btnW + 2 * gap;
+            var btnStartX = (w - totalBtnW) / 2;
+            for (var t = 1; t <= 3; t++) {
+              var bx = btnStartX + (t - 1) * (btnW + gap);
+              var canTake = t <= totalStones;
+              ctx.fillStyle = (bm === t) ? 'rgba(251,191,36,0.3)' : (canTake ? 'rgba(139,92,246,0.2)' : 'rgba(63,63,70,0.2)');
+              ctx.fillRect(bx, btnY, btnW, btnH);
+              ctx.strokeStyle = (bm === t) ? '#fbbf24' : (canTake ? '#7c3aed' : '#3f3f46');
+              ctx.lineWidth = 1.5; ctx.strokeRect(bx, btnY, btnW, btnH);
+              ctx.fillStyle = canTake ? '#e4e4e7' : '#52525b';
+              ctx.font = '600 11px Inter,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+              ctx.fillText('Take ' + t, bx + btnW / 2, btnY + btnH / 2);
+            }
+
+            ctx.fillStyle = '#6c7086'; ctx.font = '500 10px Inter,sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText(this.statusText(s), w / 2, h - 5);
+          },
+          clickToMove: function (s, mx, my, w, h) {
+            var btnY = h - 35, btnW = 60, btnH = 22, gap = 10;
+            var totalBtnW = 3 * btnW + 2 * gap;
+            var btnStartX = (w - totalBtnW) / 2;
+            if (my >= btnY && my <= btnY + btnH) {
+              for (var t = 1; t <= 3; t++) {
+                var bx = btnStartX + (t - 1) * (btnW + gap);
+                if (mx >= bx && mx <= bx + btnW && t <= s.stones) return t;
+              }
+            }
+            return -1;
+          }
+        };
+
+        /* ── Game 3: Connect 4 ── */
+        var c4Game = {
+          label: 'Board State',
+          COLS: 7, ROWS: 6,
+          init: function () { var b = []; for (var i = 0; i < 42; i++) b.push(0); return { board: b, player: 1 }; },
+          _idx: function (r, c) { return r * 7 + c; },
+          _dropRow: function (b, col) { for (var r = 5; r >= 0; r--) { if (b[r * 7 + col] === 0) return r; } return -1; },
+          legalMoves: function (s) { var m = []; for (var c = 0; c < 7; c++) { if (this._dropRow(s.board, c) >= 0) m.push(c); } return m; },
+          makeMove: function (s, col) {
+            var b = s.board.slice();
+            var r = this._dropRow(b, col);
+            if (r < 0) return s;
+            b[r * 7 + col] = s.player;
+            return { board: b, player: s.player === 1 ? 2 : 1 };
+          },
+          _checkWin4: function (b, p) {
+            /* Horizontal */
+            for (var r = 0; r < 6; r++) for (var c = 0; c <= 3; c++) {
+              if (b[r*7+c]===p && b[r*7+c+1]===p && b[r*7+c+2]===p && b[r*7+c+3]===p) return true;
+            }
+            /* Vertical */
+            for (var c = 0; c < 7; c++) for (var r = 0; r <= 2; r++) {
+              if (b[r*7+c]===p && b[(r+1)*7+c]===p && b[(r+2)*7+c]===p && b[(r+3)*7+c]===p) return true;
+            }
+            /* Diagonal down-right */
+            for (var r = 0; r <= 2; r++) for (var c = 0; c <= 3; c++) {
+              if (b[r*7+c]===p && b[(r+1)*7+c+1]===p && b[(r+2)*7+c+2]===p && b[(r+3)*7+c+3]===p) return true;
+            }
+            /* Diagonal down-left */
+            for (var r = 0; r <= 2; r++) for (var c = 3; c < 7; c++) {
+              if (b[r*7+c]===p && b[(r+1)*7+c-1]===p && b[(r+2)*7+c-2]===p && b[(r+3)*7+c-3]===p) return true;
+            }
+            return false;
+          },
+          isTerminal: function (s) { return this._checkWin4(s.board, 1) || this._checkWin4(s.board, 2) || this.legalMoves(s).length === 0; },
+          getResult: function (s) {
+            if (this._checkWin4(s.board, 1)) return 1;
+            if (this._checkWin4(s.board, 2)) return -1;
+            return 0;
+          },
+          statusText: function (s) {
+            if (this._checkWin4(s.board, 1)) return 'Red wins!';
+            if (this._checkWin4(s.board, 2)) return 'Yellow wins!';
+            if (this.legalMoves(s).length === 0) return 'Draw!';
+            return (s.player === 1 ? 'Red' : 'Yellow') + ' to move';
+          },
+          drawBoard: function (ctx, s, w, h, bm) {
+            ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#1e1e2e'; ctx.fillRect(0, 0, w, h);
+            var pad = 8;
+            var cellSz = Math.min(Math.floor((w - pad * 2) / 7), Math.floor((h - pad * 2 - 30) / 7));
+            var gridW = cellSz * 7, gridH = cellSz * 6;
+            var ox = (w - gridW) / 2, oy = (h - gridH) / 2 + 4;
+
+            /* Column numbers at top */
+            ctx.fillStyle = '#6c7086'; ctx.font = '600 10px Inter,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            for (var c = 0; c < 7; c++) {
+              ctx.fillText('' + (c + 1), ox + c * cellSz + cellSz / 2, oy - 8);
+            }
+
+            /* Blue board background */
+            ctx.fillStyle = '#1d4ed8';
+            ctx.fillRect(ox, oy, gridW, gridH);
+
+            /* Cells */
+            var holeR = cellSz * 0.38;
+            for (var r = 0; r < 6; r++) for (var c = 0; c < 7; c++) {
+              var cx = ox + c * cellSz + cellSz / 2;
+              var cy = oy + r * cellSz + cellSz / 2;
+              var v = s.board[r * 7 + c];
+              ctx.beginPath(); ctx.arc(cx, cy, holeR, 0, Math.PI * 2);
+              if (v === 1) { ctx.fillStyle = '#ef4444'; ctx.fill(); ctx.strokeStyle = '#dc2626'; ctx.lineWidth = 1.5; ctx.stroke(); }
+              else if (v === 2) { ctx.fillStyle = '#facc15'; ctx.fill(); ctx.strokeStyle = '#eab308'; ctx.lineWidth = 1.5; ctx.stroke(); }
+              else { ctx.fillStyle = '#1e1e2e'; ctx.fill(); }
+            }
+
+            /* Highlight best column */
+            if (bm >= 0 && bm < 7) {
+              ctx.fillStyle = 'rgba(96,165,250,0.18)';
+              ctx.fillRect(ox + bm * cellSz, oy, cellSz, gridH);
+              ctx.fillStyle = '#60a5fa'; ctx.font = '600 9px Inter,sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+              ctx.fillText('best', ox + bm * cellSz + cellSz / 2, oy + gridH + 10);
+            }
+
+            ctx.fillStyle = '#6c7086'; ctx.font = '500 10px Inter,sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText(this.statusText(s), w / 2, h - 5);
+          },
+          clickToMove: function (s, mx, my, w, h) {
+            var pad = 8;
+            var cellSz = Math.min(Math.floor((w - pad * 2) / 7), Math.floor((h - pad * 2 - 30) / 7));
+            var gridW = cellSz * 7;
+            var ox = (w - gridW) / 2;
+            var col = Math.floor((mx - ox) / cellSz);
+            if (col >= 0 && col < 7 && this._dropRow(s.board, col) >= 0) return col;
+            return -1;
+          }
+        };
+
+        /* ── Game array and current game ── */
+        var games = [tttGame, nimGame, c4Game];
+        var game = games[0];
+
+        /* ── MCTS engine (game-generic) ── */
+        function cloneState(s) {
+          var o = {};
+          for (var k in s) {
+            if (Array.isArray(s[k])) o[k] = s[k].slice();
+            else o[k] = s[k];
+          }
+          return o;
+        }
+
+        function makeNode(parent, move, st) {
+          return { id: nodeId++, parent: parent, children: [], wins: 0, visits: 0, x: 0, y: 0, highlight: 0,
+                   move: move, state: cloneState(st), expanded: false };
+        }
+        var root;
+
+        function init() {
+          game = games[problemIdx];
+          nodeId = 0; simCount = 0; bestMove = -1; gameOver = false;
+          state = game.init();
+          probLabel.textContent = game.label;
+          root = makeNode(null, -1, state);
+          stat.textContent = 'Simulations: 0';
+          drawTree(); drawProblem();
+        }
+
+        function ucb(node) {
+          if (node.visits === 0) return Infinity;
+          var C = getC();
+          return (node.wins / node.visits) + C * Math.sqrt(Math.log(node.parent.visits) / node.visits);
+        }
+        function bestUCB(node) {
+          var best = null, bv = -Infinity;
+          for (var i = 0; i < node.children.length; i++) { var v = ucb(node.children[i]); if (v > bv) { bv = v; best = node.children[i]; } }
+          return best;
+        }
+
+        function expand(node) {
+          var moves = game.legalMoves(node.state);
+          for (var i = 0; i < moves.length; i++) {
+            var ns = game.makeMove(node.state, moves[i]);
+            node.children.push(makeNode(node, moves[i], ns));
+          }
+          node.expanded = true;
+        }
+
+        function simulate(st) {
+          var s = cloneState(st);
+          while (!game.isTerminal(s)) {
+            var moves = game.legalMoves(s);
+            s = game.makeMove(s, moves[Math.floor(Math.random() * moves.length)]);
+          }
+          return game.getResult(s);
+        }
+
+        function allNodes(node) {
+          var arr = [node];
+          for (var i = 0; i < node.children.length; i++) arr = arr.concat(allNodes(node.children[i]));
+          return arr;
+        }
+        function layoutTree(node, depth, left, right) {
+          node.x = (left + right) / 2; node.y = 22 + depth * 52;
+          var n = node.children.length; if (!n) return;
+          var w = (right - left) / n;
+          for (var i = 0; i < n; i++) layoutTree(node.children[i], depth + 1, left + i * w, left + (i + 1) * w);
+        }
+
+        function runOneSim() {
+          var node = root, path = [node];
+          while (node.expanded && node.children.length > 0) {
+            node = bestUCB(node);
+            path.push(node);
+          }
+          if (!game.isTerminal(node.state)) {
+            if (!node.expanded) expand(node);
+            if (node.children.length > 0) {
+              node = node.children[Math.floor(Math.random() * node.children.length)];
+              path.push(node);
+            }
+          }
+          var result = simulate(node.state);
+          for (var i = 0; i < path.length; i++) {
+            path[i].visits++;
+            var nodeIsP1 = path[i].state.player === 1;
+            if (result === 1) path[i].wins += nodeIsP1 ? 0 : 1;
+            else if (result === -1) path[i].wins += nodeIsP1 ? 1 : 0;
+            else path[i].wins += 0.5;
+            path[i].highlight = 1;
+          }
+          simCount++;
+          return path;
+        }
+
+        function findImmediateWin(st) {
+          var moves = game.legalMoves(st);
+          for (var i = 0; i < moves.length; i++) {
+            var ns = game.makeMove(st, moves[i]);
+            if (game.isTerminal(ns) && game.getResult(ns) !== 0) return moves[i];
+          }
+          return -1;
+        }
+        function findImmediateBlock(st) {
+          var moves = game.legalMoves(st);
+          var opp = { board: st.board.slice(), player: st.player === 1 ? 2 : 1 };
+          for (var i = 0; i < moves.length; i++) {
+            var ns = game.makeMove(opp, moves[i]);
+            if (game.isTerminal(ns) && game.getResult(ns) !== 0) return moves[i];
+          }
+          return -1;
+        }
+
+        function step() {
+          if (gameOver) return;
+          highlight('mcts', 1);
+          var simsPerStep = getSims();
+          var lastPath;
+          for (var s = 0; s < simsPerStep; s++) lastPath = runOneSim();
+          setTimeout(function () { highlight('mcts', 2); }, 100);
+          setTimeout(function () { highlight('mcts', 3); }, 200);
+
+          var immediateWin = findImmediateWin(state);
+          if (immediateWin >= 0) {
+            bestMove = immediateWin;
+          } else {
+            var block = findImmediateBlock(state);
+            if (block >= 0) {
+              bestMove = block;
+            } else if (root.children.length > 0) {
+              var bc = root.children[0];
+              for (var i = 1; i < root.children.length; i++) { if (root.children[i].visits > bc.visits) bc = root.children[i]; }
+              bestMove = bc.move;
+            }
+          }
+
+          stat.textContent = 'Simulations: ' + simCount;
+          layoutTree(root, 0, 5, treeC.width - 5);
+          drawTree(); drawProblem();
+          setTimeout(function () { highlight('mcts', 4); }, 300);
+          setTimeout(function () {
+            var all = allNodes(root);
+            for (var i = 0; i < all.length; i++) all[i].highlight = 0;
+            highlight('mcts', null); drawTree();
+          }, 450);
+        }
+
+        function applyMove(m) {
+          if (gameOver) return;
+          state = game.makeMove(state, m);
+          if (game.isTerminal(state)) { gameOver = true; stat.textContent = game.statusText(state); }
+          bestMove = -1; simCount = 0; nodeId = 0;
+          root = makeNode(null, -1, state);
+          drawTree(); drawProblem();
+        }
+
+        function autoPlay() {
+          if (gameOver || bestMove < 0) return;
+          applyMove(bestMove);
+        }
+
+        function drawTree() {
+          var w = treeC.width, h = treeC.height;
+          treeCtx.clearRect(0, 0, w, h); treeCtx.fillStyle = '#1e1e2e'; treeCtx.fillRect(0, 0, w, h);
+          var nodes = allNodes(root);
+          for (var i = 0; i < nodes.length; i++) {
+            var n = nodes[i];
+            if (n.parent) { treeCtx.beginPath(); treeCtx.strokeStyle = n.highlight ? '#60a5fa' : '#3f3f46'; treeCtx.lineWidth = 1.5; treeCtx.moveTo(n.parent.x, n.parent.y); treeCtx.lineTo(n.x, n.y); treeCtx.stroke(); }
+          }
+          for (var i = 0; i < nodes.length; i++) {
+            var n = nodes[i], r = 10 + Math.min(n.visits * 0.5, 8);
+            treeCtx.beginPath(); treeCtx.arc(n.x, n.y, r, 0, Math.PI * 2);
+            var isBest = (n.move === bestMove && n.parent === root);
+            treeCtx.fillStyle = isBest ? '#4ade80' : (n.highlight ? '#60a5fa' : '#1e1b4b'); treeCtx.fill();
+            treeCtx.strokeStyle = isBest ? '#86efac' : (n.highlight ? '#93c5fd' : '#312e81'); treeCtx.lineWidth = 1.5; treeCtx.stroke();
+            if (n.visits > 0) { treeCtx.fillStyle = '#e4e4e7'; treeCtx.font = '600 9px Inter,sans-serif'; treeCtx.textAlign = 'center'; treeCtx.textBaseline = 'middle'; treeCtx.fillText(n.wins.toFixed(0) + '/' + n.visits, n.x, n.y); }
+          }
+        }
+
+        function drawProblem() {
+          game.drawBoard(probCtx, state, probC.width, probC.height, bestMove);
+        }
+
+        probC.addEventListener('click', function (e) {
+          if (gameOver) return;
+          var rect = probC.getBoundingClientRect();
+          var mx = (e.clientX - rect.left) * (probC.width / rect.width);
+          var my = (e.clientY - rect.top) * (probC.height / rect.height);
+          var m = game.clickToMove(state, mx, my, probC.width, probC.height);
+          if (m >= 0) applyMove(m);
+        });
+
+        stepBtn.onclick = function () { step(); };
+        runBtn.onclick = function () {
+          running = !running; runBtn.textContent = running ? 'Pause' : 'Auto-run'; runBtn.classList.toggle('active', running);
+          if (running) {
+            timer = setInterval(function () {
+              if (gameOver) { running = false; clearInterval(timer); runBtn.textContent = 'Auto-run'; runBtn.classList.remove('active'); return; }
+              step();
+              setTimeout(function () { autoPlay(); }, 460);
+            }, 1000);
+          } else clearInterval(timer);
+        };
+        function fullReset() { running = false; clearInterval(timer); runBtn.textContent = 'Auto-run'; runBtn.classList.remove('active'); init(); }
+        resetBtn.onclick = fullReset;
+        resets.mcts = function (idx) {
+          problemIdx = idx;
+          document.querySelectorAll('[data-mcts-problem]').forEach(function(el) {
+            el.style.display = el.getAttribute('data-mcts-problem') == idx ? '' : 'none';
+          });
+          fullReset();
+        };
+        document.getElementById('mcts-p-bsize').addEventListener('input', function () { fullReset(); });
+        init();
+      })();
+
+      /* ══════════════════════════ GA ══════════════════════════ */
+      (function () {
+        var fitC = document.getElementById('ga-canvas'), fitCtx = fitC.getContext('2d');
+        var probC = document.getElementById('ga-problem'), probCtx = probC.getContext('2d');
+        var stepBtn = document.getElementById('ga-step'), runBtn = document.getElementById('ga-run'), resetBtn = document.getElementById('ga-reset');
+        var stat = document.getElementById('ga-stat'), probLabel = document.getElementById('ga-label-problem');
+        var running = false, timer = null, gen = 0, problemIdx = 0;
+        var pop = [], bestHist = [];
+
+        function getPOP() { return parseInt(document.getElementById('ga-p-pop').value); }
+        function getMUT() { return parseInt(document.getElementById('ga-p-mut').value) / 100; }
+        function getNFlights() { return parseInt(document.getElementById('ga-p-flights').value); }
+        function getNGates() { return parseInt(document.getElementById('ga-p-gates').value); }
+        function getRiskFree() { return parseInt(document.getElementById('ga-p-rf').value) / 100; }
+
+        /* --- Problem 0: Wing Optimization (3D) --- */
+        function getAltitude() { return parseInt(document.getElementById('ga-p-alt').value); }
+        function getAirspeed() { return parseInt(document.getElementById('ga-p-speed').value); }
+
+        function wingOptFitness(genes) {
+          var camber = 0.01 + genes[0] * 0.08;
+          var thickness = 0.06 + genes[1] * 0.14;
+          var camberPos = 0.2 + genes[2] * 0.4;
+          var altitude = getAltitude(), airspeed = getAirspeed();
+          var rho = 1.225 * Math.pow(Math.max(0.01, 1 - 2.2558e-5 * altitude), 4.2559);
+          var Re = rho * airspeed * 1.0 / 1.789e-5;
+          var qinf = 0.5 * rho * airspeed * airspeed;
+          var Cf = 0.074 / Math.pow(Math.max(Re, 1000), 0.2);
+          var Cd0 = 2 * Cf * (1 + 2 * thickness + 60 * Math.pow(thickness, 4));
+          var Cl = 2 * Math.PI * camber * (1 + 0.77 * (camberPos - 0.3));
+          var Cdi = Cl * Cl / (Math.PI * 0.85 * 8);
+          var Cd = Cd0 + Cdi;
+          var LD = Cd > 0 ? Cl / Cd : 0;
+          var sepLimit = Math.max(0.02, 0.12 - airspeed * 0.0008);
+          var sepPen = camber > sepLimit ? Math.pow(camber - sepLimit, 2) * 1000 : 0;
+          var minThick = 0.06 + qinf * 0.00001;
+          var structPen = thickness < minThick ? Math.pow(minThick - thickness, 2) * 1000 : 0;
+          return Math.max(0.01, LD - sepPen - structPen);
+        }
+
+        function wingY(x, camber, thickness, camberPos) {
+          var t = x;
+          var yc = camber * (2 * camberPos * t - t * t) / (camberPos * camberPos);
+          if (t > camberPos) yc = camber * (1 - 2 * camberPos + 2 * camberPos * t - t * t) / Math.pow(1 - camberPos, 2);
+          var yt = thickness * (2.969 * Math.sqrt(t) - 1.26 * t - 3.516 * t * t + 2.843 * t * t * t - 1.015 * t * t * t * t);
+          return { upper: yc + yt, lower: yc - yt };
+        }
+
+        var wingHeatC = document.createElement('canvas');
+        wingHeatC.width = 50; wingHeatC.height = 50;
+        var wingHeatDirty = true;
+
+        /* --- Problem 1: Scheduling (6D) --- */
+        var NFLIGHTS = 6, NGATES = 4;
+        var flightDurations = [2, 1, 2, 1, 3, 1]; /* duration in time-slots for each flight */
+        function regenerateFlightDurations() {
+          flightDurations = [];
+          for (var i = 0; i < NFLIGHTS; i++) flightDurations.push(Math.floor(Math.random() * 3) + 1);
+        }
+        function schedFitness(genes) {
+          /* genes[0..N-1] = gate assignment, genes[N..2N-1] = time slot */
+          var conflicts = 0, totalGap = 0;
+          var gateOccup = [];
+          for (var g = 0; g < NGATES; g++) gateOccup.push([]);
+          for (var i = 0; i < NFLIGHTS; i++) {
+            var gate = Math.min(Math.floor(genes[i] * NGATES), NGATES - 1);
+            var maxStart = 6 - flightDurations[i];
+            var start = Math.round(genes[NFLIGHTS + i] * maxStart);
+            if (start < 0) start = 0;
+            if (start > maxStart) start = maxStart;
+            var end = start + flightDurations[i];
+            gateOccup[gate].push({ s: start, e: end, fi: i });
+          }
+          for (var g = 0; g < NGATES; g++) {
+            var occ = gateOccup[g];
+            occ.sort(function (a, b) { return a.s - b.s; });
+            for (var i = 0; i < occ.length; i++) {
+              for (var j = i + 1; j < occ.length; j++) {
+                if (occ[j].s < occ[i].e) conflicts++;
+              }
+            }
+            for (var i = 0; i < occ.length - 1; i++) {
+              var gap = occ[i + 1].s - occ[i].e;
+              if (gap > 0) totalGap += gap;
+            }
+          }
+          return 1 / (1 + conflicts * 2 + totalGap * 0.5);
+        }
+        function decodeSchedFlight(genes, i) {
+          var gate = Math.min(Math.floor(genes[i] * NGATES), NGATES - 1);
+          var maxStart = 6 - flightDurations[i];
+          var start = Math.round(genes[NFLIGHTS + i] * maxStart);
+          if (start < 0) start = 0;
+          if (start > maxStart) start = maxStart;
+          return { gate: gate, start: start, dur: flightDurations[i] };
+        }
+        function countSchedConflicts(genes) {
+          var conflicts = 0;
+          var decoded = [];
+          for (var i = 0; i < NFLIGHTS; i++) decoded.push(decodeSchedFlight(genes, i));
+          /* per pair on same gate, check overlap */
+          for (var i = 0; i < NFLIGHTS; i++) {
+            for (var j = i + 1; j < NFLIGHTS; j++) {
+              if (decoded[i].gate === decoded[j].gate) {
+                if (decoded[j].start < decoded[i].start + decoded[i].dur &&
+                    decoded[i].start < decoded[j].start + decoded[j].dur) conflicts++;
+              }
+            }
+          }
+          return conflicts;
+        }
+
+        /* --- Problem 2: Portfolio (5D) --- */
+        var assetNames = ['Stocks', 'Bonds', 'Real Est.', 'Gold', 'Crypto'];
+        var assetColors = ['#60a5fa', '#34d399', '#fbbf24', '#f472b6', '#a78bfa'];
+        var assetReturns = [0.10, 0.04, 0.07, 0.05, 0.15];
+        var assetVols = [0.18, 0.05, 0.12, 0.14, 0.35];
+        function normalizeWeights(genes) {
+          var w = [], sum = 0;
+          for (var i = 0; i < genes.length; i++) { var v = Math.max(genes[i], 0.001); w.push(v); sum += v; }
+          for (var i = 0; i < w.length; i++) w[i] /= sum;
+          return w;
+        }
+        function portfolioMetrics(genes) {
+          var w = normalizeWeights(genes);
+          var ret = 0, volSq = 0;
+          for (var i = 0; i < w.length; i++) { ret += w[i] * assetReturns[i]; volSq += w[i] * w[i] * assetVols[i] * assetVols[i]; }
+          var vol = Math.sqrt(volSq);
+          var rf = getRiskFree();
+          var sharpe = vol > 0 ? (ret - rf) / vol : 0;
+          return { weights: w, ret: ret, vol: vol, sharpe: sharpe };
+        }
+        function portfolioFitness(genes) {
+          return portfolioMetrics(genes).sharpe;
+        }
+
+        /* --- Dimensions per problem --- */
+        var dims = [3, NFLIGHTS * 2, assetNames.length]; /* 3, 12, 5 */
+
+        var cfgColors = [
+          { accent: '#60a5fa', glow: '#93c5fd', dot: '#7c3aed', line: '#312e81', grad: 'rgba(139,92,246,0.15)' },
+          { accent: '#f472b6', glow: '#f9a8d4', dot: '#be185d', line: '#831843', grad: 'rgba(244,114,182,0.15)' },
+          { accent: '#34d399', glow: '#6ee7b7', dot: '#059669', line: '#064e3b', grad: 'rgba(52,211,153,0.15)' }
+        ];
+        var probLabels = ['Wing Profile', 'Flight Schedule', 'Portfolio Weights'];
+        var cfg;
+
+        /* --- Fitness dispatcher --- */
+        function evalFitness(ind) {
+          if (problemIdx === 0) return wingOptFitness(ind);
+          if (problemIdx === 1) return schedFitness(ind);
+          return portfolioFitness(ind);
+        }
+
+        /* --- Random individual --- */
+        function randomInd() {
+          var d = dims[problemIdx], arr = [];
+          for (var i = 0; i < d; i++) arr.push(Math.random());
+          return arr;
+        }
+
+        /* --- Clone individual --- */
+        function cloneInd(ind) { return ind.slice(); }
+
+        /* --- Crossover --- */
+        function crossover(p1, p2) {
+          var d = dims[problemIdx], child = [];
+          if (d === 1) {
+            var alpha = Math.random();
+            child.push(p1[0] * alpha + p2[0] * (1 - alpha));
+          } else if (problemIdx === 1) {
+            /* uniform crossover */
+            for (var i = 0; i < d; i++) child.push(Math.random() < 0.5 ? p1[i] : p2[i]);
+          } else {
+            /* blend crossover for portfolio, then renormalize */
+            for (var i = 0; i < d; i++) {
+              var alpha = Math.random();
+              child.push(p1[i] * alpha + p2[i] * (1 - alpha));
+            }
+          }
+          return child;
+        }
+
+        /* --- Mutation --- */
+        function mutate(ind, rate) {
+          var d = dims[problemIdx];
+          if (Math.random() >= rate) return ind;
+          var child = cloneInd(ind);
+          if (d === 1) {
+            child[0] += (Math.random() - 0.5) * 0.1;
+            child[0] = Math.max(0, Math.min(1, child[0]));
+          } else {
+            var idx = Math.floor(Math.random() * d);
+            child[idx] += (Math.random() - 0.5) * 0.2;
+            child[idx] = Math.max(0, Math.min(1, child[idx]));
+          }
+          return child;
+        }
+
+        /* --- Init --- */
+        function init() {
+          gen = 0; bestHist = []; wingHeatDirty = true;
+          cfg = cfgColors[problemIdx];
+          probLabel.textContent = probLabels[problemIdx];
+
+          /* show/hide problem-specific sliders */
+          document.querySelectorAll('[data-ga-problem]').forEach(function(el) {
+            el.style.display = el.getAttribute('data-ga-problem') == problemIdx ? '' : 'none';
+          });
+          /* update dynamic scheduling dimensions */
+          if (problemIdx === 1) {
+            NFLIGHTS = getNFlights();
+            NGATES = getNGates();
+            regenerateFlightDurations();
+            dims[1] = NFLIGHTS * 2;
+          }
+
+          var P = getPOP();
+          pop = [];
+          for (var i = 0; i < P; i++) pop.push(randomInd());
+          updateStat(); drawFitness(); drawProblem();
+        }
+
+        /* --- Find best --- */
+        function findBest() {
+          var bestIdx = 0, bestF = evalFitness(pop[0]);
+          for (var i = 1; i < pop.length; i++) {
+            var f = evalFitness(pop[i]);
+            if (f > bestF) { bestF = f; bestIdx = i; }
+          }
+          return { idx: bestIdx, fit: bestF };
+        }
+
+        /* --- Update stat line --- */
+        function updateStat() {
+          var b = findBest();
+          bestHist.push(b.fit);
+          if (problemIdx === 0) {
+            stat.textContent = 'Gen: ' + gen + ' | L/D: ' + b.fit.toFixed(1);
+          } else if (problemIdx === 1) {
+            var c = countSchedConflicts(pop[b.idx]);
+            stat.textContent = 'Gen: ' + gen + ' | Cost: ' + (1 / b.fit - 1).toFixed(2) + ' | Conflicts: ' + c;
+          } else {
+            var m = portfolioMetrics(pop[b.idx]);
+            stat.textContent = 'Gen: ' + gen + ' | Sharpe: ' + m.sharpe.toFixed(2) + ' | Return: ' + (m.ret * 100).toFixed(1) + '%';
+          }
+        }
+
+        /* --- Step: one generation --- */
+        function step() {
+          highlight('ga', 1);
+          var scores = [];
+          for (var i = 0; i < pop.length; i++) scores.push(evalFitness(pop[i]));
+          var P = pop.length, mut = getMUT();
+          var newPop = [];
+
+          /* elitism */
+          var bestIdx = 0;
+          for (var i = 1; i < scores.length; i++) { if (scores[i] > scores[bestIdx]) bestIdx = i; }
+          newPop.push(cloneInd(pop[bestIdx]));
+
+          setTimeout(function () { highlight('ga', 2); }, 80);
+
+          while (newPop.length < P) {
+            /* tournament selection */
+            var a = Math.floor(Math.random() * P), b = Math.floor(Math.random() * P);
+            var p1 = scores[a] > scores[b] ? pop[a] : pop[b];
+            a = Math.floor(Math.random() * P); b = Math.floor(Math.random() * P);
+            var p2 = scores[a] > scores[b] ? pop[a] : pop[b];
+
+            var child = crossover(p1, p2);
+            child = mutate(child, mut);
+            newPop.push(child);
+          }
+          pop = newPop; gen++;
+          setTimeout(function () { highlight('ga', 3); }, 160);
+          setTimeout(function () { highlight('ga', 4); }, 240);
+          setTimeout(function () { highlight('ga', null); }, 320);
+          updateStat(); drawFitness(); drawProblem();
+        }
+
+        /* --- Draw fitness canvas (top) --- */
+        function drawFitness() {
+          var w = fitC.width, h = fitC.height;
+          var pad = 20, gw = w - pad * 2, gh = h - pad * 2 - 14;
+          fitCtx.clearRect(0, 0, w, h); fitCtx.fillStyle = '#1e1e2e'; fitCtx.fillRect(0, 0, w, h);
+
+          if (problemIdx === 0) {
+            /* 2D heatmap: camber (x) vs thickness (y) with population dots */
+            var hRes = 50;
+            if (wingHeatDirty) {
+              var hCtx = wingHeatC.getContext('2d');
+              var hImg = hCtx.createImageData(hRes, hRes);
+              var bestG2 = pop.length > 0 ? pop[findBest().idx][2] : 0.5;
+              var vals = new Float32Array(hRes * hRes);
+              var hMax = 0;
+              for (var yi = 0; yi < hRes; yi++) for (var xi = 0; xi < hRes; xi++) {
+                var f = wingOptFitness([xi / (hRes - 1), yi / (hRes - 1), bestG2]);
+                vals[yi * hRes + xi] = f; if (f > hMax) hMax = f;
+              }
+              var stops = [[68,1,84],[59,82,139],[33,145,140],[94,201,98],[253,231,37]];
+              for (var yi = 0; yi < hRes; yi++) for (var xi = 0; xi < hRes; xi++) {
+                var norm = hMax > 0 ? vals[(hRes - 1 - yi) * hRes + xi] / hMax : 0;
+                var ci = norm * (stops.length - 1), lo = Math.floor(ci), hi = Math.min(lo + 1, stops.length - 1), t = ci - lo;
+                var idx = (yi * hRes + xi) * 4;
+                hImg.data[idx] = Math.round(stops[lo][0] + (stops[hi][0] - stops[lo][0]) * t);
+                hImg.data[idx + 1] = Math.round(stops[lo][1] + (stops[hi][1] - stops[lo][1]) * t);
+                hImg.data[idx + 2] = Math.round(stops[lo][2] + (stops[hi][2] - stops[lo][2]) * t);
+                hImg.data[idx + 3] = 255;
+              }
+              hCtx.putImageData(hImg, 0, 0);
+              wingHeatDirty = false;
+            }
+            fitCtx.imageSmoothingEnabled = true;
+            fitCtx.drawImage(wingHeatC, pad, pad, gw, gh);
+
+            fitCtx.fillStyle = '#a1a1aa'; fitCtx.font = '500 9px Inter,sans-serif';
+            fitCtx.textAlign = 'center';
+            fitCtx.fillText('Camber →', pad + gw / 2, h - 2);
+            fitCtx.save(); fitCtx.translate(8, pad + gh / 2); fitCtx.rotate(-Math.PI / 2);
+            fitCtx.fillText('Thickness →', 0, 0); fitCtx.restore();
+
+            var bIdx = findBest().idx;
+            for (var i = 0; i < pop.length; i++) {
+              var sx = pad + pop[i][0] * gw, sy = pad + gh - pop[i][1] * gh;
+              var ib = (i === bIdx);
+              fitCtx.beginPath(); fitCtx.arc(sx, sy, ib ? 6 : 3, 0, Math.PI * 2);
+              fitCtx.fillStyle = ib ? '#fff' : 'rgba(255,255,255,0.5)'; fitCtx.fill();
+              if (ib) { fitCtx.strokeStyle = cfg.glow; fitCtx.lineWidth = 2; fitCtx.stroke(); }
+            }
+          } else {
+            /* Convergence curve for multi-dimensional problems */
+            var nH = bestHist.length;
+            if (nH < 1) return;
+            var maxF = -Infinity, minF = Infinity;
+            for (var i = 0; i < nH; i++) {
+              if (bestHist[i] > maxF) maxF = bestHist[i];
+              if (bestHist[i] < minF) minF = bestHist[i];
+            }
+            if (maxF === minF) { maxF += 0.1; minF -= 0.1; }
+            var range = maxF - minF;
+
+            /* axis labels */
+            fitCtx.fillStyle = '#6c7086'; fitCtx.font = '500 8px Inter,sans-serif';
+            fitCtx.textAlign = 'center';
+            fitCtx.fillText('Generation', pad + gw / 2, h - 2);
+            fitCtx.save();
+            fitCtx.translate(8, pad + gh / 2);
+            fitCtx.rotate(-Math.PI / 2);
+            fitCtx.fillText(problemIdx === 1 ? 'Fitness' : 'Sharpe', 0, 0);
+            fitCtx.restore();
+
+            /* grid lines */
+            fitCtx.strokeStyle = '#27272a'; fitCtx.lineWidth = 0.5;
+            for (var g = 0; g <= 4; g++) {
+              var gy = pad + gh - (g / 4) * gh;
+              fitCtx.beginPath(); fitCtx.moveTo(pad, gy); fitCtx.lineTo(pad + gw, gy); fitCtx.stroke();
+              var val = minF + (g / 4) * range;
+              fitCtx.fillStyle = '#6c7086'; fitCtx.font = '500 7px Inter,sans-serif'; fitCtx.textAlign = 'right';
+              fitCtx.fillText(val.toFixed(2), pad - 3, gy + 3);
+            }
+
+            /* line */
+            fitCtx.beginPath(); fitCtx.strokeStyle = cfg.accent; fitCtx.lineWidth = 2;
+            for (var i = 0; i < nH; i++) {
+              var sx = pad + (nH > 1 ? i / (nH - 1) : 0.5) * gw;
+              var sy = pad + gh - ((bestHist[i] - minF) / range) * gh;
+              if (i === 0) fitCtx.moveTo(sx, sy); else fitCtx.lineTo(sx, sy);
+            }
+            fitCtx.stroke();
+
+            /* fill under line */
+            var grad = fitCtx.createLinearGradient(0, pad, 0, pad + gh);
+            grad.addColorStop(0, cfg.grad); grad.addColorStop(1, 'transparent');
+            fitCtx.lineTo(pad + gw, pad + gh); fitCtx.lineTo(pad, pad + gh); fitCtx.closePath();
+            fitCtx.fillStyle = grad; fitCtx.fill();
+
+            /* current point */
+            if (nH > 0) {
+              var cx = pad + (nH > 1 ? (nH - 1) / (nH - 1) : 0.5) * gw;
+              var cy = pad + gh - ((bestHist[nH - 1] - minF) / range) * gh;
+              fitCtx.beginPath(); fitCtx.arc(cx, cy, 5, 0, Math.PI * 2);
+              fitCtx.fillStyle = cfg.accent; fitCtx.fill();
+              fitCtx.strokeStyle = cfg.glow; fitCtx.lineWidth = 2; fitCtx.stroke();
+            }
+          }
+        }
+
+        /* --- Draw problem canvas (bottom) --- */
+        function drawProblem() {
+          var w = probC.width, h = probC.height;
+          probCtx.clearRect(0, 0, w, h); probCtx.fillStyle = '#1e1e2e'; probCtx.fillRect(0, 0, w, h);
+
+          var b = findBest();
+          var bestInd = pop[b.idx];
+
+          if (problemIdx === 0) {
+            /* Wing profile from 3 genes */
+            var camber = 0.01 + bestInd[0] * 0.08;
+            var thickness = 0.06 + bestInd[1] * 0.14;
+            var camberPos = 0.2 + bestInd[2] * 0.4;
+            var padW = 30, ww = w - padW * 2;
+
+            /* Ghost population wings */
+            for (var pi = 0; pi < Math.min(pop.length, 8); pi++) {
+              if (pi === b.idx) continue;
+              var gc = 0.01 + pop[pi][0] * 0.08, gt = 0.06 + pop[pi][1] * 0.14, gp = 0.2 + pop[pi][2] * 0.4;
+              probCtx.beginPath();
+              for (var px = 0; px <= ww; px++) { var t = px / ww, pts = wingY(t, gc, gt, gp); var sy = h / 2 - pts.upper * h * 1.8; if (px === 0) probCtx.moveTo(padW + px, sy); else probCtx.lineTo(padW + px, sy); }
+              for (var px = ww; px >= 0; px--) { var t = px / ww, pts = wingY(t, gc, gt, gp); probCtx.lineTo(padW + px, h / 2 - pts.lower * h * 1.8); }
+              probCtx.closePath(); probCtx.fillStyle = 'rgba(96,165,250,0.06)'; probCtx.fill();
+            }
+
+            /* Best wing profile */
+            probCtx.beginPath();
+            for (var px = 0; px <= ww; px++) { var t = px / ww, pts = wingY(t, camber, thickness, camberPos); var sy = h / 2 - pts.upper * h * 1.8; if (px === 0) probCtx.moveTo(padW + px, sy); else probCtx.lineTo(padW + px, sy); }
+            for (var px = ww; px >= 0; px--) { var t = px / ww, pts = wingY(t, camber, thickness, camberPos); probCtx.lineTo(padW + px, h / 2 - pts.lower * h * 1.8); }
+            probCtx.closePath();
+            var ag = probCtx.createLinearGradient(padW, h / 2 - 60, padW, h / 2 + 60);
+            ag.addColorStop(0, 'rgba(96,165,250,0.35)'); ag.addColorStop(1, 'rgba(96,165,250,0.05)');
+            probCtx.fillStyle = ag; probCtx.fill();
+            probCtx.strokeStyle = '#60a5fa'; probCtx.lineWidth = 2; probCtx.stroke();
+
+            /* Airflow arrows */
+            var arrowPositions = [0.12, 0.3, 0.5, 0.7, 0.88];
+            for (var i = 0; i < arrowPositions.length; i++) {
+              var ax = padW + arrowPositions[i] * ww, ay = h / 2 + 55;
+              probCtx.beginPath(); probCtx.moveTo(ax - 20, ay); probCtx.lineTo(ax + 8, ay);
+              probCtx.strokeStyle = 'rgba(96,165,250,0.35)'; probCtx.lineWidth = 1.5; probCtx.stroke();
+              probCtx.beginPath(); probCtx.moveTo(ax + 8, ay); probCtx.lineTo(ax + 2, ay - 3); probCtx.moveTo(ax + 8, ay); probCtx.lineTo(ax + 2, ay + 3); probCtx.stroke();
+            }
+
+            probCtx.fillStyle = '#6c7086'; probCtx.font = '500 9px Inter,sans-serif'; probCtx.textAlign = 'center';
+            probCtx.fillText('L/D: ' + b.fit.toFixed(1) + ' | Camber: ' + (camber * 100).toFixed(1) + '% | Thick: ' + (thickness * 100).toFixed(1) + '% | Pos: ' + (camberPos * 100).toFixed(0) + '%', w / 2, h - 10);
+            probCtx.fillText('Gen ' + gen + ' | Alt: ' + getAltitude() + 'm | Speed: ' + getAirspeed() + ' m/s', w / 2, 16);
+
+          } else if (problemIdx === 1) {
+            /* Gantt chart - flights decoded from 6D gene */
+            var gates = NGATES, slots = 6;
+            var chartLeft = 38, chartTop = 38, chartRight = w - 8, chartBot = h - 22;
+            var cellW = (chartRight - chartLeft) / slots, cellH = (chartBot - chartTop) / gates;
+
+            /* subtitle */
+            probCtx.fillStyle = '#a1a1aa';
+            probCtx.font = '500 9px Inter,sans-serif';
+            probCtx.textAlign = 'center';
+            probCtx.fillText('Optimizing: minimize gate conflicts & gaps | ' + NFLIGHTS + ' flights, ' + NGATES + ' gates', w / 2, 14);
+
+            /* time labels */
+            probCtx.fillStyle = '#6c7086'; probCtx.font = '500 8px Inter,sans-serif'; probCtx.textAlign = 'center';
+            for (var s = 0; s < slots; s++) probCtx.fillText((6 + s * 2) + ':00', chartLeft + s * cellW + cellW / 2, 28);
+
+            /* gate labels */
+            probCtx.textAlign = 'right';
+            for (var g = 0; g < gates; g++) probCtx.fillText('G' + (g + 1), chartLeft - 4, chartTop + g * cellH + cellH / 2 + 3);
+
+            /* grid */
+            probCtx.strokeStyle = '#27272a'; probCtx.lineWidth = 0.5;
+            for (var s = 0; s <= slots; s++) { probCtx.beginPath(); probCtx.moveTo(chartLeft + s * cellW, chartTop); probCtx.lineTo(chartLeft + s * cellW, chartBot); probCtx.stroke(); }
+            for (var g = 0; g <= gates; g++) { probCtx.beginPath(); probCtx.moveTo(chartLeft, chartTop + g * cellH); probCtx.lineTo(chartRight, chartTop + g * cellH); probCtx.stroke(); }
+
+            /* decode flights and detect conflicts */
+            var decoded = [];
+            for (var i = 0; i < NFLIGHTS; i++) decoded.push(decodeSchedFlight(bestInd, i));
+
+            /* conflict check between all pairs */
+            var hasConflict = [];
+            for (var i = 0; i < NFLIGHTS; i++) hasConflict.push(false);
+            for (var i = 0; i < NFLIGHTS; i++) {
+              for (var j = i + 1; j < NFLIGHTS; j++) {
+                if (decoded[i].gate === decoded[j].gate) {
+                  if (decoded[j].start < decoded[i].start + decoded[i].dur &&
+                      decoded[i].start < decoded[j].start + decoded[j].dur) {
+                    hasConflict[i] = true;
+                    hasConflict[j] = true;
+                  }
+                }
+              }
+            }
+
+            var flightColors = ['#60a5fa', '#f472b6', '#4ade80', '#fbbf24', '#a78bfa', '#f87171', '#2dd4bf', '#fb923c', '#818cf8', '#e879f9'];
+            for (var i = 0; i < NFLIGHTS; i++) {
+              var d = decoded[i];
+              var fx = chartLeft + d.start * cellW + 2;
+              var fy = chartTop + d.gate * cellH + 2;
+              var fw = d.dur * cellW - 4;
+              var fh = cellH - 4;
+
+              probCtx.globalAlpha = 0.8;
+              probCtx.fillStyle = flightColors[i];
+              probCtx.beginPath(); probCtx.roundRect(fx, fy, fw, fh, 4); probCtx.fill();
+              probCtx.globalAlpha = 1;
+
+              if (hasConflict[i]) {
+                probCtx.strokeStyle = '#ef4444'; probCtx.lineWidth = 2;
+                probCtx.shadowColor = '#ef4444'; probCtx.shadowBlur = 6;
+                probCtx.beginPath(); probCtx.roundRect(fx, fy, fw, fh, 4); probCtx.stroke();
+                probCtx.shadowBlur = 0;
+              }
+
+              probCtx.fillStyle = '#fff'; probCtx.font = '600 9px Inter,sans-serif';
+              probCtx.textAlign = 'center'; probCtx.textBaseline = 'middle';
+              probCtx.fillText('F' + (i + 1), fx + fw / 2, fy + fh / 2);
+            }
+            probCtx.textBaseline = 'alphabetic';
+            var nConf = countSchedConflicts(bestInd);
+            probCtx.fillStyle = '#6c7086'; probCtx.font = '500 9px Inter,sans-serif'; probCtx.textAlign = 'center';
+            probCtx.fillText('Conflicts: ' + nConf + ' | Fitness: ' + b.fit.toFixed(3), w / 2, h - 6);
+
+          } else {
+            /* Portfolio bar chart - weights from 5D gene */
+            var m = portfolioMetrics(bestInd);
+            var weights = m.weights;
+
+            var padLR = 30, chartW = w - padLR * 2;
+            var nAssets = assetNames.length;
+            var gap = 16, barW = Math.floor((chartW - (nAssets - 1) * gap) / nAssets);
+            var maxH = h - 85;
+            var ox = padLR;
+
+            for (var i = 0; i < nAssets; i++) {
+              var bx = ox + i * (barW + gap), bh = Math.max(weights[i] * maxH, 2);
+              var by = h - 42 - bh;
+              var grd = probCtx.createLinearGradient(bx, by, bx, h - 42);
+              grd.addColorStop(0, assetColors[i]); grd.addColorStop(1, assetColors[i] + '33');
+              probCtx.fillStyle = grd;
+              probCtx.beginPath(); probCtx.roundRect(bx, by, barW, bh, [4, 4, 0, 0]); probCtx.fill();
+              probCtx.fillStyle = '#e4e4e7'; probCtx.font = '700 11px Inter,sans-serif'; probCtx.textAlign = 'center';
+              probCtx.fillText((weights[i] * 100).toFixed(0) + '%', bx + barW / 2, by - 8);
+              probCtx.fillStyle = '#a1a1aa'; probCtx.font = '500 9px Inter,sans-serif';
+              probCtx.fillText(assetNames[i], bx + barW / 2, h - 26);
+              probCtx.fillStyle = '#6c7086'; probCtx.font = '500 7px Inter,sans-serif';
+              probCtx.fillText('E[R] ' + (assetReturns[i] * 100).toFixed(0) + '% | σ ' + (assetVols[i] * 100).toFixed(0) + '%', bx + barW / 2, h - 14);
+            }
+            probCtx.fillStyle = '#e4e4e7'; probCtx.font = '600 11px Inter,sans-serif'; probCtx.textAlign = 'center';
+            probCtx.fillText('Sharpe ' + m.sharpe.toFixed(2) + '   E[R] ' + (m.ret * 100).toFixed(1) + '%   Vol ' + (m.vol * 100).toFixed(1) + '%', w / 2, 16);
+            probCtx.fillStyle = '#6c7086';
+            probCtx.font = '500 9px Inter,sans-serif';
+            probCtx.fillText('Optimizing: maximize Sharpe ratio (return per unit risk) | Risk-free: ' + (getRiskFree() * 100).toFixed(0) + '%', w / 2, 32);
+          }
+        }
+
+        stepBtn.onclick = step;
+        runBtn.onclick = function () { running = !running; runBtn.textContent = running ? 'Pause' : 'Auto-run'; runBtn.classList.toggle('active', running); if (running) timer = setInterval(step, 350); else clearInterval(timer); };
+        function fullReset() { running = false; clearInterval(timer); runBtn.textContent = 'Auto-run'; runBtn.classList.remove('active'); init(); }
+        resetBtn.onclick = fullReset;
+        resets.ga = function (idx) { problemIdx = idx; wingHeatDirty = true; fullReset(); };
+
+        /* Altitude/Airspeed sliders → immediate visual update + recompute heatmap */
+        document.getElementById('ga-p-alt').addEventListener('input', function() {
+          document.getElementById('ga-v-alt').textContent = this.value + 'm';
+          if (problemIdx === 0) { wingHeatDirty = true; drawProblem(); drawFitness(); }
+        });
+        document.getElementById('ga-p-speed').addEventListener('input', function() {
+          document.getElementById('ga-v-speed').textContent = this.value + ' m/s';
+          if (problemIdx === 0) { wingHeatDirty = true; drawProblem(); drawFitness(); }
+        });
+
+        /* Scheduling slider change → reset */
+        document.getElementById('ga-p-flights').addEventListener('change', function() { if (problemIdx === 1) { resets.ga(1); } });
+        document.getElementById('ga-p-gates').addEventListener('change', function() { if (problemIdx === 1) { resets.ga(1); } });
+
+        init();
+      })();
+
+      /* ══════════════════════════ NN ══════════════════════════ */
+      (function () {
+        var drawC = document.getElementById('nn-draw'), drawCtx = drawC.getContext('2d');
+        var graphC = document.getElementById('nn-graph'), graphCtx = graphC.getContext('2d');
+        var trainBtn = document.getElementById('nn-train'), runBtn = document.getElementById('nn-run');
+        var clearBtn = document.getElementById('nn-clear'), resetBtn = document.getElementById('nn-reset');
+        var stat = document.getElementById('nn-stat');
+        var labelTop = document.getElementById('nn-label-top');
+        var labelBottom = document.getElementById('nn-label-bottom');
+        var running = false, timer = null, epoch = 0;
+        var problemIdx = 0;
+        var lastFwd = null;
+
+        function getLR() { return parseInt(document.getElementById('nn-p-lr').value) / 100; }
+        function getH() { return parseInt(document.getElementById('nn-p-hidden').value); }
+
+        var GW = 50, GH = 50;
+        var curINP = 100, curNCLASS = 10;
+
+        var DIGITS = [
+          /* 0 */ [0,0,0,0,0.1016,0.1626,0,0,0,0,0,0,0.0285,0.7764,0.9959,0.9187,0.9187,0.1057,0,0,0,0,0.7764,0.4106,0,0,0.1911,0.9959,0,0,0,0.1016,0.9959,0,0,0,0,0.7764,0.3211,0,0,0.3049,0.7114,0,0,0,0,0.3049,0.7114,0,0,0.3049,0.7114,0,0,0,0,0.3049,0.7114,0,0,0.3049,0.7114,0,0,0,0,0.3049,0.7114,0,0,0.1016,1,0.0285,0,0,0,0.8049,0.3089,0,0,0,0.4065,0.9675,0.1789,0.1016,0.7764,0.6911,0,0,0,0,0,0.1789,0.9187,0.9797,0.3211,0,0,0],
+          /* 1 */ [0,0,0,0,0,0,0,0,0,0,0,0,0,0.0246,0.5458,0.3239,0,0,0,0,0,0,0,0.0775,0.6092,0.6162,0,0,0,0,0,0,0,0,0.2641,0.6162,0,0,0,0,0,0,0,0,0.2641,0.6162,0,0,0,0,0,0,0,0,0.2641,0.6162,0,0,0,0,0,0,0,0,0.2641,0.6162,0,0,0,0,0,0,0,0,0.2641,0.6162,0,0,0,0,0,0,0,0.4542,0.912,1,0.6303,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          /* 2 */ [0,0,0,0,0,0,0,0,0,0,0,0,0.0259,0.5741,0.9444,0.9259,0.837,0.1519,0,0,0,0,0.7074,0.4815,0.0111,0,0.163,1,0.0222,0,0,0,0.3074,0,0,0,0,0.9481,0.0222,0,0,0,0,0,0,0,0.6444,0.4296,0,0,0,0,0,0,0.0259,0.8037,0.4296,0,0,0,0,0,0,0.0963,0.9111,0.2407,0,0,0,0,0,0,0.0963,0.8815,0.1074,0,0,0,0,0,0,0,0.8037,0.9741,0.9259,0.9259,0.9259,0.837,0.0111,0,0,0,0,0,0,0,0,0,0,0],
+          /* 3 */ [0,0,0,0.0226,0.0566,0.0453,0,0,0,0,0,0,0.3774,0.9698,0.8868,0.9283,0.8528,0.0981,0,0,0,0,0.3434,0.0264,0,0,0.234,0.8264,0,0,0,0,0,0,0,0,0.0377,0.966,0,0,0,0,0,0,0,0.4189,0.9434,0.3774,0,0,0,0,0,0,0.0113,0.7208,1,0.2302,0,0,0,0,0,0,0,0,0.083,0.9396,0.0113,0,0,0,0.1208,0,0,0,0.0491,0.9698,0.0113,0,0,0,0.6,0.8679,0.6604,0.7208,0.9698,0.2453,0,0,0,0,0,0.1509,0.283,0.2528,0.0113,0,0,0],
+          /* 4 */ [0,0,0,0,0,0.022,0.0692,0,0,0,0,0,0,0,0,0.6509,0.5503,0,0,0,0,0,0,0,0.3616,0.7296,0.5503,0,0,0,0,0,0,0.1289,0.7358,0.2453,0.5503,0,0,0,0,0,0.022,0.783,0.0818,0.2358,0.5503,0,0,0,0,0,0.6352,0.2516,0,0.2358,0.5503,0,0,0,0,0.1006,0.934,0.7862,0.7862,0.8428,1,0.7862,0.2484,0,0,0,0,0,0,0.2358,0.5503,0,0,0,0,0,0,0,0,0.2358,0.5503,0,0,0,0,0,0,0,0,0.0692,0.1792,0,0,0],
+          /* 5 */ [0,0,0,0,0,0,0,0,0,0,0,0,0.8399,0.8897,0.8897,0.8897,0.8897,0.2811,0,0,0,0,0.8897,0,0,0,0,0,0,0,0,0,0.8897,0.1423,0.4235,0.4947,0.0356,0,0,0,0,0,1,0.8043,0.4947,0.4377,0.9609,0.1459,0,0,0,0,0.0214,0,0,0,0.1032,0.8577,0,0,0,0,0,0,0,0,0,0.9039,0,0,0,0,0.4769,0.0249,0,0,0.3772,0.6085,0,0,0,0,0.3559,0.9181,0.6797,0.8043,0.7473,0.0249,0,0,0,0,0,0.0427,0.2384,0.1423,0,0,0,0],
+          /* 6 */ [0,0,0,0,0.0806,0.129,0,0,0,0,0,0,0,0.5258,0.7903,0.729,0.5839,0,0,0,0,0,0.371,0.5355,0,0,0.0194,0,0,0,0,0.0097,0.8387,0.0097,0,0,0,0,0,0,0,0.2161,0.6161,0.2548,0.7323,0.6161,0.2065,0,0,0,0,0.2419,1,0.6548,0.1,0.2161,0.7161,0.3097,0,0,0,0.1387,0.8484,0,0,0,0.1387,0.6935,0,0,0,0.0097,0.8032,0.1323,0,0,0.2548,0.6032,0,0,0,0,0.0839,0.7516,0.7452,0.6677,0.7903,0.071,0,0,0,0,0,0,0.1,0.1774,0,0,0,0],
+          /* 7 */ [0,0,0,0,0,0,0,0,0,0,0,0.1051,0.9058,0.9058,0.9058,0.9058,0.9058,1,0.4022,0,0,0,0,0,0,0,0,0.8623,0.1014,0,0,0,0,0,0,0,0.1014,0.8623,0,0,0,0,0,0,0,0,0.6341,0.3297,0,0,0,0,0,0,0,0.0109,0.9312,0.0217,0,0,0,0,0,0,0,0.2862,0.6775,0,0,0,0,0,0,0,0,0.8188,0.1449,0,0,0,0,0,0,0,0.0906,0.8732,0,0,0,0,0,0,0,0,0.0797,0.2065,0,0,0,0],
+          /* 8 */ [0,0,0,0,0.1192,0.1654,0.0115,0,0,0,0,0,0.0115,0.8346,0.8885,0.8269,1,0.2346,0,0,0,0,0.5038,0.5346,0,0,0.0846,0.9385,0,0,0,0,0.2731,0.8077,0,0,0.2577,0.9154,0,0,0,0,0,0.5808,0.9423,0.8692,0.8077,0.0846,0,0,0,0,0.0115,0.8077,0.8692,0.7346,0.9423,0.0846,0,0,0,0,0.5654,0.4885,0,0,0.2462,0.8077,0,0,0,0,0.7808,0.2115,0,0,0.0231,0.9692,0,0,0,0,0.2346,0.9769,0.4423,0.3038,0.9462,0.4154,0,0,0,0,0,0.0385,0.5962,0.7192,0.0962,0,0,0],
+          /* 9 */ [0,0,0,0,0.1206,0.1673,0.0117,0,0,0,0,0,0,0.8288,0.8988,0.8366,0.9883,0.0389,0,0,0,0,0.4319,0.6187,0,0,0.323,0.7276,0,0,0,0,0.6809,0.2918,0,0,0.0584,0.9144,0,0,0,0,0.249,0.8638,0.0623,0.035,0.6459,0.9455,0,0,0,0,0,0.3891,0.9572,0.9689,0.7938,0.7432,0,0,0,0,0,0,0,0,0.6031,0.4319,0,0,0,0,0,0,0,0.0389,1,0.0117,0,0,0,0,0,0,0.0272,0.8482,0.2529,0,0,0,0,0,0,0,0.0856,0.2374,0,0,0,0]
+        ];
+        var PRETRAINED = {
+W1:[[0.0991,-0.1903,-0.149,-0.1736,-0.1538,0.1455,-0.0009,0.0374,0.1358,-0.1114,-0.0108,0.1165,0.144,0.2147,-0.1405,0.213,0.407,-0.0734,0.093,-0.0477,0.0516,-0.0665,-0.0583,-0.0771,-0.0861,0.1384,0.1174,-0.1241,0.1869,0.1592,-0.1792,0.1226,-0.191,-0.1687,-0.1035,-0.2728,-0.1164,-0.1995,-0.0404,0.0278,0.1697,0.066,-0.117,0.1148,0.1637,-0.1767,0.0349,-0.1345,-0.0452,-0.0801,0.0133,0.0485,0.1555,0.1444,0.0956,-0.0872,0.4557,0.362,0.1337,-0.0399,-0.0253,0.195,-0.0693,0.1138,0.2659,0.2241,0.4109,0.1748,0.0938,0.0676,-0.1689,-0.2214,-0.0712,-0.2472,-0.2158,0.0077,0.0134,-0.0382,-0.1201,-0.087,-0.0987,-0.0373,-0.1592,0.0251,-0.0946,-0.2092,-0.1011,-0.0866,0.0247,0.0586,-0.019,-0.064,0.0475,0.0052,-0.188,0.0302,-0.0059,0.1302,-0.0031,0.0265],[-0.0428,0.1783,0.1315,0.1829,0.1012,-0.1072,-0.0008,0.2267,0.1078,0.1756,0.1766,0.2007,0.2907,0.3445,0.2265,-0.15,0.242,0.389,0.0803,-0.1394,-0.079,0.1174,0.1735,-0.0573,0.1007,0.1782,0.325,0.0832,0.2934,0.1941,0.0516,0.1001,-0.0629,-0.3268,-0.3612,-0.2338,0.4392,-0.0236,0.2104,0.1673,-0.1475,0.0549,-0.026,-0.579,-0.1871,-0.1354,-0.1782,0.074,0.2213,-0.0311,-0.1618,0.2401,-0.0475,-0.3712,-0.3409,0.1264,-0.1097,0.2123,0.0689,-0.009,0.0623,0.1368,0.0073,-0.0201,0.0921,0.0764,-0.0938,-0.0813,-0.0967,0.1853,-0.1243,-0.0912,0.3337,-0.3503,-0.0072,0.036,-0.0475,-0.1524,-0.1207,-0.1891,0.1846,0.159,0.217,0.0131,0.1918,-0.1007,0.0482,-0.1231,-0.1631,0.1446,0.1288,-0.0634,-0.1779,-0.1584,0.0247,0.0423,0.0458,-0.2855,0.1642,0.092],[-0.0559,-0.0175,0.1022,0.0841,0.0621,-0.1676,0.1658,0.2132,0.1344,0.1569,-0.0148,-0.0878,0.2147,0.2343,0.3358,0.277,0.0419,-0.101,0.0152,-0.1012,-0.1348,0.0545,0.2697,0.1317,-0.1839,0.0744,-0.244,-0.236,0.0071,0.032,-0.0572,0.0482,0.2115,0.1046,0.4735,0.5059,-0.4215,-0.5861,-0.2245,-0.0189,0.06,-0.0161,0.2638,0.1208,-0.0047,0.2965,0.3961,-0.0966,-0.281,-0.1657,-0.1594,-0.0617,-0.236,-0.2167,-0.4142,-0.3992,0.1409,0.29,0.1819,0.0768,-0.1342,-0.4958,-0.3313,-0.2492,-0.1902,-0.2166,-0.1072,0.0407,0.2099,0.153,-0.1113,-0.2343,-0.3494,-0.167,-0.0672,0.1182,0.1088,0.2311,0.1045,-0.1742,0.0869,0.0263,-0.0277,0.151,0.2796,0.0523,0.1058,0.1417,-0.2028,-0.0224,-0.1703,-0.1861,0.2395,-0.0124,0.1621,-0.0236,0.0787,-0.1361,0.1396,-0.1304],[-0.188,-0.0635,0.0861,-0.1654,-0.0049,-0.1365,-0.1333,0.0083,-0.1139,0.0767,0.0568,0.1774,0.1306,-0.1134,-0.127,0.1425,-0.0443,0.087,0.0093,-0.1961,-0.0779,-0.0289,-0.0993,-0.242,0.2417,0.3199,-0.0734,-0.202,0.101,-0.0388,0.0061,-0.1412,-0.0071,0.1694,0.3511,0.2014,0.0922,0.019,-0.0651,-0.0751,0.1539,-0.0445,0.0956,0.1927,-0.0005,-0.0665,0.0411,-0.0747,0.218,-0.1571,0,-0.1697,0.1272,0.1441,0.1661,0.2743,-0.1195,-0.0197,0.0368,0.1032,-0.0551,0.1479,-0.1416,-0.1373,0.2173,0.2133,0.1237,0.1755,-0.0926,0.1906,0.1856,0.1769,-0.1057,-0.0244,0.0554,-0.0816,-0.0182,-0.0723,0.1203,0.0196,-0.0326,0.1497,-0.1989,-0.2019,-0.0919,0.2213,-0.0279,-0.1531,0.1337,0.0038,-0.0815,0.0737,-0.1586,-0.1588,-0.2012,0.1821,-0.1322,0.0371,0.1847,0.1412],[0.1009,0.1023,-0.1289,-0.1368,0.1548,0.1441,-0.0805,0.0858,0.0331,-0.1981,-0.1592,0.0969,-0.1381,-0.0874,0.2311,0.2224,0.0239,0.2056,0.1209,0.0037,0.1088,-0.0541,0.1143,0.3335,-0.0321,-0.0239,0.054,0.2494,0.0855,-0.0258,-0.199,0.1139,0.0247,0.3621,0.0127,-0.2412,0.4119,0.4507,-0.0013,-0.1698,-0.0311,-0.2076,-0.3001,0.0131,0.0605,0.3775,0.2268,-0.0685,0.2138,-0.1128,0.1849,0.1097,-0.3193,-0.0259,0.0203,-0.0537,0.0193,-0.2485,0.1249,-0.0597,0.1672,-0.0897,0.0237,0.129,-0.3729,-0.0694,-0.1963,0.1668,0.1304,0.0803,0.0262,-0.0197,0.4383,0.2839,-0.1637,-0.4412,-0.1151,0.1207,-0.0145,0.0116,-0.161,-0.001,0.2221,0.0192,-0.0164,0.1992,0.2177,0.0788,-0.0347,0.036,0.1236,0.0381,0.0129,0.2775,0.1184,0.2052,0.0177,-0.1041,-0.0834,0.0345],[-0.0549,-0.0377,0.2372,0.0181,-0.1833,0.055,0.3804,0.2138,-0.0183,-0.0443,-0.009,0.1659,0.0846,-0.1814,-0.1077,0.2915,0.4214,0.3569,0.1545,0.097,-0.0417,-0.0077,-0.1275,-0.1147,-0.0009,0.0966,0.358,0.3742,0.2912,0.1058,-0.0868,-0.2315,-0.3703,-0.1985,0.0382,-0.2092,0.1732,0.0298,-0.0845,-0.0672,0.0618,0.011,-0.4248,-0.0225,0.1723,-0.0078,-0.0234,-0.4536,-0.3042,-0.0097,-0.0117,0.1749,0.432,0.3637,0.1609,0.3942,0.1771,-0.1679,0.0016,0.0189,0.1958,0.3077,0.3779,0.1949,0.349,0.553,0.2736,-0.0189,0.055,0.0311,0.2068,0.4084,0.4628,0.0703,0.0301,-0.1881,-0.0536,0.1078,-0.2692,0.0039,-0.0065,-0.0771,0.1601,0.2015,-0.1698,-0.3423,0.0968,0.0319,-0.0929,-0.0697,-0.0654,0.1337,-0.048,0.1082,-0.1515,-0.2995,-0.2717,-0.1502,0.1298,0.1781],[-0.0708,0.028,-0.2131,0.0884,0.4099,0.1751,-0.1048,-0.1117,-0.1787,-0.0564,-0.0839,-0.0117,-0.3385,-0.0797,0.1125,0.3319,0.2062,-0.3365,-0.117,-0.1262,0.1919,-0.0351,-0.0285,0.2674,-0.3244,-0.2578,-0.335,0.2868,-0.0683,-0.2054,-0.0183,0.2037,0.2133,-0.1802,-0.4854,-0.528,-0.3205,0.0702,-0.0018,-0.0807,-0.1075,0.4371,0.0195,-0.3209,-0.0798,0.0109,-0.1842,-0.0615,0.0398,0.1116,-0.0602,0.3549,0.9331,0.2876,0.2582,-0.0525,0.148,-0.2491,-0.0854,0.0805,-0.0302,0.4057,0.9182,0.6006,-0.1667,0.0125,-0.0747,-0.0997,-0.0476,-0.097,-0.2086,-0.0637,0.6233,1.0166,0.4076,-0.207,0.1863,0.151,0.2659,-0.1151,-0.0238,0.1305,0.3599,0.5992,0.4253,0.0008,0.2888,0.3728,-0.0299,0.168,0.1543,-0.118,0.1572,-0.001,0.3658,-0.0031,0.2515,0.4179,-0.0434,0.0834],[-0.0072,0.0185,-0.1771,-0.1899,0.0097,-0.0684,-0.1378,0.1639,0.1733,0.1165,0.0798,-0.2045,-0.2834,-0.0498,-0.0047,0.0865,0.1807,-0.0503,-0.1647,-0.0075,0.1881,-0.149,0.026,0.0228,-0.1441,-0.0079,0.0894,0.1923,-0.0706,0.0215,-0.0636,0.0325,0.2666,0.0753,-0.163,-0.2673,-0.1271,0.1457,0.2178,0.1563,-0.0293,0.2924,-0.0203,0.0752,-0.3486,-0.0806,-0.22,0.0681,0.2255,0.1156,-0.1731,-0.0233,-0.0167,-0.1194,0.0703,-0.1301,-0.3377,0.0708,0.3137,-0.0611,-0.0124,-0.0648,0.2733,0.4233,0.0992,0.1529,-0.2352,0.0744,0.142,0.1313,-0.0106,0.1465,0.1235,0.3106,0.2044,0.1947,0.1324,-0.0771,0.1815,0.0555,0.0875,-0.0226,-0.0233,-0.0659,0.1686,0.1262,-0.0979,0.3292,0.0994,-0.0636,-0.0585,0.0831,-0.0927,-0.0049,0.0134,0.0034,0.1841,0.0564,-0.0956,0.0913],[0.1105,0.1438,-0.1386,0.0061,0.0729,-0.0001,-0.1915,-0.1535,-0.0554,0.104,-0.1308,-0.1613,0.1075,-0.1168,0.1641,-0.0143,-0.2084,-0.0605,0.111,-0.0748,0.1897,0.0943,0.1396,0.034,-0.0971,0.1927,0.0021,-0.141,-0.04,-0.1428,-0.1076,0.0047,0.1096,-0.0204,-0.0986,0.0859,-0.1101,0.0868,0.0249,-0.1895,-0.1476,0.2179,-0.1312,0.0298,-0.1772,0.0123,0.052,0.0043,-0.1882,0.1576,-0.0633,0.1205,0.1879,-0.1897,0.0385,0.1665,0.1766,-0.1535,-0.1679,-0.0359,0.1402,0.0967,0.0925,0.1401,-0.2551,0.0304,-0.0131,-0.0601,0.038,0.1768,-0.0456,-0.1532,-0.0931,-0.0635,-0.1379,-0.0717,0.1548,-0.0816,0.0919,0.1266,-0.0813,-0.0322,-0.1159,0.0843,0.0502,-0.0681,0.0121,0.1072,-0.0101,0.0402,0.1469,0.1491,-0.0044,0.108,-0.1769,-0.0967,-0.1377,-0.1414,-0.025,0.0648],[-0.1495,0.1075,-0.1233,0.0946,-0.191,-0.1489,-0.0501,-0.0994,-0.0125,0.1161,-0.0649,-0.1322,-0.0222,-0.0002,-0.1963,0.0828,-0.0621,-0.0627,0.0048,-0.1559,-0.1344,-0.1177,-0.1204,-0.1097,-0.0416,-0.0585,-0.0573,0.1272,-0.0719,-0.0202,0.1207,-0.0489,0.0374,0.1675,-0.0107,0.1024,0.1854,-0.016,-0.0668,-0.0838,0.0413,-0.1817,-0.1216,-0.0206,-0.1791,-0.109,-0.0287,-0.0443,0.1428,0.0601,0.1391,-0.05,0.0508,-0.0155,-0.0031,0.0374,-0.0939,-0.2037,-0.0095,0.0887,-0.1286,-0.0347,-0.0459,0.1203,0.0263,0.0778,-0.0822,-0.0202,-0.1408,0.1446,-0.0342,-0.0603,0.1495,-0.1674,-0.1333,0.022,-0.1737,0.1024,-0.0083,-0.0773,0.0344,-0.0616,-0.136,-0.0747,0.1782,-0.2096,0.1627,0.121,0.1822,0.1036,-0.0473,0.1747,-0.0285,0.0633,0.0292,-0.1703,0.1526,-0.1611,0.0384,-0.1123],[-0.2017,-0.0709,-0.137,-0.0389,-0.1503,0.0345,0.0854,-0.1146,-0.1435,-0.0458,0.0388,0.1107,-0.2427,0.1435,-0.0266,0.1472,0.0977,-0.1314,-0.1388,-0.1895,0.1919,0.0129,-0.2076,0.1564,-0.0887,0.0001,-0.1886,0.1696,0.0187,0.0437,0.0914,-0.0114,0.16,0.2187,-0.1319,0.0131,-0.0584,0.1646,-0.0468,0.0252,-0.0449,-0.2004,-0.0471,-0.0342,-0.138,-0.0233,0.3755,0.2307,0.0651,-0.1086,0.1848,-0.2239,-0.1927,0.1315,0.1273,0.0683,-0.1024,-0.0924,-0.0987,-0.0895,-0.1441,-0.1263,-0.1357,-0.0885,0.0331,-0.0947,-0.0205,0.2028,0.1347,0.1079,-0.0497,0.164,-0.0377,0.1757,-0.1783,-0.2124,0.036,0.0335,0.0747,0.0742,-0.1754,0.0514,0.2446,-0.1987,-0.1039,-0.0722,0.2293,-0.1325,0.0575,0.0996,0.0015,0.1658,-0.0014,0.2498,0.2268,-0.0521,-0.0749,-0.1058,-0.0296,0.1812],[0.1023,-0.1712,-0.1983,0.0642,0.0472,0.0467,0.0782,-0.1178,0.0859,0.0506,-0.1996,-0.1369,0.1023,-0.1643,-0.1531,-0.1547,-0.2047,0.1394,0.0073,0.1155,0.1634,-0.0215,0.0291,0.0619,-0.1314,-0.1944,0.1017,0.0199,0.1492,-0.1954,-0.038,-0.1294,-0.066,0.1474,0.0161,-0.0065,-0.1655,-0.1274,0.0517,-0.0498,-0.0999,0.1657,-0.0889,0.0376,-0.0063,0.0941,0.0458,-0.0875,0.1848,0.1213,-0.0212,0.1373,-0.0682,0.1771,0.0642,-0.0067,-0.009,-0.1479,-0.1438,-0.0271,0.1859,0.033,0.0676,0.0388,-0.0602,0.1039,-0.1235,0.0557,0.0046,-0.1314,-0.0342,0.1073,0.08,-0.0762,-0.0534,0.0821,-0.1404,-0.1,0.0742,-0.0787,0.1218,-0.115,-0.0789,-0.0995,-0.2003,0.046,0.1625,0.1312,-0.0713,0.0692,0.1534,-0.1932,0.0539,-0.1054,-0.05,0.0252,-0.1909,-0.0028,0.166,0.1901],[-0.0872,0.0905,0.186,0.2075,0.1338,-0.0613,0.1024,-0.0324,0.226,0.0731,-0.0744,0.0089,0.5148,0.4708,0.5175,0.1218,0.3903,0.3913,0.2175,-0.1704,0.0379,0.1365,0.6057,0.5515,0.0958,0.0151,0.5309,0.4679,0.3045,-0.0514,-0.0694,-0.1394,0.1485,0.0488,-0.3969,-0.1604,0.5999,0.4183,0.0944,0.1953,0.0731,-0.2139,-0.0744,-0.1889,-0.7502,-0.3456,0.5076,0.5547,0.2305,0.0311,-0.1218,-0.2638,-0.5232,-0.7311,-0.7389,-0.0018,0.0862,0.1934,-0.0838,0.0004,-0.0003,-0.171,-0.5348,-0.3086,0.0965,-0.1126,0.1069,-0.0676,0.0006,-0.0994,0.0272,-0.1751,-0.1771,-0.2229,-0.0262,-0.0782,0.0078,-0.0632,0.2219,-0.0109,0.1725,0.116,0.052,0.4548,0.0209,0.0049,0.2084,-0.1337,0.1194,-0.1919,-0.0707,-0.0276,0.1,-0.1192,0.1136,0.3085,0.1228,0.0055,-0.1365,-0.12],[-0.0091,-0.0948,0.1169,0.0764,-0.053,0.0815,0.1062,0.2176,-0.0357,0.0415,0.0185,-0.0215,0.1409,-0.0234,0.1337,0.1045,-0.0698,-0.0912,0.0523,-0.1529,0.1304,0.0932,0.0811,-0.1746,0.1995,0.0632,0.0255,-0.0645,0.1332,-0.1475,-0.1103,-0.0266,0.0904,-0.2342,0.2866,-0.0172,-0.2431,-0.0527,0.2089,-0.1706,-0.0665,-0.0062,-0.1017,-0.2119,-0.0164,0.1241,-0.1015,-0.1724,0.0792,0.1331,-0.0879,-0.2057,-0.0243,-0.1195,-0.0865,0.0614,-0.1836,0.0673,-0.1328,-0.0204,-0.1461,0.0496,-0.2294,-0.0346,-0.1037,0.2239,0.056,-0.187,-0.1022,-0.0001,-0.0768,-0.2091,-0.0385,-0.1073,-0.0449,0.058,-0.161,-0.2953,0.0651,-0.176,-0.0043,0.0049,0.1424,-0.1317,0.3345,0.1442,0.2077,0.0896,0.2,0.1856,0.089,0.148,-0.0624,0.1869,-0.1607,0.1508,0.0907,-0.1496,0.0103,0.1746],[-0.0776,-0.1704,-0.0347,0.1385,-0.121,0.0946,0.154,-0.0165,-0.1212,0.1513,0.2068,-0.0669,0.1243,0.5552,0.1804,0.151,0.3945,0.0062,-0.0913,-0.1426,-0.0972,0.0243,0.03,0.1226,0.32,0.1845,0.2316,0.3296,0.1834,0.1426,0.1349,-0.3167,-0.1903,-0.489,-0.3314,0.0142,0.1677,0.1153,0.2722,-0.0674,0.0558,-0.085,-0.0226,-0.4041,-0.7554,-0.1352,0.4753,0.2554,0.0378,0.1235,-0.0769,-0.2502,-0.5519,-0.6535,-0.8035,0.1236,0.2733,0.1186,-0.0124,0.0492,-0.1353,-0.2111,-0.3293,-0.3744,0.0693,0.0754,0.0282,0.1443,0.1649,0.1119,-0.0797,-0.3407,-0.0241,-0.233,0.1704,0.0593,0.4519,0.0541,0.3206,-0.1474,-0.058,0.1605,0.374,0.2091,0.3958,0.1022,0.1876,0.0882,0.1204,-0.1165,-0.1012,0.0918,0.1563,0.0702,0.1652,-0.0273,0.0685,0.0068,0.088,-0.0252],[0.1261,-0.0625,0.2785,0.0144,-0.262,-0.0444,0.1875,0.1336,0.177,-0.142,-0.0341,0.1047,0.3888,0.1172,0.0265,-0.0713,0.1019,0.1547,-0.0636,-0.0151,-0.0562,0.0628,0.4106,0.2686,0.1061,-0.0161,-0.2936,-0.1382,-0.066,0.0934,0.0198,0.0101,0.7829,0.6376,0.504,0.6537,-0.1057,-0.3593,-0.1333,0.0603,-0.1589,-0.0289,0.3411,0.4738,0.5256,0.2584,0.4513,-0.0437,-0.3129,-0.2022,-0.0825,-0.1956,-0.5847,-0.0792,-0.1114,-0.2187,0.0106,0.1332,0.1039,-0.0877,0.1633,-0.1361,-0.3189,-0.0151,-0.2275,-0.2466,-0.1152,0.2406,0.035,-0.1123,-0.1373,0.1054,-0.0158,-0.0725,-0.2826,-0.414,0.1291,0.2057,0.121,0.051,-0.1725,-0.0791,0.1055,0.3593,0.2821,0.0373,0.0016,0.2195,-0.0711,0.0949,0.0771,0.0475,0.1806,0.2165,0.1452,0.1683,-0.115,-0.0988,-0.007,0.0249],[0.1054,-0.0117,0.1914,-0.1999,-0.0265,-0.0041,0.1189,-0.1618,0.056,0.0864,0.0778,0.0697,0.0693,-0.1215,0.133,0.1498,0.0195,-0.0999,-0.1667,0.1311,0.0133,-0.147,0.1373,-0.1917,-0.0103,-0.1501,0.014,0.0265,-0.0909,-0.0866,0.1738,-0.1717,0.1439,-0.1529,0.1475,0.026,0.0475,0.1853,-0.128,0.0268,0.0174,-0.1781,-0.0119,-0.1437,-0.2109,-0.0518,-0.1463,0.1418,-0.1369,0.1024,0.0534,0.1154,-0.0877,0.0556,-0.0623,0.0396,0.0654,-0.1941,-0.1907,-0.092,0.0785,0.1748,-0.1385,0.0047,0.0918,-0.1273,0.0233,-0.0911,0.1235,-0.137,-0.0138,-0.1475,-0.1041,0.2594,-0.0398,0.1089,0.0809,-0.1811,-0.1245,0.113,-0.0015,0.0203,0.009,0.1771,-0.1006,-0.0623,0.2016,0.1222,0.1458,-0.0285,-0.0836,-0.0035,0.0674,0.1578,0.0695,-0.169,0.0826,-0.0069,-0.1165,-0.0729],[0.1222,0.0688,-0.006,-0.0849,0.0467,0.069,0.118,-0.1323,-0.0147,0.1661,0.1528,-0.1259,0.0012,0.072,0.2054,0.0655,-0.1089,-0.1194,-0.1233,0.0811,0.0178,0.1605,-0.1458,-0.0878,0.0976,0.1874,0.1409,0.0014,-0.1616,0.112,-0.1393,0.1503,-0.3334,-0.4416,-0.2947,-0.2263,0.2408,0.372,0.0167,0.1146,0.1884,0.1315,-0.3879,-0.431,-0.3954,-0.1069,0.2883,0.0726,-0.0991,-0.0914,0.1598,0.1721,0.0621,-0.1445,-0.1546,-0.1105,0.041,-0.0447,0.2636,0.0019,0.1373,0.2402,0.1056,-0.1972,-0.5622,-0.4183,0.0901,0.53,0.6408,0.0314,0.093,-0.091,0.0091,-0.2197,-0.1853,-0.2986,0.098,0.7494,0.2414,0.1804,-0.0931,-0.1072,0.3458,0.4106,0.2455,0.1097,0.006,0.261,0.1536,0.1341,0.0983,0.1543,-0.1436,0.203,0.2426,0.2954,-0.1026,0.031,0.0475,0.0334],[0.1267,0.0383,0.0691,-0.1905,-0.1285,-0.0175,0.0161,-0.1016,-0.0683,-0.0708,0.0367,-0.0316,-0.2972,-0.0287,0.1105,0.2325,0.0188,-0.1517,0.1598,-0.0055,-0.0898,-0.1692,-0.1621,0.0811,-0.0782,-0.0467,-0.1194,-0.009,0.0683,-0.1663,0.0346,-0.1397,-0.0403,0.0405,0.1309,-0.1102,0.0113,-0.0358,0.0888,0.0458,-0.0445,-0.0249,-0.0977,-0.2051,-0.0704,0.101,0.2482,-0.0445,-0.2286,-0.1455,0.0395,0.1977,0.0447,-0.0263,0.2154,0.0962,-0.0648,0.2278,-0.0118,-0.1513,0.0732,0.0951,0.073,-0.0269,-0.1507,0.0752,0.0365,0.1347,0.1976,0.0726,-0.029,0.0532,-0.1514,0.131,0.127,-0.0758,0.0462,0.3739,-0.1326,-0.0108,-0.061,0.1397,0.2462,-0.1043,-0.0114,-0.0638,0.1193,0.1983,0.1732,-0.1579,-0.1893,-0.0157,-0.0882,-0.0338,-0.0499,-0.0739,-0.1818,0.2084,0.0544,0.1806],[-0.053,0.2023,0.1797,-0.1042,0.2513,0.4683,0.0984,0.1305,-0.0094,0.1195,-0.1329,0.0456,-0.0459,-0.0802,0.2144,0.4421,0.5817,0.083,-0.1659,0.166,0.1297,0.1857,-0.1967,0.0982,0.1933,0.1669,-0.131,-0.4785,-0.1158,0.1603,0.0058,0.1859,0.0555,-0.2802,0.1872,0.0031,-0.7823,-0.7366,-0.0432,0.0208,-0.0487,0.5221,-0.0553,0.021,0.1857,-0.109,-0.3986,-0.7034,-0.0328,0.0205,0.0461,0.6341,0.7355,0.2918,0.4267,0.1394,-0.1627,0.0454,0.3369,-0.076,-0.0543,0.5762,0.2989,0.2287,0.2726,0.0196,0.0474,0.1679,0.0097,0.0064,0.0679,0.2918,0.0975,0.3616,0.1452,-0.1111,0.0367,-0.0972,0.1276,-0.1031,-0.1346,-0.1451,0.2623,0.3566,0.1579,-0.3046,-0.0029,0.0376,-0.1767,0.08,-0.029,0.1539,0.0128,0.047,0.0124,-0.2046,-0.0745,0.0039,-0.0719,0.0786],[0.1422,0.0879,0.289,0.0376,-0.1658,-0.2078,0.1432,0.2281,0.1177,0.172,0.1833,0.2719,0.531,0.3471,0.2303,-0.0265,-0.0235,0.2533,0.3606,-0.1191,0.1152,0.1061,0.0149,0.1201,0.3403,0.1193,0.3474,0.0849,0.3043,0.0553,0.1846,0.1969,-0.1376,0.0595,0.0712,0.0414,-0.0306,-0.3028,-0.108,0.0291,-0.1444,0.1212,0.2921,0.0819,0.1789,0.0241,-0.0133,0.113,0.2774,0.0543,-0.1856,-0.1922,-0.312,-0.2603,-0.2489,-0.0482,-0.0577,-0.0001,-0.0251,0.1552,-0.0942,-0.3205,-0.2802,-0.3754,0.0426,0.3214,0.091,-0.0007,-0.1126,0.0709,0.0892,-0.2392,-0.4121,-0.4661,-0.0342,0.224,-0.1346,-0.1245,-0.1837,0.1232,-0.0344,-0.1409,-0.2492,-0.1916,0.0884,-0.0018,0.1133,-0.014,-0.0033,0.1832,-0.0829,-0.0221,0.096,-0.0853,0.0906,-0.0495,-0.2415,0.006,-0.2094,0.0669],[-0.0597,-0.1065,-0.0835,-0.1685,-0.1638,-0.1041,0.0478,-0.1716,-0.1342,0.0138,-0.1988,0.1783,0.0612,-0.2142,-0.0082,0.1024,-0.1017,0.1383,0.0152,-0.0801,-0.0823,0.0427,0.138,0.0302,-0.205,0.018,0.001,-0.1715,0.0399,0.1808,0.1962,0.0301,0.0778,0.1028,-0.153,0.0721,-0.0766,0.1589,-0.1922,0.1892,-0.1377,-0.1659,-0.0039,-0.144,-0.104,-0.0332,0.1699,-0.181,0.1254,0.0461,0.172,-0.0768,-0.2008,0.1883,0.0514,-0.0128,-0.0782,0.0932,-0.0603,0.1849,0.1266,-0.0723,-0.1228,0.0894,0.0692,-0.1356,-0.0361,-0.1086,0.0618,0.0924,-0.0097,0.2196,0.1403,-0.1122,0.0793,-0.2027,0.1826,-0.1815,-0.13,0.185,0.1628,-0.1016,0.1564,0.1262,0.0786,-0.1285,0.1637,-0.0671,0.0503,-0.1467,-0.0245,0.0663,-0.0836,0.0914,0.0256,0.1578,-0.0938,0.0032,-0.0688,0.1501],[0.1568,0.0464,-0.191,0.2036,0.2276,0.0394,-0.2192,-0.2266,0.1649,-0.1456,-0.1867,0.0337,0.0993,0.132,-0.0692,-0.0455,0.0796,-0.2023,0.0039,-0.1952,-0.0586,0.0993,0.1045,-0.1524,-0.0757,-0.1033,0.1302,-0.1851,-0.2034,-0.1561,0.122,-0.0807,-0.0959,-0.1486,-0.1808,-0.1323,0.2512,-0.0578,-0.1865,0.0273,0.1627,-0.0036,-0.1379,0.14,0.031,0.084,0.2658,0.1386,-0.1843,0.1041,-0.0275,-0.0238,-0.2107,-0.0947,0.1741,0.0918,0.1278,-0.105,-0.176,-0.0611,0.1198,-0.1942,0.1211,-0.2453,-0.2533,-0.1804,0.252,-0.0645,-0.0825,0.0907,-0.1283,-0.0423,0.0817,-0.1196,-0.3006,-0.1526,0.0493,0.0726,0.0788,0.0152,-0.0837,0.1248,-0.0323,-0.1296,0.1805,0.0467,-0.1581,-0.0556,-0.1668,-0.1408,0.1623,-0.1478,0.1015,0.1359,0.1589,-0.0164,-0.0018,-0.0307,0.1359,-0.0843],[0.0421,-0.0859,-0.1829,-0.0889,0.0012,-0.0396,-0.3126,-0.0035,-0.2121,-0.0943,-0.154,0.1654,-0.2008,0.0314,0.2279,-0.3307,-0.3128,-0.0054,-0.1108,-0.1295,-0.0966,0.0431,-0.1005,0.0519,-0.1606,-0.1058,0.0307,-0.0591,0.0577,0.1538,-0.0975,-0.1282,0.0692,0.2524,-0.0467,-0.218,0.4732,0.4671,-0.0123,-0.1562,0.0955,-0.0706,0.4698,0.3549,-0.0839,-0.1032,0.0401,0.5943,0.3573,0.1733,0.095,0.1876,0.1819,0.2327,0.2232,0.1652,0.3021,-0.042,0.0486,-0.241,0.1269,-0.0961,0.1573,0.0993,-0.3239,-0.1485,0.2374,-0.0974,-0.0531,-0.0777,0.0232,0.1057,0.0676,-0.1582,-0.2667,0.1688,0.0594,-0.1832,0.0795,0.0353,0.0029,-0.0253,-0.2358,-0.5087,-0.1685,0.2406,0.0035,-0.2892,0.139,0.0481,0.0778,0.1269,0.0451,-0.2913,-0.1919,0.3607,0.2155,0.0832,-0.0114,-0.0975],[0.1556,0.1244,0.1586,0.1271,-0.1691,-0.1131,-0.1759,0.1421,-0.0738,-0.0568,-0.0499,-0.1468,-0.0087,-0.1565,0.1204,-0.016,-0.1797,-0.0766,0.0423,-0.1006,-0.1538,-0.1905,0.0276,-0.0336,0.0715,-0.0304,0.0388,0.1539,-0.1261,0.1345,-0.1219,0.1122,0.0243,0.0623,0.1762,-0.154,-0.0394,-0.0627,-0.0733,0.0034,0.0646,0.0742,0.1597,-0.0916,-0.1171,-0.2699,0.032,0.0987,0.3025,-0.0195,-0.0877,-0.0678,0.2255,0.1294,-0.1441,-0.1683,-0.2762,-0.0835,0.1303,0.0608,-0.1397,0.163,0.1897,0.1618,0.0373,-0.0923,-0.1291,-0.0684,-0.0176,0.1048,0.103,-0.1104,0.1041,0.0435,-0.1113,-0.2456,0.0772,0.067,0.171,-0.0319,-0.1811,-0.1668,0.1445,0.2247,0.297,0.0666,-0.0439,0.037,-0.1063,-0.0727,-0.0499,0.1583,0.0317,0.2215,0.0352,0.2126,0.1533,0.0242,0.022,-0.1517],[0.1081,-0.0422,-0.1334,0.0615,0.1912,0.0366,-0.0531,0.189,-0.0617,-0.1212,0.0783,0.078,0.0904,0.0695,-0.0444,-0.3217,-0.3391,0.0579,0.275,-0.1638,0.2063,-0.0648,0.0748,0.2378,-0.0788,-0.0124,0.1296,0.2571,0.0975,-0.0173,0.0217,-0.2108,-0.0838,0.1016,0.1405,-0.2083,0.1601,0.3781,0.0933,-0.041,0.0746,0.1111,0.5256,0.3632,-0.0556,-0.3858,0.182,0.6877,0.427,0.1618,-0.1845,-0.2108,-0.1823,0.0248,0.0986,-0.2131,0.5024,0.3124,0.0066,-0.0395,-0.1391,-0.1055,-0.0396,-0.1272,-0.4224,-0.0491,0.5397,-0.0825,-0.4489,-0.105,-0.1151,-0.2532,-0.0993,-0.4732,-0.4832,0.4246,-0.0006,-0.3529,-0.2719,0.0057,-0.1613,-0.0766,-0.4814,-0.6858,-0.4311,0.5202,-0.0192,-0.267,0.075,-0.0469,0.1632,0.0011,-0.1321,-0.5174,-0.1838,0.1642,0.0436,-0.0162,-0.1036,-0.1515],[0.0566,0.0078,-0.0333,-0.0258,-0.1282,0.0807,-0.2841,0.0109,-0.1353,-0.1612,-0.1008,-0.134,-0.055,-0.2527,0.0887,-0.1854,-0.2465,0.041,0.1072,-0.1927,-0.1579,-0.2112,-0.1234,-0.2304,0.0401,0.2184,-0.0105,-0.183,0.031,0.1688,-0.0218,0.032,-0.2228,0.0272,0.1351,-0.2089,0.1504,0.2036,0.1417,0.1487,0.0181,0.3266,0.2401,0.1678,-0.1238,-0.3453,-0.3722,0.2935,0.5064,0.2067,0.0277,0.2451,0.5162,-0.0672,-0.1573,-0.2081,-0.1143,0.2837,0.3896,0.129,-0.1199,0.2803,0.2246,0.0855,-0.1852,-0.0574,0.0848,0.1184,0.1845,-0.0725,0.2111,0.1386,0.0596,0.0577,0.1578,-0.1351,0.3249,0.2493,0.045,0.0791,-0.1633,-0.0076,-0.1892,-0.0627,-0.1503,0.0219,0.269,0.203,-0.1932,0.0753,-0.0279,0.0829,-0.1473,-0.1167,-0.0111,0.085,0.0467,-0.0545,-0.2005,-0.148],[0.0456,0.1002,0.0189,-0.1901,-0.1501,0.0183,-0.2377,-0.0135,0.0107,0.1164,0.1465,-0.1633,-0.0985,-0.2495,-0.2116,-0.0568,-0.3358,-0.3285,0.1027,0.0966,0.0638,0.1213,-0.2583,-0.0669,0.0837,0.0693,0.1712,0.0439,0.0151,0.0278,0.1984,0.1949,0.022,0.3492,-0.0025,0.0972,-0.2038,0.1429,0.0733,0.0694,-0.0877,0.207,0.1802,0.1514,-0.2227,-0.4026,-0.229,0.5702,0.2358,0.1136,0.1369,0.381,0.3802,0.1601,-0.2795,-0.2219,-0.0492,0.5299,0.0216,-0.1795,0.0919,0.1674,0.4246,0.2456,0.036,-0.0108,0.4516,0.18,-0.1944,-0.0522,0.0009,0.1206,0.0915,-0.1591,0.0094,0.1255,0.2952,0.0658,-0.0061,0.1072,-0.1218,0.1091,-0.2852,-0.4771,-0.4459,0.2495,0.0814,-0.0214,-0.072,-0.0251,-0.1712,0.0911,-0.1198,-0.0524,-0.2225,0.1755,0.3575,-0.2399,-0.0292,0.1988],[-0.1777,-0.1425,0.0151,-0.1356,0.2055,0.0555,-0.0606,-0.1312,-0.0335,0.1885,0.0978,0.0508,-0.1948,0.1286,-0.1787,0.391,0.0697,-0.042,-0.0663,0.0918,0.0625,0.0059,0.127,-0.1077,0.1251,-0.0898,-0.0185,0.1042,0.0923,0.1438,-0.0313,0.0396,0.1759,0.1457,-0.0846,0.0771,-0.0384,0.1007,0.2645,-0.1994,-0.0384,-0.1061,0.1121,0.1291,-0.4957,-0.225,0.0215,0.227,-0.0341,-0.1657,0.1919,-0.1168,0.2014,0.0881,-0.0761,-0.0112,0.1656,-0.1365,0.1164,0.0876,-0.1438,0.2589,-0.2251,0.0519,0.5358,0.4667,-0.2143,-0.4557,-0.0868,-0.1622,-0.0145,0.1989,0.3324,0.3725,0.2102,-0.0304,-0.1087,-0.1913,-0.1731,-0.096,-0.0805,-0.098,0.2654,0.2552,-0.1172,0.0152,-0.0173,0.0665,0.1275,0.1741,0.0066,0.1933,-0.1165,-0.0602,0.0123,-0.2388,0.0353,0.2066,0.156,0.1946],[0.1051,0.1683,-0.1489,-0.0644,-0.003,-0.1118,0.1601,-0.1428,0.1541,-0.1479,-0.1444,0.0773,0.0901,0.0548,0.1354,-0.0372,0.101,-0.0355,0.1236,0.011,0.0607,0.0591,-0.0844,0.069,0.2304,0.0768,0.1059,-0.1818,-0.1194,-0.1687,0.0024,-0.0358,-0.0154,0.2364,-0.2143,-0.1878,0.088,0.1173,0.2119,-0.0122,-0.1501,0.2155,0.3282,0.0913,-0.1896,-0.2452,-0.1578,-0.0298,0.0197,0.0579,0.1552,0.2767,0.134,-0.053,-0.2104,-0.3291,-0.4625,-0.0624,0.2005,-0.124,-0.175,0.1026,0.1484,0.0211,-0.0504,0.0416,-0.3351,-0.1021,0.011,0.0135,0.165,0.2484,0.2749,0.0712,-0.2056,0.032,-0.0094,0.2011,0.2897,0.0226,-0.0413,-0.1928,0.0819,-0.04,0.1535,0.1819,0.1231,0.1128,-0.1754,0.138,0.1089,-0.1398,0.1897,0.1208,0.1758,-0.0103,-0.1255,0.1098,-0.1117,0.1111],[-0.0417,-0.0989,0.1155,-0.2285,0.13,0.1955,0.0763,-0.1831,0.0916,0.205,-0.1797,-0.127,0.0648,-0.1595,0.1245,0.0601,-0.105,0.0426,-0.0713,-0.0965,-0.1464,-0.0512,-0.0951,-0.051,0.0147,0.2842,-0.1398,-0.0311,0.0454,0.1243,0.1472,-0.0068,-0.0236,-0.3539,-0.1105,0.3756,-0.0727,-0.272,-0.1575,0.041,0.1856,-0.0345,-0.172,-0.2857,0.2595,0.1398,-0.151,-0.3204,-0.106,-0.095,0.0368,0.1591,-0.2257,0.1338,0.197,0.0222,-0.146,-0.0142,-0.1731,0.0256,0.01,-0.0569,-0.1223,0.0148,0.4145,0.2303,-0.1859,0.0286,0.1077,-0.0853,-0.0273,0.1311,0.0056,0.072,0.3284,0.4572,0.0831,-0.0311,0.0406,0.0019,0.1448,0.0936,-0.1138,0.0007,0.09,0.219,0.1318,0.1235,-0.0618,-0.0122,-0.1836,-0.0904,-0.0966,-0.111,-0.0922,-0.1739,0.1669,-0.1467,-0.1092,0.1561],[0.0566,0.137,-0.1539,0.0716,-0.1052,0.0119,0.1009,-0.1581,-0.0834,-0.0616,0.0828,0.0651,-0.2454,0.0546,0.1107,-0.1789,0.1721,-0.1446,0.0858,0.113,0.087,-0.1364,-0.1436,-0.221,-0.0448,0.0194,0.1129,0.0794,0.0644,-0.0479,0.0704,-0.1898,0.2143,0.2354,-0.1,-0.2225,-0.1862,0.1275,0.211,0.1012,0.0834,-0.1059,0.0744,-0.005,-0.2239,-0.0473,-0.139,0.0583,0.247,0.2107,0.0622,0.1158,-0.0046,0.2443,0.0242,-0.2475,-0.3465,-0.0418,0.3169,0.0449,0.0771,-0.0289,0.1604,0.2434,-0.1666,-0.1965,0.0452,-0.0047,0.1738,0.0643,0.1086,-0.0491,-0.0648,0.2465,-0.0231,-0.1279,-0.0702,0.0445,-0.0206,-0.1677,-0.0492,0.1468,-0.2028,-0.1527,0.0338,0.0807,-0.0283,0.0288,0.0703,0.073,0.1054,0.0395,0.1598,0.1089,0.0851,0.0395,0.0077,0.1736,-0.1996,0.0867],[-0.1287,0.1937,0.0766,0.1398,-0.1282,-0.1235,0.0787,0.0766,0.0151,0.1522,-0.1086,-0.0511,0.0244,0.1395,-0.1851,-0.1738,-0.0531,0.1809,0.0661,0.1421,-0.0988,0.1495,-0.182,0.0985,-0.0281,-0.1534,-0.1333,-0.0646,0.0712,-0.1217,-0.0666,-0.0109,0.0385,-0.1633,0.2036,0.1107,-0.0047,-0.1014,-0.1066,-0.1785,-0.0467,-0.1131,0.1536,0.0159,0.0507,-0.0777,0.0195,0.1041,-0.125,0.0039,0.0198,0.0956,-0.0161,-0.0568,0.1121,0.1715,-0.066,0.156,0.1702,-0.1219,-0.0548,0.115,-0.2007,-0.0521,-0.1006,-0.0899,-0.0521,-0.0061,0.0067,0.1724,-0.2,0.1603,-0.0013,-0.0579,-0.1157,-0.1944,0.1461,-0.0531,0.1549,0.1107,0.1967,-0.1777,-0.1094,0.0731,-0.0709,-0.06,-0.1501,0.128,-0.0188,-0.0108,0.0433,-0.0743,0.0191,-0.0361,-0.0006,-0.0929,-0.0357,0.1857,-0.1678,-0.1049],[0.179,-0.0448,0.1543,0.1111,-0.2704,0.015,0.0714,0.0892,0.2121,0.1135,0.0211,0.2347,0.3752,0.1654,0.2244,-0.2439,0.3154,0.2654,0.0609,-0.0309,-0.1237,-0.005,-0.2175,-0.0581,-0.0365,0.3031,0.7306,0.4318,-0.0845,0.1789,0.0719,-0.3693,-0.8468,-0.7956,-0.2406,0.0475,0.7137,0.0343,-0.25,0.1827,-0.0275,-0.0955,-0.6472,-0.3386,-0.398,-0.031,0.4879,-0.0114,0.0291,0.0278,0.0455,-0.2396,-0.0396,-0.1651,-0.4221,0.2721,0.6959,0.3386,0.2902,0.0662,0.0501,-0.35,-0.3334,-0.3937,-0.3169,-0.3697,0.3503,0.5972,0.3524,0.1559,0.0744,-0.1652,-0.4735,-0.6085,0.0058,-0.3273,0.3148,0.2402,0.254,0.1283,-0.0687,0.149,-0.1326,0.0892,-0.0945,-0.3017,-0.211,0.116,-0.0918,-0.0807,-0.0454,0.0611,0.0198,0.0677,-0.0912,-0.4584,0.0215,0.0029,-0.2354,0.1763],[-0.0105,-0.1971,-0.1897,-0.1107,0.1701,-0.0277,-0.132,-0.2512,-0.1608,-0.0433,-0.1702,-0.1548,-0.2983,0.0474,-0.1172,0.0012,-0.0478,-0.3202,-0.0018,-0.1906,0.1017,0.0567,-0.2599,-0.1077,-0.1644,-0.231,0.0192,-0.1803,-0.1294,-0.1089,-0.004,0.0097,0.031,0.3011,0.1252,-0.0034,0.3417,0.0965,0.1039,0.0856,-0.0928,-0.1274,0.2355,0.5236,0.2738,0.1373,0.4509,0.1914,-0.0511,-0.2019,-0.0794,-0.1026,0.366,0.4822,0.4327,0.3447,0.3481,0.1747,0.054,-0.0247,-0.0432,0.0486,0.1829,0.3446,0.0699,0.2498,0.3202,0.0182,-0.0217,0.1455,0.134,0.1336,-0.1659,-0.037,-0.1346,0.2195,0.231,0.173,0.0328,0.1036,-0.0503,0.0252,-0.2018,-0.223,-0.4873,0.0567,-0.0559,-0.2362,0.0265,0.048,0.1311,-0.1171,-0.0491,0.0689,0.0241,0.0916,0.2872,-0.0626,0.1873,-0.1405],[0.1597,-0.0991,0.0952,-0.1777,-0.2065,0.1288,0.1966,0.0229,-0.1325,0.1134,0.0628,0.0329,-0.1792,-0.0243,-0.0599,0.1154,0.0058,-0.0096,0.0309,-0.0223,0.0926,0.0816,-0.2357,-0.0532,0.0833,0.2187,0.1257,-0.0939,-0.206,0.1478,-0.0219,0.0662,-0.3464,0.0422,0.0727,-0.0237,0.29,-0.1322,0.1177,-0.1488,0.1448,-0.0824,-0.0306,0.1099,-0.2296,0.2153,0.1191,-0.1676,-0.0046,-0.1349,0.0485,0.1278,0.0278,0.1579,-0.1884,-0.0531,0.0909,-0.0858,0.2517,0.1673,0.0683,0.3383,0.1462,0.2472,0.0489,0.1477,0.201,-0.0355,-0.1028,-0.1516,0.0363,-0.0065,-0.1049,0.1434,-0.0655,0.2381,0.3404,0.2754,-0.1544,0.2018,0.1957,-0.1482,0.0031,0.0872,-0.3058,-0.1708,0.1361,-0.0971,-0.0603,0.0691,-0.1972,0.1719,0.0857,-0.1366,-0.1288,-0.0039,-0.1706,0.0947,-0.1876,-0.1898],[0.0287,0.1028,0.2382,0.2111,0.1122,-0.2656,-0.0792,0.3346,0.2363,0.1895,0.0179,-0.0569,0.5219,0.3048,0.217,-0.1408,0.1685,0.4622,0.3148,0.1839,0.1102,0.23,0.1938,0.0477,0.2504,0.294,0.4183,0.3253,0.3115,-0.1513,0.1925,-0.0684,-0.1165,-0.2309,-0.1461,-0.093,0.5153,-0.0431,0.1173,-0.0749,0.1274,-0.2324,-0.1711,-0.058,0.0741,0.1047,0.0299,-0.1303,0.0166,0.1643,-0.1862,0.0949,-0.1322,-0.2909,-0.2778,0.1246,-0.071,-0.1065,-0.1775,0.133,0.0206,-0.007,-0.1054,-0.3436,-0.1179,-0.0517,0.0728,0.2265,0.0081,0.0029,0.0653,-0.2411,-0.1331,-0.5451,-0.1901,0.1401,-0.1914,-0.2266,-0.1823,-0.0574,0.1105,0.0645,-0.1409,-0.287,0.1016,0.33,-0.2919,-0.4205,-0.1716,0.119,0.0897,-0.0173,0.1994,-0.2723,0.0519,-0.2071,-0.3824,-0.0595,-0.1367,-0.1351],[-0.0673,-0.1271,-0.1272,0.1768,-0.1831,-0.0256,0.1688,0.0553,-0.0857,-0.1918,-0.1539,0.153,-0.1715,-0.0068,-0.0855,0.1139,-0.0397,-0.0515,-0.0103,-0.1641,-0.1118,0.0428,0.159,0.0637,0.0278,-0.188,-0.1651,0.1624,0.2016,0.0859,-0.1455,0.0846,-0.044,-0.1736,0.1113,-0.1466,0.0163,-0.1162,-0.0045,-0.1363,-0.1976,0.1939,-0.1357,0.1528,-0.1377,0.0243,0.0103,-0.0107,0.1019,-0.0925,0.137,-0.0769,0.0587,0.052,0.0546,-0.1795,-0.1259,-0.0157,0.0728,0.011,0.0159,-0.1082,-0.1127,0.1845,0.0155,0.0647,-0.0295,0.0425,-0.1902,-0.1372,-0.0886,0.1827,-0.0076,-0.1221,-0.1508,0.1598,0.0215,0.1446,-0.0116,0.0606,-0.061,0.1623,0.0283,-0.06,-0.0007,-0.1944,-0.08,0.0132,0.1912,0.0604,0.068,-0.0125,-0.0472,0.1262,-0.0618,0.0326,0.0172,0.0777,-0.0934,0.1185],[-0.1095,0.1693,0.1603,-0.1923,-0.0466,-0.0253,0.1712,-0.0463,0.1975,-0.0882,-0.0989,0.1401,-0.223,0.0738,0.175,0.1797,-0.0204,-0.0451,0.0158,0.1022,0.1411,-0.2034,-0.2772,-0.0422,0.3019,0.3226,-0.0522,0.0133,0.0053,-0.0169,-0.0053,-0.052,-0.1056,-0.2573,0.4244,0.3137,-0.0155,-0.0057,-0.1716,0.1873,0.1618,0.0083,-0.4324,-0.0503,0.4495,0.3147,-0.0577,-0.21,-0.0336,-0.1199,-0.1764,-0.1889,-0.3588,-0.1516,0.5314,0.0646,-0.1735,-0.4169,-0.196,-0.0802,-0.1105,-0.0268,0.0572,-0.115,0.1328,0.2393,-0.2159,-0.3147,-0.2274,-0.1479,0.0072,-0.1619,0.0381,-0.2158,0.2359,-0.0419,-0.1081,-0.0609,-0.1624,-0.1172,0.1343,0.1753,-0.0832,0.1733,0.0566,0.0871,-0.0213,-0.2007,0.1216,-0.047,0.0241,-0.1963,-0.1361,0.0821,-0.0379,0.0284,0.1241,0.0608,0.1547,0.1028],[0.0989,-0.1661,-0.1498,0.0957,-0.1566,0.1714,0.0165,0.115,-0.0442,0.1801,0.1188,-0.0383,0.1399,-0.052,-0.1178,-0.0949,-0.0033,-0.1774,0.0347,0.0203,0.0661,0.1904,-0.0299,0.0351,0.0532,0.1089,0.0046,-0.1653,-0.0229,-0.1873,-0.1407,0.1203,0.1122,-0.0347,0.0251,-0.1599,-0.1563,-0.0816,0.0126,0.1774,-0.1472,0.0184,-0.1442,0.1067,-0.1549,-0.0011,0.1307,0.1101,0.0413,0.1727,0.1041,-0.1431,-0.1753,0.0959,0.1491,0.1675,-0.0487,-0.0303,0.0969,0.0033,0.0757,0.0268,-0.1834,-0.0944,0.0896,0.0581,0.0602,-0.1058,-0.02,-0.0741,-0.0532,-0.1822,0.0801,0.0596,-0.1061,0.0666,0.0154,-0.0784,-0.0525,0.0681,0.0189,-0.0257,0.1655,0.0461,-0.1378,-0.0693,0.1583,0.0482,-0.0388,0.0425,-0.0442,0.0423,0.0287,0.1479,0.108,-0.0206,-0.008,-0.1375,-0.0697,-0.1082],[0.0868,-0.1519,0.2376,0.0862,0.0838,0.2679,0.1767,-0.0551,0.1484,-0.1851,0.1053,-0.1525,0.0409,-0.0915,-0.2592,0.1762,0.5692,-0.0161,0.1333,-0.0623,0.0827,0.0949,-0.3104,-0.1812,0.1095,0.186,0.0957,-0.0213,0.2125,0.1536,0.1269,0.0329,-0.404,-0.3709,-0.0168,-0.1362,-0.0615,-0.2741,-0.1803,-0.1842,-0.1177,0.2118,0.011,0.0218,0.0994,-0.0462,-0.055,-0.195,-0.4278,-0.1761,0.1478,0.0843,0.5462,0.0872,0.1381,0.091,0.2856,-0.0111,0.1211,0.1191,0.0401,0.0298,0.266,0.2133,0.4517,0.3888,0.1408,0.1106,0.178,-0.1185,0.1529,-0.0976,0.0488,0.196,-0.0912,-0.1201,0.1338,0.216,-0.0449,0.1241,0.1213,0.1186,-0.0728,-0.1254,-0.1165,-0.2924,0.0343,0.0779,0.0855,0.0766,-0.0227,0.2006,-0.0515,-0.2441,-0.2394,-0.4075,0.1025,-0.0784,-0.1727,0.1727],[0.1641,-0.1086,0.2414,-0.0097,-0.0371,-0.1827,-0.0763,0.1172,-0.0117,0.0955,-0.1228,-0.0227,0.2818,-0.1161,0.0445,-0.1192,-0.1468,0.4459,0.0583,-0.0432,-0.0149,-0.1383,0.2387,0.193,0.2686,0.3222,0.163,0.3348,0.273,0.0278,0.1787,0.0608,-0.1456,-0.2257,-0.1985,-0.0473,-0.1847,-0.1198,-0.0316,-0.1429,-0.1007,-0.1123,0.1775,0.1139,0.2543,0.1035,0.1496,0.0105,-0.0226,-0.0034,0.0579,-0.1381,-0.2204,0.0318,-0.2199,-0.0203,-0.0093,0.1823,-0.1859,-0.1116,0.1622,-0.0147,-0.3154,-0.0943,-0.1884,0.281,0.0142,-0.1194,-0.1215,0.0163,-0.1715,0.0223,-0.31,-0.2298,-0.229,0.0879,0.0141,-0.1201,-0.1111,-0.1353,-0.1969,-0.1877,-0.048,-0.0568,0.0115,0.0683,-0.1266,0.0069,-0.1672,-0.032,-0.0113,0.1758,0.1089,0.1048,-0.0346,0.0877,-0.2145,-0.2637,-0.092,-0.1595],[0.0449,0.121,0.1568,-0.2297,0.0968,-0.004,0.0101,-0.0267,-0.1423,0.1612,0.0296,-0.0855,0.0187,-0.1055,-0.0324,-0.0122,-0.0224,-0.0806,-0.2993,0.1567,0.0287,-0.0082,0.099,0.0101,0.0101,0.0012,-0.0973,-0.1576,-0.0752,0.1878,-0.1757,0.1158,0.1504,1.0182,0.4391,0.2937,0.1871,-0.2324,-0.249,-0.0734,-0.0816,-0.0536,0.6659,0.7447,0.1816,0.1947,0.304,0.068,-0.0239,-0.0074,-0.1948,0.0157,0.4055,0.5113,0.3279,-0.0015,0.4547,0.3806,0.0414,-0.1159,0.2013,0.4258,0.0498,0.1334,0.0397,-0.0335,0.5139,0.4311,0.0205,-0.2009,0.1811,0.2254,-0.0747,-0.0687,-0.0941,0.0894,-0.0027,0.4645,-0.1109,-0.0472,-0.1875,-0.1516,-0.0954,-0.2936,-0.4293,-0.1274,0.0113,0.092,0.0995,-0.069,0.1648,-0.1516,-0.1694,-0.0475,-0.2433,-0.0019,-0.0235,-0.1102,0.1273,0.134],[0.0045,0.1662,-0.1123,0.0257,-0.0632,0.0283,-0.1395,-0.192,0.1416,-0.0043,0.0483,0.1496,0.0723,0.3678,0.199,-0.0415,-0.2529,-0.1503,0.0293,-0.1221,-0.0336,-0.0107,0.1601,0.308,-0.2086,0.0312,-0.3675,-0.1208,-0.0142,-0.0696,-0.0171,0.2628,-0.0505,-0.0087,-0.0956,-0.2241,-0.2092,-0.2637,-0.1113,-0.0087,-0.072,0.28,-0.0648,-0.0133,-0.0785,0.1836,0.0343,-0.3484,-0.1792,-0.0086,0.1404,0.2277,0.2565,-0.0317,-0.0513,0.0659,0.3548,0.1684,0.0381,-0.1258,-0.037,0.092,0.231,0.0333,-0.2023,-0.5413,-0.0399,0.5071,-0.0195,0.0269,-0.0714,-0.0672,-0.0612,0.1435,-0.1465,-0.2496,0.1448,0.2591,-0.0487,0.1421,-0.0002,-0.109,0.4143,0.5137,0.5862,0.0739,0.2055,0.3265,-0.0396,0.0964,0.1175,-0.1417,-0.1313,0.1437,0.4119,0.0208,0.2107,0.2369,-0.07,0.1119],[-0.1818,0.1529,0.1827,-0.098,-0.1615,-0.0569,0.1385,0.1082,-0.1343,0.1724,0.1538,0.076,0.2301,-0.1383,-0.1257,0.0574,0.089,0.1568,-0.1764,0.0669,0.0815,-0.0659,0.0567,0.2018,0.2344,0.068,0.2239,0.0158,-0.109,0.1051,-0.0151,-0.1347,0.0536,-0.1007,-0.033,0.1705,0.1974,-0.0302,0.1423,-0.0492,-0.0923,0.08,-0.0734,-0.0782,-0.1168,-0.047,0.086,-0.2356,-0.047,0.0999,0.0244,0.0337,0.0358,-0.101,0.1466,-0.0121,-0.1214,-0.2319,-0.1837,-0.1408,-0.1024,-0.0954,0.1352,0.0454,0.2573,0.0644,-0.1285,-0.0668,-0.1503,0.1377,0.0688,0.0231,-0.0116,-0.0931,-0.1087,-0.0939,-0.0374,0.1099,0.1571,0.0944,0.063,0.0828,0.1775,0.0525,-0.0173,-0.211,0.1794,-0.2239,-0.0007,0.1995,0.0217,0.188,-0.1124,0.1069,-0.1844,0.0802,0.0867,-0.0966,0.0145,0.1135],[-0.1804,0.0355,0.3348,-0.0308,0.0594,0.1244,0.3001,0.2469,0.0179,0.0794,0.1794,0.2193,0.2683,-0.1396,0.0579,-0.1405,0.0813,0.282,0.1071,0.0975,-0.1609,0.1235,0.1455,-0.0703,0.2119,0.3922,0.5138,0.3365,0.1786,0.1749,0.0598,-0.0667,-0.0817,-0.2583,0.199,0.3648,-0.0505,-0.1942,-0.0425,-0.0994,-0.1587,-0.0714,0.0677,-0.0277,-0.069,0.1089,-0.0026,0.2642,-0.0045,0.0299,-0.1091,0.0153,-0.2341,0.0967,-0.003,0.045,0.0214,-0.072,0.1336,-0.0993,-0.0938,-0.0711,-0.1858,-0.2655,0.4695,0.6484,0.2337,-0.0501,-0.2786,0.1271,0.0381,-0.1352,-0.3468,-0.1701,0.0433,0.3715,-0.3517,-0.5293,-0.1892,-0.1239,0.0556,-0.1194,-0.3619,-0.4036,-0.1955,0.2244,0.1,0.0507,0.0475,0.0094,-0.1684,0.166,-0.0513,-0.3133,-0.4116,0.1163,0.0323,0.0415,0.1726,-0.177],[0.0473,0.108,0.1111,-0.11,-0.2892,-0.0697,0.2571,0.1746,0.1608,0.1903,0.0948,0.3037,0.5673,0.257,0.1336,0.1535,0.1519,0.0567,0.3419,-0.0838,0.154,0.0724,0.505,0.4595,0.4066,0.6699,0.4447,0.257,0.1458,0.1675,-0.0905,0.2735,0.4837,0.3179,0.1265,0.174,0.0535,-0.0163,0.2627,0.0734,0.02,0.0521,0.3799,0.1403,-0.4366,-0.3627,-0.2713,0.5565,0.5877,-0.073,-0.1442,-0.0635,-0.2274,-0.6583,-0.848,-0.825,-0.7178,0.1551,0.3783,0.2745,0.0867,-0.3286,-0.6125,-0.3202,-0.1058,0.1351,-0.1011,-0.0308,0.1363,-0.033,0.0469,-0.2486,-0.1061,-0.1736,-0.0296,0.1179,-0.0493,-0.1808,0.2895,0.2069,-0.0084,0.0814,-0.002,0.4144,0.2936,0.2811,0.3783,0.1454,-0.1406,0.1283,-0.0658,0.0791,0.2494,0.2498,0.2818,0.3886,-0.0615,-0.1022,0.2037,-0.1733],[0.1081,-0.0396,-0.0414,-0.1464,0.0185,-0.2546,0.0208,0.0645,-0.1271,-0.0264,-0.0316,0.1506,0.1297,0.025,-0.1226,-0.3911,-0.4979,-0.2778,-0.261,0.0988,-0.0781,-0.0535,0.3183,0.1432,0.0126,-0.2138,-0.1569,-0.2071,-0.1016,-0.1707,-0.1411,0.1885,0.235,0.8403,-0.0868,0.0411,0.2142,0.1726,0.0454,-0.054,0.159,0.3558,0.7487,0.7939,0.0488,-0.089,0.2027,0.816,0.5165,0.1723,0.0047,0.1511,0.0722,-0.0635,0.09,-0.1035,0.2112,0.4801,-0.0632,-0.2199,-0.068,-0.1868,-0.0693,-0.1439,-0.0934,-0.1453,0.1052,0.0621,-0.1525,0.0854,-0.1208,0.0124,-0.3231,-0.2465,-0.2291,0.4276,0.0793,-0.1138,-0.1214,0.1881,-0.1413,-0.0859,-0.4192,-0.4641,-0.2168,0.2943,0.1507,0.0246,-0.0901,0.1916,0.1429,-0.1138,0.0076,-0.2374,-0.0681,0.2477,0.3309,0.0094,-0.1328,-0.0499],[0.0158,0.1735,0.2356,0.1362,-0.1373,-0.0504,0.2134,0.2935,-0.052,0.1699,-0.0666,-0.0778,0.4418,-0.0214,0.4472,0.0928,-0.0343,0.3769,0.1129,-0.1703,0.0821,0.0471,0.102,0.3248,0.2484,0.2458,-0.1721,0.2572,0.4119,0.0564,0.0504,0.0906,0.278,0.1362,0.3973,0.3591,0.6218,0.4507,0.0546,0.0252,0.1757,-0.2245,-0.4287,0.1339,0.8382,0.5583,0.0589,0.1604,-0.3665,0.0688,-0.0636,-0.6025,-1.0466,-0.2126,0.5415,0.3295,-0.2527,-0.6801,-0.404,-0.0376,0.1265,-0.5104,-0.437,-0.4041,0.0123,-0.0477,-0.1875,-0.3151,-0.2537,0.0123,-0.0662,-0.3124,0.1505,0.016,0.2351,0.1283,-0.1069,-0.3436,0.0248,0.0131,-0.0845,0.2126,0.3228,0.3408,0.5827,0.4018,0.2921,0.0171,0.0499,-0.1657,0.0094,-0.0446,-0.0382,0.4528,0.1955,-0.0193,-0.3301,0.0553,0.226,-0.0863],[-0.1453,0.0064,0.0155,-0.0597,-0.2006,-0.0386,0.138,-0.0879,0.1019,-0.1582,-0.0508,-0.0643,-0.1343,0.1153,-0.1632,-0.0234,0.11,0.081,-0.0871,-0.06,-0.1357,-0.131,-0.0411,-0.171,-0.0294,-0.0217,0.0678,0.0045,0.0329,-0.0173,-0.0633,-0.1605,-0.2369,0.039,0.1414,0.0024,-0.1115,0.1736,-0.1102,0.0359,-0.0236,0.0558,0.1682,0.0785,-0.1862,-0.0379,0.0232,-0.0674,-0.0743,0.1227,-0.015,0.0613,0.2042,-0.0307,0.1523,-0.0371,0.2387,-0.0003,0.1836,-0.0538,0.1629,0.1827,-0.217,-0.0014,0.108,-0.1498,-0.052,-0.0346,-0.1783,0.0016,0.0869,0.0779,0.0035,-0.2401,0.1118,-0.1392,-0.0509,0.1736,-0.0011,0.0565,0.1717,-0.1538,-0.025,-0.0845,-0.1809,-0.0968,-0.1752,0.1058,0.1561,-0.0391,-0.1487,-0.0578,-0.1576,-0.0154,0.0531,-0.19,-0.0826,0.0231,0.1356,-0.1531],[-0.1029,-0.1395,0.0497,-0.177,-0.0321,0.1324,0.1737,-0.1748,0.0288,0.1564,0.1083,0.1386,0.0336,0.0963,0.026,-0.079,-0.0707,-0.1372,-0.0131,0.142,0.0503,-0.1874,-0.136,0.0366,-0.037,0.0333,-0.1355,0.1767,0.1253,0.0186,0.1952,0.1406,0.1187,-0.0419,-0.0979,-0.0694,0.1295,-0.1211,0.1838,0.0961,0.0602,-0.0344,-0.0779,0.0121,-0.1771,-0.0888,-0.0345,0.0467,0.0513,0.1283,-0.0672,-0.1819,0.1771,-0.211,0.005,-0.0593,-0.131,-0.1683,0.24,-0.0712,-0.1072,0.1804,0.1786,-0.0156,-0.1557,-0.0547,0.0731,-0.156,-0.1384,0.0608,0.0228,-0.0866,0.0303,0.0064,0.2102,-0.1828,-0.1113,-0.1204,-0.1335,-0.1137,-0.1715,-0.0848,0.1181,0.2037,-0.0228,0.1255,0.2223,0.1663,-0.0661,0.1109,0.0076,0.1198,0.0293,-0.0433,0.0319,-0.141,-0.08,0.0235,-0.0422,-0.1004],[0.1724,0.1334,0.1787,-0.0923,-0.0969,-0.1347,-0.1269,-0.1322,0.0837,-0.1388,0.0342,0.0821,-0.1486,-0.1713,0.0302,-0.1793,0.0826,-0.0412,0.0981,-0.0876,0.0727,0.0001,-0.0692,0.0607,-0.102,-0.0182,0.0289,-0.0712,0.0908,0.0727,-0.0779,-0.007,-0.0315,0.1143,-0.1765,0.103,-0.1289,0.1117,0.0172,-0.1302,-0.152,0.0263,0.057,-0.1718,-0.1622,-0.1131,0.1538,-0.1822,-0.1548,0.0819,0.1926,0.1518,-0.0031,-0.144,-0.1109,0.0871,-0.1903,0.0203,-0.0131,0.1637,0.1292,-0.1088,0.1234,0.0625,-0.1331,0.075,-0.1276,-0.0261,-0.1344,0.1037,0.0907,0.1449,0.0006,-0.179,-0.1339,-0.2001,0.0354,-0.0401,-0.0291,0.0858,-0.0892,0.1966,-0.0978,0.0713,-0.1257,0.0106,0.0612,-0.0108,-0.0927,0.0294,-0.1551,-0.1072,0.0854,0.09,0.1094,-0.1891,-0.1446,0.1883,0.1957,-0.0285],[-0.1025,-0.1813,-0.1257,0.1361,-0.0471,0.022,0.0311,0.0096,-0.1537,-0.1373,-0.1514,-0.125,-0.1016,0.2725,0.2143,0.1947,-0.0883,-0.2848,-0.1588,0.1516,0.1955,-0.1338,-0.0565,-0.1005,-0.1797,0.0478,-0.1625,0.3328,0.0023,0.1633,0.0146,-0.0824,-0.0684,-0.3949,-0.2941,-0.2839,-0.0117,0.3451,0.2696,0.0858,-0.0297,-0.1335,-0.4465,-0.2492,-0.3425,-0.1018,0.0887,0.2779,-0.1344,-0.1642,-0.0751,-0.3748,-0.1991,-0.1806,0.0724,0.2614,0.4573,-0.2256,-0.0177,0.0263,-0.0092,-0.4345,-0.2977,0.0324,0.2711,0.2376,-0.3407,-0.3323,0.0071,0.1601,0.1304,-0.0227,0.0906,0.1067,0.4642,0.2458,0.0598,-0.0588,-0.0388,0.1921,0.0052,0.0909,0.2668,0.4508,0.2679,0.3285,0.2462,0.1109,0.3052,-0.0386,-0.0917,-0.1027,-0.1655,0.3601,0.0146,-0.0088,0.014,0.0657,0.2656,-0.133],[0.0211,-0.0753,-0.2793,0.1065,0.2425,-0.0686,0.0236,-0.1416,-0.2879,-0.1989,-0.2094,-0.0733,-0.0757,0.337,0.6422,-0.0197,-0.4777,-0.1252,-0.1724,-0.0085,-0.046,0.12,0.539,0.633,-0.3343,-0.7668,-0.3176,-0.2476,-0.2931,0.1298,0.1133,0.2863,0.8519,0.8459,0.0854,-0.0853,0.1173,0.136,-0.0813,0.0739,-0.1025,0.0484,0.2624,0.7044,0.8007,0.4365,0.6764,0.1536,0.0456,0.1182,0.1883,-0.0693,-0.2813,0.4051,0.1529,0.2634,0.4848,-0.2131,-0.115,-0.0032,-0.0482,-0.0059,0.5068,0.0581,-1.0413,-1.0668,0.0743,0.7484,0.1671,-0.363,-0.2009,-0.0683,0.3552,0.4439,-0.1656,-0.5542,0.0199,0.5666,-0.1523,0.0812,-0.0309,0.1225,0.1309,0.3387,0.4398,0.2931,0.0629,0.0629,-0.1001,-0.076,-0.1952,-0.1937,0.1395,0.2687,0.7859,0.4537,0.0047,0.1746,0.1263,0.1742],[-0.1812,0.0329,-0.0681,0.0343,0.1982,0.2621,0.1113,0.0218,-0.0453,0.0789,-0.0673,-0.1182,-0.0413,-0.0501,0.233,0.4378,0.1418,-0.1369,0.1025,0.1115,0.1669,0.2223,0.2287,0.2328,-0.0135,-0.0642,-0.0896,0.4344,0.0255,0.1025,-0.0722,-0.003,-0.0164,-0.0647,-0.3189,-0.0347,0.3884,0.3449,-0.0299,0.0676,-0.2051,-0.2826,-0.472,-0.0883,0.0062,0.0761,0.0834,-0.1764,-0.0697,-0.066,-0.173,0.0622,-0.2364,-0.3887,-0.3378,-0.0603,-0.4507,-0.8079,-0.2866,0.176,0.0647,0.5218,0.3902,0.5841,0.4296,0.1004,-0.088,-0.1668,0.4079,0.199,0.1894,0.2182,1.0841,0.8308,0.2709,-0.4195,0.31,0.3698,0.1086,0.1882,-0.1114,-0.0213,0.6703,0.6752,0.4183,0.0197,0.3222,0.4257,0.1192,0.1277,-0.1653,-0.1741,0.0458,0.3477,0.4829,-0.1068,-0.0297,0.4748,0.0842,-0.0316],[-0.0775,-0.1382,-0.0449,0.1362,0.0669,0.1766,0.0078,0.1018,-0.0545,-0.0043,0.1692,0.0573,0.0601,-0.021,0.1288,0.5447,-0.0641,-0.014,0.3105,0.1322,0.1913,0.1642,0.098,0.1321,0.4064,0.0012,-0.1411,0.0846,0.3077,-0.0818,0.0699,-0.1451,-0.2418,-0.1527,-0.042,-0.1134,-0.5839,0.1036,0.1376,0.1541,-0.171,-0.0493,-0.2992,-0.4426,0.1327,0.0107,-0.3091,-0.177,-0.2148,0.1444,-0.1491,0.0985,-0.001,0.0191,0.3701,0.2943,-0.0293,-0.3706,-0.5431,0.1084,-0.0697,0.0834,0.0933,0.2036,0.5262,0.6743,-0.2468,-0.7236,-0.3397,-0.1156,0.1715,-0.1364,0.3613,0.6283,0.6445,0.3429,-0.0381,-0.4585,-0.1282,-0.1871,0.1681,0.0384,0.2287,0.1338,0.3674,0.0031,0.4214,0.1106,0.2203,0.013,0.1812,-0.0036,0.1321,0.1455,-0.0995,-0.1891,0.1656,0.2207,0.2127,0.0913],[-0.1681,-0.084,-0.0529,0.1909,0.2358,0.179,-0.1323,-0.1475,-0.1769,-0.1911,0.1465,-0.2104,0.1226,0.035,-0.1502,-0.0662,0.0291,0.0642,0.2043,0.0528,-0.1479,-0.1263,0.2784,0.2119,-0.0434,0.1233,0.2116,0.3828,0.0109,0.1814,-0.1264,0.1804,0.2681,-0.032,-0.274,-0.2536,0.1185,0.3164,0.0024,0.0372,0.1583,0.0859,0.2307,-0.1309,-0.4024,-0.3463,-0.2977,0.1972,0.018,0.1422,-0.1034,0.1139,-0.0776,-0.2084,-0.1082,-0.2035,-0.4161,-0.225,-0.2141,0.1762,0.0506,-0.0875,-0.1077,0.3483,0.3624,0.1837,-0.3188,-0.2807,-0.3136,0.1881,-0.1868,0.0193,0.4863,0.5947,0.3232,-0.007,0.1566,-0.3206,0.1834,-0.147,-0.1656,0.0663,0.397,0.2382,0.0576,0.0348,0.1997,0.188,-0.1135,-0.1228,0.0395,0.1909,0.1802,0.1723,0.1106,0.02,0.1663,0.2337,0.219,-0.1916],[0.0837,-0.0603,0.1452,0.0597,0.0313,-0.2499,0.074,-0.002,0.2198,0.071,-0.0172,0.0297,0.2528,0.2621,0.1867,-0.0607,0.0102,-0.1541,0.1867,0.0074,-0.007,0.1349,0.0761,0.0455,-0.0183,0.0433,-0.2997,-0.1594,-0.1332,-0.041,-0.0261,-0.0846,0.3186,0.1521,0.4968,0.5977,-0.0613,-0.2817,-0.0277,0.1511,-0.1396,0.2029,0.2115,0.0588,0.387,0.101,-0.0224,-0.055,0.1384,0.0302,-0.1041,-0.1965,-0.2608,-0.0759,0.1082,-0.2571,-0.2713,0.2043,-0.0583,0.1555,-0.1808,-0.2209,-0.2924,-0.3509,-0.1861,-0.0869,0.0881,0.0173,0.2684,0.1117,-0.2169,-0.2531,-0.2008,-0.2212,0.0493,0.1332,0.1771,-0.1053,0.1985,0.1647,-0.075,-0.0891,-0.0902,0.2355,0.3613,0.3175,-0.0944,0.0203,-0.1063,0.0368,-0.0453,-0.0073,-0.0499,-0.0691,0.2368,-0.2601,-0.2609,0.0956,-0.1026,0.1604],[-0.1624,-0.0991,0.1979,0.2131,0.2317,0.2025,0.2209,-0.0166,0.1253,0.0113,-0.1532,-0.0229,0.0865,-0.0524,0.0241,-0.026,0.2832,0.4875,0.1998,-0.1515,0.0204,-0.1528,-0.1927,-0.0561,-0.1971,-0.1998,0.6496,0.8341,0.2796,0.1154,0.1346,-0.1509,-0.1062,0.2446,-0.2049,-0.297,0.8874,0.9704,0.2284,0.1773,0.0152,-0.263,-0.0996,0.4077,0.4413,0.1721,0.3511,0.3348,-0.1274,-0.0481,0.0798,-0.0502,0.0148,0.4894,0.5755,0.5672,0.511,-0.255,-0.438,-0.0338,0.0585,0.2165,0.518,0.4041,0.2388,0.382,0.5943,-0.2942,-0.605,-0.2077,0.0361,-0.0199,-0.0505,-0.4549,-0.0477,-0.2841,-0.2576,-0.2742,-0.3747,0.044,0.0529,0.006,-0.1619,-0.7414,-0.2985,-0.2663,-0.0052,-0.1679,0.1685,0.0094,-0.0713,0.1228,-0.0704,-0.201,-0.3952,-0.2132,-0.1282,-0.0634,-0.1435,0.0489],[-0.1471,0.0658,0.1631,0.112,-0.0298,0.0014,-0.045,-0.0556,-0.0334,0.2007,0.1703,0.1396,-0.0511,-0.1678,-0.1077,-0.0684,0.1133,-0.1932,-0.0455,0.0334,0.0089,-0.0162,-0.062,-0.0335,0.0858,-0.011,-0.1926,0.0025,0.1089,-0.0307,-0.0384,-0.0325,0.2042,-0.1783,0.3167,0.2393,-0.0965,-0.1824,0.0379,-0.1364,0.1936,-0.0346,0.0777,-0.1576,0.1879,-0.0935,0.0937,0.0355,0.143,-0.0523,0.1339,0.0314,-0.2717,-0.1344,-0.0138,-0.0519,-0.1133,-0.1148,-0.1252,0.0777,-0.0146,-0.1921,0.1438,0.0087,0.1787,-0.0395,-0.1785,-0.209,0.019,0.0519,-0.1202,0.0382,0.0279,-0.1308,0.1891,0.3037,-0.1693,0.065,-0.0053,-0.1916,-0.0974,-0.0796,0.1913,0.2083,0.0053,0.2859,-0.0232,0.1125,-0.1083,0.0615,-0.064,0.0113,-0.049,0.2125,0.2135,-0.1233,-0.1865,0.154,-0.0817,0.149],[-0.125,0.0106,-0.0998,-0.0513,0.0716,-0.1342,-0.0791,0.1422,0.189,-0.1113,0.1192,-0.0798,-0.2561,-0.0898,-0.0644,0.1734,0.2849,-0.1631,0.1014,-0.0018,0.0622,0.1233,-0.2025,-0.4649,0.0695,0.4932,0.3767,0.1312,-0.2008,0.1028,-0.0365,-0.0583,-0.3962,-0.0523,0.0267,0.4923,0.4729,-0.1569,-0.1455,0.0532,0.0387,-0.0415,-0.2335,0.0181,-0.0947,0.4597,-0.18,-0.2489,-0.0829,0.1082,-0.0977,-0.0628,0.3415,0.2961,0.1055,0.3079,0.0519,-0.0589,0.0953,0.0952,-0.0764,0.3265,-0.2164,0.0827,0.0528,0.7286,0.2407,0.1388,0.2155,0.2114,-0.0975,-0.0192,-0.0517,-0.2907,-0.1046,0.4131,0.3244,0.098,-0.0601,-0.0724,-0.0905,-0.1878,-0.092,-0.2215,-0.3865,0.0543,0.0279,-0.0362,0.1418,-0.0644,0.1626,0.0095,0.0067,-0.0627,-0.1684,-0.3528,-0.229,-0.0916,0.0488,-0.1764],[0.0423,0.0659,-0.0968,-0.061,-0.0718,0.1697,0.0843,0.044,-0.0202,-0.0196,0.0269,0.047,-0.3078,-0.0624,-0.0996,0.1762,-0.2087,-0.2311,-0.0905,-0.166,0.0088,0.0475,0.1436,-0.2926,0.1261,0.3178,-0.283,-0.4359,-0.3503,0.1974,-0.0002,0.2168,-0.0562,-0.183,0.5736,0.5406,-0.5934,-0.7273,-0.2052,-0.1187,-0.0133,0.0706,0.2311,0.1464,0.1674,-0.0859,-0.2088,-0.0887,0.0258,0.149,0.0664,0.041,0.0913,0.0571,0.4018,0.0432,0.2656,0.5628,0.201,0.1541,0.1609,-0.2968,-0.1702,-0.1017,0.4086,0.4714,0.2222,0.1137,0.1607,0.0136,0.1886,-0.255,-0.5987,-0.0702,0.3768,0.5682,-0.106,-0.1468,0.0743,0.0375,0.0055,-0.1608,-0.1708,0.1627,0.1418,0.3523,0.0967,0.081,0.0832,-0.1658,0.0243,0.0121,0.0081,-0.0656,-0.0544,0.1008,0.0754,0.0347,0.1697,0.215],[-0.1055,-0.1059,-0.1786,-0.0635,0.0432,-0.069,0.1594,-0.0883,-0.0424,0.0569,0.1308,-0.202,-0.1573,0.1306,-0.2101,-0.022,0.0711,0.0974,-0.0202,0.0083,0.0058,-0.2188,0.1432,-0.0089,-0.4109,-0.2544,0.1457,0.1964,-0.0669,0.0015,0.0434,-0.1044,0.0515,-0.0528,0.039,0.0382,0.0274,0.2258,0.2027,-0.0715,0.1404,0.1438,-0.2141,-0.0656,-0.2026,-0.396,-0.097,0.1144,0.0977,0.167,-0.055,-0.0084,0.0008,0.0523,-0.0005,0.0703,-0.0703,-0.2501,-0.2085,-0.0749,-0.1951,-0.1566,0.047,0.2248,0.5066,0.2847,0.0321,-0.2338,-0.2824,0.1719,-0.199,-0.0328,0.1596,0.5994,0.2902,0.1279,0.0879,-0.2839,-0.0725,0.0118,0.015,-0.1643,0.1472,0.2777,0.0218,0.1678,0.2243,0.1223,0.0321,0.1345,0.1028,0.1081,0.0243,0.1008,-0.262,-0.1861,0.2361,0.2697,0.0212,-0.0526],[0.1698,-0.0658,0.0353,0.1776,0.2472,0.1035,0.0399,-0.1247,0.0506,0.0895,0.1788,-0.0826,-0.0105,-0.0326,-0.0345,0.1279,0.1607,-0.0885,-0.0324,-0.1737,-0.0376,0.138,-0.078,0.0507,0.3064,0.1964,-0.2834,-0.3878,-0.2069,0.0021,-0.0503,0.137,0.3553,-0.25,-0.0519,-0.2749,-0.8983,-0.6337,-0.0007,0.0146,0.0431,0.5329,0.5192,-0.2864,-0.1824,-0.3324,-0.6072,-0.2206,0.2731,0.1932,-0.065,0.6482,1.0308,0.3792,0.1298,-0.261,-0.4717,-0.0016,0.3348,-0.1335,-0.01,0.1966,0.4161,0.4845,0.158,-0.3343,-0.3414,0.2371,0.1839,-0.1012,0.0706,-0.0679,0.0651,0.3956,0.1066,-0.0574,-0.0347,0.1382,-0.1531,-0.1305,0.0885,-0.0592,-0.0493,0.4906,0.3473,0.3245,0.2273,0.2297,-0.0475,-0.1469,0.1123,-0.0295,0.1272,-0.2111,0.1146,0.1724,0.3892,-0.0263,0.0796,0.1719]],
+b1:[0.0771,0.2468,0.1209,0.1451,-0.0878,0.0178,0.013,-0.0742,0.0079,-0.0405,-0.0407,-0.0425,0.2225,0.1922,0.3777,-0.1616,-0.0252,0.0456,0.0497,0.3192,0.3707,-0.0227,0.0566,0.0586,0.0795,0.1222,0.1203,0.0831,-0.1726,0.052,0.3989,-0.0722,-0.0404,0.3365,-0.0178,0.0594,0.3787,0.0014,0.2684,-0.0613,0.1649,0.0571,-0.1297,0.1141,0.0991,0.5193,0.255,-0.0458,0.3257,0.0079,0.0519,-0.03,0.3102,-0.2065,-0.1869,0.4456,-0.0094,0.2243,-0.0838,0.2064,0.2627,0.648,-0.0732,0.2146],
+W2:[[-0.3502,0.6007,-0.3768,-0.0981,0.2716,-0.3886,0.7821,0.7148,-0.1054,-0.0045,0.0157,-0.0558,0.2326,0.0531,-0.0581,-0.2239,-0.1434,0.6727,0.0422,0.3432,-0.4609,0.0148,-0.1843,0.1573,0.534,-0.1715,0.7277,0.4149,0.0233,0.8417,-0.3591,0.5499,0.0327,-0.5428,-0.4607,0.1331,-0.0875,0.19,-0.3303,-0.1268,-0.3012,-0.183,-0.4027,0.3592,0.0116,-0.504,1.2057,0.2806,-0.7958,-0.1395,0.1748,-0.1777,-0.2893,0.1616,0.6237,-0.4949,0.8375,-0.1279,-0.7789,-0.1063,-0.1424,-0.6276,-0.0297,1.0137],[-0.248,-0.2368,0.1708,0.2378,-0.4242,-0.3598,-0.5128,-0.0907,0.0527,0.0175,-0.0277,-0.0943,-0.8182,0.5187,-0.1174,-0.3231,-0.1993,-0.2239,-0.1382,0.3019,0.4204,0.1117,0.0329,-0.3518,0.1551,-0.3092,-0.215,-0.3891,-0.3732,-0.199,0.8937,0.03,0.0169,-0.1991,-0.2942,-0.0914,0.233,-0.1613,1.0956,-0.1355,-0.07,0.2121,-0.8921,-0.0631,0.0386,0.7241,0.0841,-0.4465,1.2681,-0.175,-0.1311,-0.1007,0.5161,-0.7417,-0.4475,0.9067,-0.0276,0.6261,-0.8939,0.3813,0.6343,1.394,-0.0642,-0.0358],[-0.139,0.0953,-0.3708,-0.5104,-0.0307,0.1287,0.9038,0.3685,-0.2068,0.1038,-0.1823,0.0229,0.5856,0.0431,0.5046,-0.6324,0.2216,-0.5666,-0.1553,-0.3248,-0.2832,0.1122,-0.2034,-0.2569,0.0356,-0.1457,-0.3491,-0.0277,0.8531,-0.0673,-0.0056,-0.2573,0.1552,-0.7979,-0.3531,0.0491,-0.5418,0.1681,-0.1784,0.1126,0.0153,-0.2019,-0.9182,-0.1766,-0.0068,-0.0474,0.3791,-0.159,0.5203,-0.0635,0.0297,-0.197,1.1498,-0.7326,1.0896,1.3401,1.2356,-0.5636,0.1647,-0.0691,-0.5163,-0.225,0.9506,-0.4447],[-0.0353,0.1426,0.3326,-0.1333,0.3545,-0.1974,-0.0722,0.0264,0.082,-0.216,0.2343,-0.0751,1.0894,-0.1723,1.3754,-0.2364,-0.1429,1.3636,0.2693,-0.7135,-0.2561,-0.0868,0.2647,-0.1089,-0.1836,-0.3966,-0.0403,-0.5743,-0.5524,-0.141,-0.1795,-0.1883,0.0554,1.7011,-0.2657,0.2556,0.2653,0.0678,-0.1381,0.1747,-0.1983,-0.3222,-0.6818,0.6263,-0.0558,-0.6664,-0.0726,-0.5745,0.0735,-0.0332,-0.25,-0.0556,0.6623,0.4139,0.3207,-0.7783,-0.3924,-0.0486,-0.5986,-0.2345,0.2169,-0.3275,-0.5837,-0.8198],[0.7829,-0.4285,-0.4949,0.529,-0.501,1.0151,-0.1778,0.098,-0.1693,-0.0091,-0.1844,-0.0946,-0.5395,-0.2288,-0.52,-0.6202,0.0441,-0.2227,0.1463,0.8661,-0.2188,0.1308,-0.2588,-0.1385,-0.2465,-0.2048,0.2569,0.4053,0.3442,0.1492,0.3329,0.0224,0.2079,0.8855,0.6663,0.704,-0.2569,-0.0913,-0.0022,-0.0219,0.9756,-0.1445,0.9369,-0.6914,0.121,0.3837,-0.5412,-0.1959,-1.1466,0.314,-0.2136,-0.0434,-0.3955,-1.6243,0.4093,0.2841,-0.0521,-0.5198,0.8941,-0.2969,1.3168,0.6446,0.2308,0.2065],[0.028,-0.2636,1.1801,0.0456,-0.0967,-0.5679,-0.889,-0.2458,-0.1311,0.1642,-0.044,-0.041,0.3863,0.0176,-0.0178,1.5174,0.2091,-0.1909,-0.1962,-0.043,0.5306,-0.1276,-0.3276,-0.5353,-0.022,-0.0885,-0.4333,-0.3643,-0.0351,0.0116,-0.2801,-0.2112,0.1846,-0.282,-0.2699,-0.218,-0.0112,0.0221,-0.2867,-0.0753,-0.4563,0.4975,0.5666,0.2432,-0.1646,0.0845,1.2062,0.4728,0.513,0.0947,-0.1519,0.0643,-0.594,0.8737,-0.4517,-0.6855,-0.0877,0.9065,-1.2501,0.0449,-0.5179,0.4645,0.113,-0.1781],[0.2174,-0.0809,0.3265,-0.2595,-0.4807,0.1594,1.5334,0.0725,0.1261,-0.0275,-0.3031,0.0139,-1.4408,-0.1794,-0.8568,-0.1035,0.0943,0.1916,0.2324,1.451,-0.4509,-0.1295,-0.1848,-0.1165,0.1686,-0.3506,-0.0536,-0.0466,-0.297,-0.0578,-0.1305,-0.2105,0.0388,-0.2768,0.1489,-0.1916,-0.6499,-0.0268,-0.3135,0.0298,0.3657,-0.1621,0.2382,0.9142,0.0011,-0.4893,-1.2511,-0.1548,-1.1748,-0.1156,-0.2535,0.099,-0.3066,1.1137,-0.3603,0.2501,-0.197,0.096,-0.5916,-0.2339,-0.5068,0.3709,-0.1607,1.4202],[0.2291,1.0233,-0.2499,-0.0888,-0.2108,0.5758,-1.0617,-0.4056,-0.0855,0.0765,-0.3316,-0.1477,1.0946,0.0447,0.5399,-0.631,-0.1366,-0.3156,-0.3425,-0.01,0.907,-0.1251,-0.3418,0.0837,-0.172,0.9857,0.1173,0.2707,-0.2535,-0.1241,-0.1266,-0.2397,0.0025,1.017,-0.7742,-0.1051,1.415,0.201,0.2182,-0.0648,0.1444,0.6249,-0.7522,-0.5753,0.3456,0.9784,0.4978,-0.1537,0.2879,0.1503,-0.1622,0.1437,-0.065,-1.7656,-0.584,0.2036,0.0794,-0.1448,1.034,-0.1632,0.0272,-0.6161,-0.2871,-0.2547],[-0.3219,-0.3531,-0.4037,0.0121,0.6853,0.5482,0.3327,-0.1674,-0.1539,0.0514,0.338,0.1888,-0.5731,-0.2015,-0.9634,0.4528,-0.1298,-0.0394,0.2498,-0.0995,-0.5355,0.1627,-0.0658,0.1176,-0.1031,-0.6567,-0.6736,-0.7098,-0.1546,-0.1928,-0.2251,-0.2551,0.0932,-0.7711,0.3173,-0.0601,-0.0785,-0.0179,0.4262,0.0926,-0.2124,-0.3893,0.3363,0.0494,0.0214,-0.6011,-0.9093,-0.3693,1.1042,-0.1558,-0.0051,0.0402,-0.2815,1.5835,0.7174,-0.1628,-0.1507,-0.0305,1.0215,-0.0671,0.0798,-0.9506,-0.3854,-1.056],[0.0536,-0.2155,-0.2425,0.3172,-0.046,-0.6886,-0.4711,0.1305,-0.0618,-0.0373,0.1403,0.1583,0.5468,-0.0699,-0.2369,-0.2134,0.1585,-0.5956,-0.1885,-0.9588,0.1593,-0.1514,0.3424,1.2388,-0.0475,1.3453,0.5231,0.9217,-0.0233,-0.1632,-0.3503,0.0626,0.0497,-0.4991,1.0819,0.0781,0.1573,0.0427,-0.1866,-0.2204,-0.5437,-0.1855,0.9894,-0.4725,-0.3847,0.1288,-0.2255,1.6468,-0.3768,-0.2121,0.1685,-0.1515,-0.0245,0.8288,-1.6656,-0.8087,-0.298,-0.0341,1.0785,-0.1469,0.0031,0.2226,0.0072,-0.3154]],
+b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
+};
+        var trainData = [], W1, b1, W2, b2;
+        var accHist = [], drawGrid = new Float32Array(2500);
+        var drawing = false;
+
+        function downsample(grid50, normalize) {
+          var out = new Float32Array(100);
+          for (var by = 0; by < 10; by++) {
+            for (var bx = 0; bx < 10; bx++) {
+              var sum = 0;
+              for (var dy = 0; dy < 5; dy++) {
+                for (var dx = 0; dx < 5; dx++) {
+                  sum += grid50[(by * 5 + dy) * 50 + (bx * 5 + dx)];
+                }
+              }
+              out[by * 10 + bx] = sum / 25;
+            }
+          }
+          if (normalize) {
+            var mx = 0;
+            for (var i = 0; i < 100; i++) if (out[i] > mx) mx = out[i];
+            if (mx > 0.01) for (var i = 0; i < 100; i++) out[i] = Math.min(1, out[i] / mx);
+          }
+          return out;
+        }
+
+        function makeNoisyDigit(d) {
+          var INP = 100, DW = 10, DH = 10;
+          var src = DIGITS[d];
+          var out = new Array(INP);
+          for (var i = 0; i < INP; i++) out[i] = src[i];
+          var shiftX = Math.floor(Math.random() * 3) - 1;
+          var shiftY = Math.floor(Math.random() * 3) - 1;
+          if (shiftX !== 0 || shiftY !== 0) {
+            var shifted = new Array(INP);
+            for (var i = 0; i < INP; i++) shifted[i] = 0;
+            for (var gy = 0; gy < DH; gy++) {
+              for (var gx = 0; gx < DW; gx++) {
+                var sy = gy + shiftY, sx = gx + shiftX;
+                if (sy >= 0 && sy < DH && sx >= 0 && sx < DW) {
+                  shifted[sy * DW + sx] = out[gy * DW + gx];
+                }
+              }
+            }
+            out = shifted;
+          }
+          // Add soft edges
+          var blurred = new Array(INP);
+          for (var i = 0; i < INP; i++) blurred[i] = out[i];
+          for (var gy = 0; gy < DH; gy++) {
+            for (var gx = 0; gx < DW; gx++) {
+              if (out[gy * DW + gx] > 0.5) {
+                for (var dy = -1; dy <= 1; dy++) {
+                  for (var dx = -1; dx <= 1; dx++) {
+                    if (dx === 0 && dy === 0) continue;
+                    var ny = gy + dy, nx = gx + dx;
+                    if (ny >= 0 && ny < DH && nx >= 0 && nx < DW) {
+                      var idx = ny * DW + nx;
+                      blurred[idx] = Math.max(blurred[idx], 0.3);
+                    }
+                  }
+                }
+              }
+            }
+          }
+          // Add noise
+          for (var i = 0; i < INP; i++) {
+            blurred[i] += (Math.random() - 0.5) * 0.15;
+            blurred[i] = Math.max(0, Math.min(1, blurred[i]));
+          }
+          return blurred;
+        }
+
+        function randn() { var u = 1 - Math.random(), v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+
+        function generateData() {
+          trainData = [];
+          if (problemIdx === 0) {
+            for (var d = 0; d < 10; d++)
+              for (var s = 0; s < 15; s++) trainData.push({ inp: makeNoisyDigit(d), label: d });
+          } else if (problemIdx === 1) {
+            /* Tumor: Benign center (0.3,0.3), Malignant center (0.7,0.7) */
+            for (var i = 0; i < 60; i++) {
+              var cls = i < 30 ? 0 : 1;
+              var cx = cls === 0 ? 0.3 : 0.7, cy = cls === 0 ? 0.3 : 0.7;
+              var x = Math.max(0, Math.min(1, cx + randn() * 0.18));
+              var y = Math.max(0, Math.min(1, cy + randn() * 0.18));
+              trainData.push({ inp: [x, y], label: cls });
+            }
+          } else {
+            /* Fraud: Legit center (0.3,0.35), Fraud center (0.7,0.65) */
+            for (var i = 0; i < 60; i++) {
+              var cls = i < 30 ? 0 : 1;
+              var cx = cls === 0 ? 0.3 : 0.7, cy = cls === 0 ? 0.35 : 0.65;
+              var spread = cls === 0 ? 0.4 : 0.25;
+              var x = Math.max(0, Math.min(1, cx + randn() * spread));
+              var y = Math.max(0, Math.min(1, cy + randn() * spread));
+              trainData.push({ inp: [x, y], label: cls });
+            }
+          }
+        }
+
+        function rand() { return (Math.random() - 0.5) * 0.5; }
+        function initWeights() {
+          var H = getH();
+          if (problemIdx === 0 && PRETRAINED && H === PRETRAINED.W1.length && curINP === PRETRAINED.W1[0].length) {
+            W1 = PRETRAINED.W1.map(function(r) { return r.slice(); });
+            b1 = PRETRAINED.b1.slice();
+            W2 = PRETRAINED.W2.map(function(r) { return r.slice(); });
+            b2 = PRETRAINED.b2.slice();
+            return;
+          }
+          W1 = []; b1 = [];
+          for (var i = 0; i < H; i++) { var r = []; for (var j = 0; j < curINP; j++) r.push(rand()); W1.push(r); b1.push(0); }
+          W2 = []; b2 = [];
+          for (var k = 0; k < curNCLASS; k++) { var r = []; for (var j = 0; j < H; j++) r.push(rand()); W2.push(r); b2.push(0); }
+        }
+
+        function relu(x) { return x > 0 ? x : 0.01 * x; }
+        function dreluFn(x) { return x > 0 ? 1 : 0.01; }
+        function softmax(a) { var m = -Infinity; for (var i = 0; i < a.length; i++) if (a[i] > m) m = a[i]; var s = 0, o = []; for (var i = 0; i < a.length; i++) { o.push(Math.exp(a[i] - m)); s += o[i]; } for (var i = 0; i < o.length; i++) o[i] /= s; return o; }
+
+        function forward(inp) {
+          var h = [];
+          for (var j = 0; j < W1.length; j++) { var s = b1[j]; for (var k = 0; k < curINP; k++) s += W1[j][k] * inp[k]; h.push(relu(s)); }
+          var logits = [];
+          for (var c = 0; c < curNCLASS; c++) { var s = b2[c]; for (var j = 0; j < h.length; j++) s += W2[c][j] * h[j]; logits.push(s); }
+          return { h: h, probs: softmax(logits) };
+        }
+
+        function trainEpochs(n) {
+          var lr = getLR();
+          for (var e = 0; e < n; e++) {
+            for (var i = 0; i < trainData.length; i++) {
+              var inp = trainData[i].inp, label = trainData[i].label;
+              var fwd = forward(inp), probs = fwd.probs, h = fwd.h;
+              var dL = []; for (var c = 0; c < curNCLASS; c++) dL.push(probs[c] - (c === label ? 1 : 0));
+              var dH = [];
+              for (var j = 0; j < W1.length; j++) {
+                var s = 0; for (var c = 0; c < curNCLASS; c++) s += dL[c] * W2[c][j];
+                var raw = b1[j]; for (var k = 0; k < curINP; k++) raw += W1[j][k] * inp[k];
+                dH.push(s * dreluFn(raw));
+              }
+              for (var c = 0; c < curNCLASS; c++) { for (var j = 0; j < W1.length; j++) W2[c][j] -= lr * dL[c] * h[j]; b2[c] -= lr * dL[c]; }
+              for (var j = 0; j < W1.length; j++) { for (var k = 0; k < curINP; k++) W1[j][k] -= lr * dH[j] * inp[k]; b1[j] -= lr * dH[j]; }
+            }
+          }
+          epoch += n;
+        }
+
+        function accuracy() {
+          var c = 0;
+          for (var i = 0; i < trainData.length; i++) {
+            var p = forward(trainData[i].inp).probs, pr = 0;
+            for (var k = 1; k < p.length; k++) if (p[k] > p[pr]) pr = k;
+            if (pr === trainData[i].label) c++;
+          }
+          return c / trainData.length;
+        }
+
+        function predict() {
+          var hasContent = false;
+          for (var i = 0; i < 2500; i++) if (drawGrid[i] > 0.1) { hasContent = true; break; }
+          if (!hasContent) return null;
+          return forward(downsample(drawGrid, true)).probs;
+        }
+
+        function paintCell(gx, gy) {
+          if (gx < 0 || gx >= GW || gy < 0 || gy >= GH) return;
+          // Center: 1.0
+          drawGrid[gy * GW + gx] = 1;
+          // Distance 1 orthogonal: 0.6
+          for (var d = 0; d < 4; d++) {
+            var dx1 = [0, 0, -1, 1][d], dy1 = [-1, 1, 0, 0][d];
+            var nx = gx + dx1, ny = gy + dy1;
+            if (nx >= 0 && nx < GW && ny >= 0 && ny < GH) drawGrid[ny * GW + nx] = Math.max(drawGrid[ny * GW + nx], 0.6);
+          }
+          // Distance 1 diagonal: 0.35
+          for (var d = 0; d < 4; d++) {
+            var dx1 = [-1, -1, 1, 1][d], dy1 = [-1, 1, -1, 1][d];
+            var nx = gx + dx1, ny = gy + dy1;
+            if (nx >= 0 && nx < GW && ny >= 0 && ny < GH) drawGrid[ny * GW + nx] = Math.max(drawGrid[ny * GW + nx], 0.35);
+          }
+          // Distance 2 orthogonal: 0.15
+          for (var d = 0; d < 4; d++) {
+            var dx2 = [0, 0, -2, 2][d], dy2 = [-2, 2, 0, 0][d];
+            var nx = gx + dx2, ny = gy + dy2;
+            if (nx >= 0 && nx < GW && ny >= 0 && ny < GH) drawGrid[ny * GW + nx] = Math.max(drawGrid[ny * GW + nx], 0.15);
+          }
+        }
+
+        function canvasToGrid(e) {
+          var rect = drawC.getBoundingClientRect();
+          var mx = (e.clientX - rect.left) * (drawC.width / rect.width);
+          var my = (e.clientY - rect.top) * (drawC.height / rect.height);
+          var pixSz = Math.min(Math.floor((drawC.width * 0.6) / GW), Math.floor((drawC.height - 20) / GH));
+          var ox = 10, oy = (drawC.height - GH * pixSz) / 2;
+          var gx = Math.floor((mx - ox) / pixSz), gy = Math.floor((my - oy) / pixSz);
+          return { gx: gx, gy: gy };
+        }
+
+        drawC.addEventListener('mousedown', function (e) { if (problemIdx !== 0) return; drawing = true; var g = canvasToGrid(e); paintCell(g.gx, g.gy); drawDrawCanvas(); });
+        drawC.addEventListener('mousemove', function (e) { if (problemIdx !== 0 || !drawing) return; var g = canvasToGrid(e); paintCell(g.gx, g.gy); drawDrawCanvas(); });
+        drawC.addEventListener('mouseup', function () { drawing = false; });
+        drawC.addEventListener('mouseleave', function () { drawing = false; });
+        drawC.addEventListener('touchstart', function (e) { if (problemIdx !== 0) return; e.preventDefault(); drawing = true; var t = e.touches[0]; var g = canvasToGrid(t); paintCell(g.gx, g.gy); drawDrawCanvas(); }, { passive: false });
+        drawC.addEventListener('touchmove', function (e) { if (problemIdx !== 0) return; e.preventDefault(); if (!drawing) return; var t = e.touches[0]; var g = canvasToGrid(t); paintCell(g.gx, g.gy); drawDrawCanvas(); }, { passive: false });
+        drawC.addEventListener('touchend', function () { drawing = false; });
+
+        function drawDrawCanvas() {
+          var w = drawC.width, h = drawC.height;
+          drawCtx.clearRect(0, 0, w, h); drawCtx.fillStyle = '#1e1e2e'; drawCtx.fillRect(0, 0, w, h);
+
+          var pixSz = Math.min(Math.floor((w * 0.6) / GW), Math.floor((h - 20) / GH));
+          var ox = 10, oy = (h - GH * pixSz) / 2;
+          var gap = pixSz > 8 ? 1 : 0;
+
+          for (var gy = 0; gy < GH; gy++) {
+            for (var gx = 0; gx < GW; gx++) {
+              var v = drawGrid[gy * GW + gx];
+              if (v > 0.05) drawCtx.fillStyle = 'rgba(96,165,250,' + (0.2 + v * 0.8) + ')';
+              else drawCtx.fillStyle = '#252536';
+              drawCtx.fillRect(ox + gx * pixSz, oy + gy * pixSz, pixSz - gap, pixSz - gap);
+            }
+          }
+
+          drawCtx.strokeStyle = '#3f3f46'; drawCtx.lineWidth = 0.5;
+          for (var gx = 0; gx <= GW; gx++) { drawCtx.beginPath(); drawCtx.moveTo(ox + gx * pixSz - 1, oy); drawCtx.lineTo(ox + gx * pixSz - 1, oy + GH * pixSz); drawCtx.stroke(); }
+          for (var gy = 0; gy <= GH; gy++) { drawCtx.beginPath(); drawCtx.moveTo(ox, oy + gy * pixSz - 1); drawCtx.lineTo(ox + GW * pixSz, oy + gy * pixSz - 1); drawCtx.stroke(); }
+
+          var probs = predict();
+          if (probs) { lastFwd = forward(downsample(drawGrid, true)); drawGraph(); }
+          var predX = ox + GW * pixSz + 20;
+          var rightW = w - predX - 10;
+          if (probs) {
+            var best = 0; for (var c = 1; c < 10; c++) if (probs[c] > probs[best]) best = c;
+            drawCtx.fillStyle = '#60a5fa'; drawCtx.font = '700 54px Inter,sans-serif'; drawCtx.textAlign = 'center'; drawCtx.textBaseline = 'middle';
+            drawCtx.fillText('' + best, predX + rightW * 0.25, oy + 50);
+            drawCtx.fillStyle = '#6c7086'; drawCtx.font = '500 11px Inter,sans-serif';
+            drawCtx.fillText((probs[best] * 100).toFixed(1) + '% confidence', predX + rightW * 0.25, oy + 85);
+
+            var barW = Math.max(8, Math.floor((rightW * 0.55) / 10 - 4)), barMax = h - 60, barOx = predX + rightW * 0.48;
+            for (var d = 0; d < 10; d++) {
+              var bx = barOx + d * (barW + 3), bh = probs[d] * barMax * 0.7;
+              var by = h - 30 - bh;
+              drawCtx.fillStyle = d === best ? 'rgba(96,165,250,0.8)' : 'rgba(96,165,250,0.2)';
+              drawCtx.fillRect(bx, by, barW, bh);
+              drawCtx.fillStyle = d === best ? '#e4e4e7' : '#6c7086';
+              drawCtx.font = '600 9px Inter,sans-serif'; drawCtx.textAlign = 'center';
+              drawCtx.fillText('' + d, bx + barW / 2, h - 16);
+            }
+          } else {
+            drawCtx.fillStyle = '#6c7086'; drawCtx.font = '500 12px Inter,sans-serif'; drawCtx.textAlign = 'center';
+            drawCtx.fillText('Draw a digit on the grid', predX + rightW / 2, h / 2);
+            drawCtx.fillText('then train the network', predX + rightW / 2, h / 2 + 20);
+          }
+        }
+
+        function drawHeatmap() {
+          var w = drawC.width, h = drawC.height;
+          var pad = 35;
+          var gw = w - pad * 2, gh = h - pad * 2;
+
+          /* Draw heatmap (sample every 4 pixels for performance) */
+          var imgData = drawCtx.createImageData(w, h);
+          var data = imgData.data;
+          for (var py = pad; py < pad + gh; py += 4) {
+            for (var px = pad; px < pad + gw; px += 4) {
+              var inp = [(px - pad) / gw, (py - pad) / gh];
+              var probs = forward(inp).probs;
+              var p = probs[1]; /* probability of class 1 */
+              var r, g, b;
+              if (problemIdx === 1) {
+                /* Blue to Red (tumor) */
+                r = Math.round(30 + p * 200);
+                g = Math.round(30 + (1 - Math.abs(p - 0.5) * 2) * 40);
+                b = Math.round(30 + (1 - p) * 200);
+              } else {
+                /* Green to Red (fraud) */
+                r = Math.round(30 + p * 200);
+                g = Math.round(30 + (1 - p) * 200);
+                b = 30;
+              }
+              for (var dy = 0; dy < 4 && py + dy < pad + gh; dy++) {
+                for (var dx = 0; dx < 4 && px + dx < pad + gw; dx++) {
+                  var idx = ((py + dy) * w + (px + dx)) * 4;
+                  data[idx] = r; data[idx + 1] = g; data[idx + 2] = b; data[idx + 3] = 255;
+                }
+              }
+            }
+          }
+          /* Fill padding area with background */
+          for (var py = 0; py < h; py++) {
+            for (var px = 0; px < w; px++) {
+              if (px < pad || px >= pad + gw || py < pad || py >= pad + gh) {
+                var idx = (py * w + px) * 4;
+                data[idx] = 30; data[idx + 1] = 30; data[idx + 2] = 46; data[idx + 3] = 255;
+              }
+            }
+          }
+          drawCtx.putImageData(imgData, 0, 0);
+
+          /* Draw data points */
+          var colors = problemIdx === 1 ? ['#60a5fa', '#f87171'] : ['#4ade80', '#f87171'];
+          var labels = problemIdx === 1 ? ['Benign', 'Malignant'] : ['Legit', 'Fraud'];
+          for (var i = 0; i < trainData.length; i++) {
+            var d = trainData[i];
+            var px = pad + d.inp[0] * gw, py = pad + d.inp[1] * gh;
+            drawCtx.beginPath(); drawCtx.arc(px, py, 4, 0, Math.PI * 2);
+            drawCtx.fillStyle = colors[d.label]; drawCtx.fill();
+            drawCtx.strokeStyle = '#1e1e2e'; drawCtx.lineWidth = 1; drawCtx.stroke();
+          }
+
+          /* Axis labels */
+          var axisLabels = problemIdx === 1 ? ['Cell radius', 'Texture'] : ['Amount', 'Frequency'];
+          drawCtx.fillStyle = '#6c7086'; drawCtx.font = '500 9px Inter,sans-serif'; drawCtx.textAlign = 'center';
+          drawCtx.fillText(axisLabels[0], pad + gw / 2, h - 6);
+          drawCtx.save(); drawCtx.translate(12, pad + gh / 2); drawCtx.rotate(-Math.PI / 2);
+          drawCtx.fillText(axisLabels[1], 0, 0); drawCtx.restore();
+
+          /* Legend */
+          for (var c = 0; c < 2; c++) {
+            var lx = pad + gw - 90 + c * 60;
+            drawCtx.beginPath(); drawCtx.arc(lx, pad - 14, 4, 0, Math.PI * 2);
+            drawCtx.fillStyle = colors[c]; drawCtx.fill();
+            drawCtx.fillStyle = '#a1a1aa'; drawCtx.font = '500 8px Inter,sans-serif'; drawCtx.textAlign = 'left';
+            drawCtx.fillText(labels[c], lx + 8, pad - 11);
+          }
+        }
+
+        function drawTopCanvas() {
+          if (problemIdx === 0) drawDrawCanvas();
+          else drawHeatmap();
+        }
+
+        function drawNetwork(ctx, ox, oy, nw, nh) {
+          if (!lastFwd) return;
+          var h_acts = lastFwd.h;
+          var probs = lastFwd.probs;
+          var H = h_acts.length;
+          var nOut = probs.length;
+
+          /* Layout three columns */
+          var colX = [ox + nw * 0.12, ox + nw * 0.5, ox + nw * 0.88];
+
+          /* Column labels */
+          ctx.fillStyle = '#6c7086'; ctx.font = '500 8px Inter,sans-serif'; ctx.textAlign = 'center';
+          ctx.fillText('Input', colX[0], oy + 10);
+          ctx.fillText('Hidden', colX[1], oy + 10);
+          ctx.fillText('Output', colX[2], oy + 10);
+
+          /* --- Input layer --- */
+          var inpNodes = [];
+          if (problemIdx === 0) {
+            /* 7x4 miniature grid representing 28 cells of the input */
+            var miniCols = 7, miniRows = 4;
+            var cellSz = Math.min(4, nw * 0.08 / miniCols);
+            var miniW = miniCols * (cellSz + 1), miniH = miniRows * (cellSz + 1);
+            var miX = colX[0] - miniW / 2, miY = oy + (nh - 10) / 2 + 10 - miniH / 2;
+            for (var mr = 0; mr < miniRows; mr++) {
+              for (var mc = 0; mc < miniCols; mc++) {
+                /* Sample from the drawGrid: map miniRow/miniCol to grid position */
+                var gr = Math.floor(mr * (GH / miniRows));
+                var gc = Math.floor(mc * (GW / miniCols));
+                var val = drawGrid[gr * GW + gc];
+                var cx = miX + mc * (cellSz + 1) + cellSz / 2;
+                var cy = miY + mr * (cellSz + 1) + cellSz / 2;
+                ctx.beginPath(); ctx.arc(cx, cy, cellSz / 2, 0, Math.PI * 2);
+                if (val > 0.05) {
+                  ctx.fillStyle = 'rgba(96,165,250,' + (0.2 + val * 0.8) + ')';
+                } else {
+                  ctx.fillStyle = '#2a2a3a';
+                }
+                ctx.fill();
+                inpNodes.push({ x: cx, y: cy });
+              }
+            }
+          } else {
+            /* 2 input nodes for P1/P2 */
+            var iSpacing = Math.min((nh - 30) / 3, 40);
+            var iStartY = oy + (nh + 10) / 2 - iSpacing / 2;
+            for (var ii = 0; ii < 2; ii++) {
+              var iny = iStartY + ii * iSpacing;
+              ctx.beginPath(); ctx.arc(colX[0], iny, 5, 0, Math.PI * 2);
+              ctx.fillStyle = '#4a5568'; ctx.fill();
+              ctx.strokeStyle = 'rgba(96,165,250,0.4)'; ctx.lineWidth = 1; ctx.stroke();
+              inpNodes.push({ x: colX[0], y: iny });
+              /* label */
+              ctx.fillStyle = '#6c7086'; ctx.font = '500 7px Inter,sans-serif'; ctx.textAlign = 'center';
+              ctx.fillText('x' + (ii + 1), colX[0], iny + 12);
+            }
+          }
+
+          /* --- Hidden layer --- */
+          var maxH = Math.min(H, 24);
+          var hSpacing = Math.min((nh - 30) / (maxH + 1), 14);
+          var hStartY = oy + 20 + (nh - 30 - hSpacing * maxH) / 2;
+
+          /* Find max activation for normalization */
+          var maxAct = 0;
+          for (var j = 0; j < H; j++) if (h_acts[j] > maxAct) maxAct = h_acts[j];
+          if (maxAct === 0) maxAct = 1;
+
+          /* Compute hidden node positions & activations */
+          var hNodes = [];
+          for (var j = 0; j < maxH; j++) {
+            hNodes.push({ x: colX[1], y: hStartY + j * hSpacing, act: h_acts[j] / maxAct });
+          }
+
+          /* --- Output layer --- */
+          var oSpacing = Math.min((nh - 30) / (nOut + 1), 20);
+          var oStartY = oy + 20 + (nh - 30 - oSpacing * nOut) / 2;
+          var best = 0;
+          for (var c = 1; c < nOut; c++) if (probs[c] > probs[best]) best = c;
+
+          var oNodes = [];
+          for (var c = 0; c < nOut; c++) {
+            oNodes.push({ x: colX[2], y: oStartY + c * oSpacing, prob: probs[c], isBest: c === best, label: c });
+          }
+
+          /* --- Draw connections (hidden -> output) from top 5 most active hidden nodes --- */
+          var sortedH = [];
+          for (var j = 0; j < maxH; j++) sortedH.push({ idx: j, act: hNodes[j].act });
+          sortedH.sort(function (a, b) { return b.act - a.act; });
+          var topK = Math.min(5, sortedH.length);
+
+          for (var ti = 0; ti < topK; ti++) {
+            var hj = sortedH[ti].idx;
+            var hn = hNodes[hj];
+            if (hn.act < 0.05) continue;
+            for (var c = 0; c < nOut; c++) {
+              var on = oNodes[c];
+              var wVal = W2[c] && W2[c][hj] ? W2[c][hj] : 0;
+              var absW = Math.abs(wVal);
+              var alpha = Math.min(0.5, absW * 0.8) * hn.act;
+              if (alpha < 0.02) continue;
+              ctx.beginPath();
+              ctx.moveTo(hn.x + 4, hn.y);
+              ctx.lineTo(on.x - 5, on.y);
+              ctx.strokeStyle = wVal >= 0
+                ? 'rgba(96,165,250,' + alpha + ')'
+                : 'rgba(248,113,113,' + alpha + ')';
+              ctx.lineWidth = 0.7;
+              ctx.stroke();
+            }
+          }
+
+          /* --- Draw connections (input -> hidden) - sparse, from top active hidden nodes --- */
+          if (problemIdx !== 0 && inpNodes.length <= 4) {
+            for (var ti = 0; ti < topK; ti++) {
+              var hj = sortedH[ti].idx;
+              var hn = hNodes[hj];
+              if (hn.act < 0.05) continue;
+              for (var ii = 0; ii < inpNodes.length; ii++) {
+                var inp = inpNodes[ii];
+                var alpha = 0.12 * hn.act;
+                ctx.beginPath();
+                ctx.moveTo(inp.x + 5, inp.y);
+                ctx.lineTo(hn.x - 4, hn.y);
+                ctx.strokeStyle = 'rgba(96,165,250,' + alpha + ')';
+                ctx.lineWidth = 0.5;
+                ctx.stroke();
+              }
+            }
+          }
+
+          /* --- Draw hidden nodes --- */
+          for (var j = 0; j < maxH; j++) {
+            var hn = hNodes[j];
+            var act = hn.act;
+            var r = 3 + act * 3;
+            ctx.beginPath(); ctx.arc(hn.x, hn.y, r, 0, Math.PI * 2);
+            var bright = Math.floor(act * 200);
+            ctx.fillStyle = 'rgb(' + Math.floor(30 + bright * 0.3) + ',' + Math.floor(40 + bright * 0.5) + ',' + Math.floor(60 + bright) + ')';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(96,165,250,' + (0.2 + act * 0.6) + ')';
+            ctx.lineWidth = 1; ctx.stroke();
+          }
+          if (maxH < H) {
+            ctx.fillStyle = '#6c7086'; ctx.font = '500 7px Inter,sans-serif'; ctx.textAlign = 'center';
+            ctx.fillText('+' + (H - maxH), colX[1], hStartY + maxH * hSpacing + 8);
+          }
+
+          /* --- Draw output nodes --- */
+          for (var c = 0; c < nOut; c++) {
+            var on = oNodes[c];
+            var p = on.prob;
+            var r = 4 + p * 4;
+            ctx.beginPath(); ctx.arc(on.x, on.y, r, 0, Math.PI * 2);
+            if (on.isBest) {
+              ctx.fillStyle = 'rgba(74,222,128,' + (0.3 + p * 0.7) + ')';
+              ctx.strokeStyle = '#4ade80';
+            } else {
+              ctx.fillStyle = 'rgba(96,165,250,' + (0.1 + p * 0.5) + ')';
+              ctx.strokeStyle = 'rgba(96,165,250,0.3)';
+            }
+            ctx.fill(); ctx.lineWidth = 1.5; ctx.stroke();
+
+            /* Label */
+            ctx.fillStyle = p > 0.1 ? '#e4e4e7' : '#6c7086';
+            ctx.font = '600 8px Inter,sans-serif'; ctx.textAlign = 'left';
+            ctx.fillText('' + on.label, on.x + r + 4, on.y + 3);
+          }
+        }
+
+        function drawGraph() {
+          var w = graphC.width, h = graphC.height;
+          graphCtx.clearRect(0, 0, w, h); graphCtx.fillStyle = '#1e1e2e'; graphCtx.fillRect(0, 0, w, h);
+
+          /* Use left 55% for graph, right 40% for network diagram */
+          var fullW = w - 70; /* total usable width (50 left pad + 20 right pad) */
+          var graphFrac = lastFwd ? 0.55 : 1.0;
+          var pad = { l: 50, r: 20, t: 30, b: 35 };
+          var gw = Math.floor((w - pad.l - pad.r) * graphFrac);
+          var gh = h - pad.t - pad.b;
+
+          graphCtx.strokeStyle = '#27272a'; graphCtx.lineWidth = 1;
+          graphCtx.strokeRect(pad.l, pad.t, gw, gh);
+
+          graphCtx.fillStyle = '#6c7086'; graphCtx.font = '500 9px Inter,sans-serif'; graphCtx.textAlign = 'center';
+          graphCtx.fillText('Epoch', pad.l + gw / 2, h - 8);
+          graphCtx.save(); graphCtx.translate(14, pad.t + gh / 2); graphCtx.rotate(-Math.PI / 2);
+          graphCtx.fillText('Accuracy %', 0, 0); graphCtx.restore();
+
+          graphCtx.setLineDash([4, 4]); graphCtx.strokeStyle = '#3f3f46'; graphCtx.lineWidth = 0.5;
+          for (var p = 0; p <= 100; p += 25) {
+            var y = pad.t + gh - (p / 100) * gh;
+            graphCtx.beginPath(); graphCtx.moveTo(pad.l, y); graphCtx.lineTo(pad.l + gw, y); graphCtx.stroke();
+            graphCtx.fillStyle = '#6c7086'; graphCtx.font = '500 8px Inter,sans-serif'; graphCtx.textAlign = 'right';
+            graphCtx.fillText(p + '%', pad.l - 6, y + 3);
+          }
+          graphCtx.setLineDash([]);
+
+          if (accHist.length > 1) {
+            graphCtx.beginPath(); graphCtx.strokeStyle = '#60a5fa'; graphCtx.lineWidth = 2;
+            var n = accHist.length;
+            for (var i = 0; i < n; i++) {
+              var x = pad.l + (i / (n - 1)) * gw;
+              var y = pad.t + gh - accHist[i] * gh;
+              if (i === 0) graphCtx.moveTo(x, y); else graphCtx.lineTo(x, y);
+            }
+            graphCtx.stroke();
+
+            var lastAcc = accHist[n - 1];
+            var lx = pad.l + gw, ly = pad.t + gh - lastAcc * gh;
+            graphCtx.beginPath(); graphCtx.arc(lx, ly, 4, 0, Math.PI * 2);
+            graphCtx.fillStyle = '#60a5fa'; graphCtx.fill();
+
+            graphCtx.fillStyle = '#e4e4e7'; graphCtx.font = '600 11px Inter,sans-serif'; graphCtx.textAlign = 'right';
+            graphCtx.fillText((lastAcc * 100).toFixed(1) + '%', lx - 10, ly - 10);
+          }
+
+          graphCtx.fillStyle = '#6c7086'; graphCtx.font = '500 9px Inter,sans-serif'; graphCtx.textAlign = 'center';
+          graphCtx.fillText('Epoch: ' + epoch, pad.l + gw / 2, pad.t - 10);
+
+          if (accHist.length > 0) {
+            var lastX = pad.l + gw;
+            graphCtx.fillStyle = '#6c7086'; graphCtx.font = '500 8px Inter,sans-serif'; graphCtx.textAlign = 'center';
+            graphCtx.fillText('' + epoch, lastX, pad.t + gh + 14);
+            if (accHist.length > 1) graphCtx.fillText('0', pad.l, pad.t + gh + 14);
+          }
+
+          /* Draw network diagram on the right side */
+          if (lastFwd) {
+            var netX = pad.l + gw + 15;
+            var netW = w - netX - 5;
+            drawNetwork(graphCtx, netX, pad.t, netW, gh);
+          }
+        }
+
+        function updateLabels() {
+          if (problemIdx === 0) {
+            labelTop.textContent = 'Draw a digit';
+            clearBtn.style.display = '';
+          } else {
+            labelTop.textContent = 'Decision Boundary';
+            clearBtn.style.display = 'none';
+          }
+          labelBottom.textContent = 'Learning Progress';
+        }
+
+        function trainStep() {
+          highlight('nn', 1);
+          setTimeout(function () { highlight('nn', 2); }, 150);
+          setTimeout(function () { highlight('nn', 3); }, 300);
+          trainEpochs(50);
+          var acc = accuracy();
+          accHist.push(acc);
+          stat.textContent = 'Epoch ' + epoch + ' | Acc: ' + (acc * 100).toFixed(0) + '%';
+          /* Update lastFwd for network visualization */
+          if (problemIdx === 0) {
+            var hasContent = false;
+            for (var i = 0; i < drawGrid.length; i++) if (drawGrid[i] > 0.1) { hasContent = true; break; }
+            lastFwd = forward(hasContent ? downsample(drawGrid, true) : DIGITS[0]);
+          } else {
+            lastFwd = trainData.length > 0 ? forward(trainData[0].inp) : null;
+          }
+          drawTopCanvas(); drawGraph();
+          setTimeout(function () { highlight('nn', null); }, 500);
+        }
+
+        trainBtn.onclick = trainStep;
+        runBtn.onclick = function () { running = !running; runBtn.textContent = running ? 'Pause' : 'Auto-run'; runBtn.classList.toggle('active', running); if (running) timer = setInterval(trainStep, 500); else clearInterval(timer); };
+        clearBtn.onclick = function () { if (problemIdx !== 0) return; for (var i = 0; i < 2500; i++) drawGrid[i] = 0; drawDrawCanvas(); };
+        function fullReset() {
+          running = false; clearInterval(timer); runBtn.textContent = 'Auto-run'; runBtn.classList.remove('active');
+          epoch = 0; accHist = []; lastFwd = null;
+          /* Set network dimensions based on problem */
+          if (problemIdx === 0) { curINP = 100; curNCLASS = 10; }
+          else { curINP = 2; curNCLASS = 2; }
+          /* Clear drawing grid (P0 only) */
+          for (var i = 0; i < 2500; i++) drawGrid[i] = 0;
+          generateData(); initWeights(); highlight('nn', null);
+          /* P0 loads pre-trained weights; P1/P2 pre-train on the fly */
+          if (problemIdx !== 0) {
+            trainEpochs(200);
+          }
+          epoch = 0;
+          var startAcc = accuracy();
+          accHist = [startAcc];
+          if (trainData.length > 0) lastFwd = forward(problemIdx === 0 ? DIGITS[0] : trainData[0].inp);
+          stat.textContent = 'Pre-trained | Acc: ' + (startAcc * 100).toFixed(0) + '%';
+          updateLabels();
+          drawTopCanvas(); drawGraph();
+        }
+        resetBtn.onclick = fullReset;
+        resets.nn = function (idx) { problemIdx = idx; fullReset(); };
+        fullReset();
+      })();
+
+      /* ── Tab switching ── */
+      document.querySelectorAll('.problem-tab').forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var problem = tab.getAttribute('data-problem');
+          tab.parentElement.querySelectorAll('.problem-tab').forEach(function (t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          var item = tab.closest('.showcase-item');
+          item.querySelectorAll('.showcase-desc').forEach(function (desc) { desc.style.display = desc.getAttribute('data-problem') === problem ? '' : 'none'; });
+          var parts = problem.split('-p');
+          if (resets[parts[0]]) resets[parts[0]](parseInt(parts[1]));
+        });
+      });
+
+      window._showcaseResets = resets;
+    })();
+
+    /* ═══════════════════════════════════════════
+       SHOWCASE / CV TOGGLE
+       ═══════════════════════════════════════════ */
+    (function () {
+      var btn = document.querySelector('.showcase-toggle');
+      var showcase = document.getElementById('showcase');
+      var showing = false;
+      var inited = false;
+      var animating = false;
+
+      function getCVElements() {
+        return document.querySelectorAll('.container > header, .container > section:not(#showcase), .container > footer');
+      }
+
+      function resizeCanvases() {
+        document.querySelectorAll('.showcase-canvases canvas').forEach(function (c) {
+          var rect = c.getBoundingClientRect();
+          if (rect.width > 0 && rect.height > 0) {
+            c.width = Math.round(rect.width);
+            c.height = Math.round(rect.height);
+          }
+        });
+      }
+
+      function initShowcase() {
+        resizeCanvases();
+        if (window._showcaseResets) {
+          if (!inited) {
+            window._showcaseResets.mcts(0);
+            window._showcaseResets.ga(0);
+            window._showcaseResets.nn(0);
+            inited = true;
+          } else {
+            var tabs = showcase.querySelectorAll('.problem-tab.active');
+            tabs.forEach(function (t) {
+              var parts = t.getAttribute('data-problem').split('-p');
+              if (window._showcaseResets[parts[0]]) window._showcaseResets[parts[0]](parseInt(parts[1]));
+            });
+          }
+        }
+      }
+
+      btn.addEventListener('click', function () {
+        if (animating) return;
+        animating = true;
+        showing = !showing;
+        btn.classList.toggle('active', showing);
+
+        var rect = btn.getBoundingClientRect();
+        var x = rect.left + rect.width / 2;
+        var y = rect.top + rect.height / 2;
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var maxR = Math.ceil(Math.hypot(
+          Math.max(x, innerWidth - x),
+          Math.max(y, innerHeight - y)
+        ));
+
+        var cv = getCVElements();
+
+        var wrapper = document.createElement('div');
+        var theme = document.documentElement.getAttribute('data-theme');
+        if (theme) wrapper.setAttribute('data-theme', theme);
+        wrapper.style.cssText =
+          'position:fixed;top:0;left:0;width:100%;height:100%;' +
+          'z-index:99;pointer-events:none;overflow:hidden;' +
+          'background:var(--bg);color:var(--text);' +
+          'clip-path:circle(0px at ' + x + 'px ' + y + 'px)';
+
+        var scrollDiv = document.createElement('div');
+        scrollDiv.style.transform = 'translateY(' + (-scrollTop) + 'px)';
+        scrollDiv.appendChild(document.querySelector('.container').cloneNode(true));
+        wrapper.appendChild(scrollDiv);
+
+        if (showing) {
+          wrapper.querySelectorAll('.container > header, .container > section:not(#showcase), .container > footer').forEach(function (el) { el.style.display = 'none'; });
+          var sc = wrapper.querySelector('#showcase'); if (sc) sc.style.display = 'block';
+        } else {
+          var sc = wrapper.querySelector('#showcase'); if (sc) sc.style.display = 'none';
+          wrapper.querySelectorAll('.container > header, .container > section:not(#showcase), .container > footer').forEach(function (el) { el.style.display = ''; });
+        }
+
+        document.body.appendChild(wrapper);
+
+        requestAnimationFrame(function () {
+          wrapper.style.transition = 'clip-path 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+          wrapper.style.clipPath = 'circle(' + maxR + 'px at ' + x + 'px ' + y + 'px)';
+        });
+
+        wrapper.addEventListener('transitionend', function (e) {
+          if (e.target !== wrapper) return;
+          if (showing) {
+            cv.forEach(function (el) { el.style.display = 'none'; });
+            showcase.style.display = 'block';
+          } else {
+            showcase.style.display = 'none';
+            cv.forEach(function (el) { el.style.display = ''; });
+          }
+          window.scrollTo(0, 0);
+          wrapper.remove();
+          animating = false;
+          if (showing) setTimeout(initShowcase, 30);
         });
       });
     })();
