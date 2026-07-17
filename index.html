@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eden Rochman — Data Engineer & AI</title>
+  <meta name="description" content="Eden Rochman — Data Engineer at T-Systems (Deutsche Telekom). Open source contributor to scikit-learn, statsmodels, and OpenMC.">
+  <style>
+    :root {
+      --bg: #fafafa;
+      --text: #1a1a1a;
+      --muted: #555;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --border: #e0e0e0;
+      --card-bg: #fff;
+      --tag-bg: #eef2ff;
+      --tag-text: #3730a3;
+      --section-gap: 3rem;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--accent-hover); }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ── Hero ── */
+    header {
+      text-align: center;
+      padding: 3rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: var(--section-gap);
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    header p.subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.4rem;
+      font-size: 0.92rem;
+    }
+
+    .contact-links a,
+    .contact-links span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--muted);
+    }
+
+    .contact-links a:hover { color: var(--accent); }
+
+    .contact-links svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ── Sections ── */
+    section { margin-bottom: var(--section-gap); }
+
+    section h2 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    section h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Experience & Education cards ── */
+    .entry {
+      margin-bottom: 2rem;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .entry-header h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .entry-header .date {
+      font-size: 0.88rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .entry-meta {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0 1rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      font-style: italic;
+    }
+
+    .entry p,
+    .entry li {
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    .entry ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .entry ul li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .entry ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .thesis {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .thesis strong { font-weight: 600; color: #444; }
+
+    /* ── Tags ── */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+
+    a.tag {
+      text-decoration: none;
+      color: var(--tag-text);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    a.tag:hover {
+      background: #dbeafe;
+      color: var(--accent-hover);
+    }
+
+    /* ── Open Source ── */
+    .oss-project {
+      margin-bottom: 1.8rem;
+    }
+
+    .oss-project h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+
+    .oss-project h3 a { color: var(--text); }
+    .oss-project h3 a:hover { color: var(--accent); }
+
+    .oss-stars {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .oss-project p {
+      font-size: 0.95rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .pr-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .pr-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.82rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .pr-link:hover {
+      border-color: var(--accent);
+      background: var(--tag-bg);
+    }
+
+    .pr-status {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .pr-status.merged { background: #8957e5; }
+    .pr-status.open { background: #3fb950; }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-group h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-group .tags { margin-top: 0; }
+
+    /* ── Languages ── */
+    .lang-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .lang-item {
+      text-align: center;
+    }
+
+    .lang-item .lang-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: block;
+    }
+
+    .lang-item .lang-level {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; }
+      .container { padding: 0; }
+      header { padding-top: 0; }
+      a { color: var(--text); }
+      .pr-link { border-color: #ccc; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      .entry-header { flex-direction: column; }
+      .entry-meta { flex-direction: column; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+
+    <!-- ── Hero ── -->
+    <header>
+      <h1>Eden Rochman</h1>
+      <p class="subtitle">Data Engineer &amp; AI &middot; Open Source Contributor</p>
+      <div class="contact-links">
+        <a href="mailto:erochman@protonmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          erochman@protonmail.com
+        </a>
+        <a href="https://linkedin.com/in/edenrochman" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/EdenRochmanSharabi" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub
+        </a>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Spain &amp; Netherlands
+        </span>
+      </div>
+    </header>
+
+    <!-- ── Experience ── -->
+    <section>
+      <h2>Experience</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>T-Systems — Deutsche Telekom</h3>
+          <span class="date">2025 &ndash; Present</span>
+        </div>
+        <div class="entry-meta">
+          <span>Data Engineering & Data Science</span>
+          <span>Granada, Spain</span>
+        </div>
+        <ul>
+          <li>Designing end-to-end data infrastructure for the PUMA FTTH project (Deutsche Telekom), enabling real-time monitoring and batch analytics of fiber network deployment across thousands of households. Leveraging Python, BigQuery, DBT, and Oracle to transform raw operational data into actionable insights for field and management teams.</li>
+          <li>Developing ML and statistical models for household count prediction per building, KPI forecasting, time series analysis of deployment progress, anomaly detection on operational metrics, classification of installation outcomes, clustering of network segments by performance, and root cause analysis of field incidents. Delivering dashboards and automated reports that turn model outputs into actionable recommendations for management and field teams.</li>
+        </ul>
+        <div class="tags">
+          <a class="tag" href="https://python.org" target="_blank" rel="noopener">Python</a>
+          <a class="tag" href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">BigQuery</a>
+          <a class="tag" href="https://www.getdbt.com" target="_blank" rel="noopener">DBT</a>
+          <a class="tag" href="https://www.oracle.com" target="_blank" rel="noopener">Oracle</a>
+          <a class="tag" href="https://www.oracle.com/database/sqldeveloper/" target="_blank" rel="noopener">SQL Developer</a>
+          <a class="tag" href="https://apex.oracle.com" target="_blank" rel="noopener">Oracle APEX</a>
+          <span class="tag">SQL</span>
+          <a class="tag" href="https://www.docker.com" target="_blank" rel="noopener">Docker</a>
+          <a class="tag" href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a>
+          <a class="tag" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">JavaScript</a>
+          <span class="tag">ML</span>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>CoRoSect — European Union's Horizon</h3>
+          <span class="date">2023 &ndash; 2024</span>
+        </div>
+        <div class="entry-meta">
+          <span>Software Engineer AI</span>
+          <span>Maastricht, Netherlands</span>
+        </div>
+        <ul>
+          <li>Integrated VR and AI to enhance safety and efficiency in manufacturing, developed VR interfaces, and created AI algorithms for real-time operation visualization and workflow optimization.</li>
+        </ul>
+        <div class="tags">
+          <a class="tag" href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank" rel="noopener">C#</a>
+          <a class="tag" href="https://python.org" target="_blank" rel="noopener">Python</a>
+          <a class="tag" href="https://www.docker.com" target="_blank" rel="noopener">Docker</a>
+          <span class="tag">SQL</span>
+          <a class="tag" href="https://unity.com" target="_blank" rel="noopener">Unity</a>
+          <a class="tag" href="https://www.linux.org" target="_blank" rel="noopener">Linux</a>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Project Manager, IT, Videographer — University of Maastricht, Videoteam</h3>
+          <span class="date">2022 &ndash; 2023</span>
+        </div>
+        <div class="entry-meta">
+          <span>Project Manager</span>
+          <span>Maastricht, Netherlands</span>
+        </div>
+        <ul>
+          <li>Led technical operations for UM Videoteam Open Days, handling budgeting, equipment, and event execution. Managed a team of 10, produced visual content to boost Maastricht University's digital presence.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Institute of Migration — University of Granada</h3>
+          <span class="date">2020 &ndash; 2021</span>
+        </div>
+        <div class="entry-meta">
+          <span>Project Manager</span>
+          <span>Granada, Spain</span>
+        </div>
+        <ul>
+          <li>Organized a European security event, managing speaker outreach and full event coordination.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Education ── -->
+    <section>
+      <h2>Education</h2>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Maastricht University</h3>
+          <span class="date">Aug 2021 &ndash; Jan 2025</span>
+        </div>
+        <div class="entry-meta">
+          <span>B.Sc. Data Science and Artificial Intelligence</span>
+          <span>Maastricht, Netherlands</span>
+        </div>
+        <p class="thesis"><strong>Thesis:</strong> Optimal Planning Techniques in Multi-Agent Learning: a Solved Optimization Story</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Maastricht University</h3>
+          <span class="date">Aug 2019 &ndash; Jun 2020</span>
+        </div>
+        <div class="entry-meta">
+          <span>B.A. European Studies</span>
+          <span>Maastricht, Netherlands</span>
+        </div>
+        <p class="thesis"><strong>Thesis:</strong> How Cambridge Analytica Influences the US General Election of 2016</p>
+      </div>
+
+      <div class="entry">
+        <div class="entry-header">
+          <h3>Universidad de Granada</h3>
+          <span class="date">Sep 2017 &ndash; Jun 2021</span>
+        </div>
+        <div class="entry-meta">
+          <span>B.A. Sociology, Minor in Quantitative Data</span>
+          <span>Granada, Spain</span>
+        </div>
+        <p class="thesis"><strong>Thesis:</strong> Redistribution of Space After the Economic Crisis: An Analysis of Gentrification Processes Based on Price Dynamics <em>(under review for publication)</em></p>
+      </div>
+    </section>
+
+    <!-- ── Open Source ── -->
+    <section>
+      <h2>Open Source Contributions</h2>
+
+      <div class="oss-project">
+        <h3>
+          <a href="https://github.com/scikit-learn/scikit-learn" target="_blank" rel="noopener">scikit-learn</a>
+          <span class="oss-stars">66k+ stars</span>
+        </h3>
+        <p>Bug fixes to image patch reconstruction and SVM documentation modernization merged; additional PRs under review for feature selection, OMP clipping, ValidationCurveDisplay enhancements, and test coverage.</p>
+        <div class="pr-list">
+          <a class="pr-link" href="https://github.com/scikit-learn/scikit-learn/pull/33643" target="_blank" rel="noopener">
+            <span class="pr-status merged"></span>FIX patch reconstruction
+          </a>
+          <a class="pr-link" href="https://github.com/scikit-learn/scikit-learn/pull/34192" target="_blank" rel="noopener">
+            <span class="pr-status merged"></span>DOC SVM DecisionBoundary
+          </a>
+          <a class="pr-link" href="https://github.com/scikit-learn/scikit-learn/pull/34197" target="_blank" rel="noopener">
+            <span class="pr-status open"></span>FIX f_regression
+          </a>
+          <a class="pr-link" href="https://github.com/scikit-learn/scikit-learn/pull/34193" target="_blank" rel="noopener">
+            <span class="pr-status open"></span>FIX OMP clipping
+          </a>
+          <a class="pr-link" href="https://github.com/scikit-learn/scikit-learn/pull/34204" target="_blank" rel="noopener">
+            <span class="pr-status open"></span>ENH ValidationCurveDisplay
+          </a>
+          <a class="pr-link" href="https://github.com/scikit-learn/scikit-learn/pull/34185" target="_blank" rel="noopener">
+            <span class="pr-status open"></span>TST global_random_seed
+          </a>
+        </div>
+      </div>
+
+      <div class="oss-project">
+        <h3>
+          <a href="https://github.com/statsmodels/statsmodels" target="_blank" rel="noopener">statsmodels</a>
+          <span class="oss-stars">11.5k+ stars</span>
+        </h3>
+        <p>Merged fixes for dead code in the GLM fitting pipeline and an L-BFGS-B optimizer bug ignoring the disp flag; additional PRs under review for influence diagnostics and meta-analysis plot forwarding.</p>
+        <div class="pr-list">
+          <a class="pr-link" href="https://github.com/statsmodels/statsmodels/pull/9826" target="_blank" rel="noopener">
+            <span class="pr-status merged"></span>BUG/CLN dead code GLM
+          </a>
+          <a class="pr-link" href="https://github.com/statsmodels/statsmodels/pull/9823" target="_blank" rel="noopener">
+            <span class="pr-status merged"></span>BUG L-BFGS-B disp flag
+          </a>
+          <a class="pr-link" href="https://github.com/statsmodels/statsmodels/pull/9830" target="_blank" rel="noopener">
+            <span class="pr-status open"></span>FIX GLMInfluence
+          </a>
+          <a class="pr-link" href="https://github.com/statsmodels/statsmodels/pull/9829" target="_blank" rel="noopener">
+            <span class="pr-status open"></span>BUG plot_forest ax
+          </a>
+        </div>
+      </div>
+
+      <div class="oss-project">
+        <h3>
+          <a href="https://github.com/openmc-dev/openmc" target="_blank" rel="noopener">OpenMC</a>
+          <span class="oss-stars">1k+ stars</span>
+        </h3>
+        <p>Merged implementation of coordinate lookup for SphericalMesh and chain parameter for activity data; additional PRs under review for collision count preservation during particle splitting and lxml size-limit warnings.</p>
+        <div class="pr-list">
+          <a class="pr-link" href="https://github.com/openmc-dev/openmc/pull/3919" target="_blank" rel="noopener">
+            <span class="pr-status merged"></span>SphericalMesh coords
+          </a>
+          <a class="pr-link" href="https://github.com/openmc-dev/openmc/pull/3957" target="_blank" rel="noopener">
+            <span class="pr-status merged"></span>Activity chain param
+          </a>
+          <a class="pr-link" href="https://github.com/openmc-dev/openmc/pull/3958" target="_blank" rel="noopener">
+            <span class="pr-status open"></span>Collision count split
+          </a>
+          <a class="pr-link" href="https://github.com/openmc-dev/openmc/pull/3953" target="_blank" rel="noopener">
+            <span class="pr-status open"></span>lxml size warning
+          </a>
+          <a class="pr-link" href="https://github.com/openmc-dev/openmc/pull/3956" target="_blank" rel="noopener">
+            <span class="pr-status open"></span>Model description
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skills ── -->
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Data &amp; ML</h3>
+          <div class="tags">
+            <a class="tag" href="https://python.org" target="_blank" rel="noopener">Python</a>
+            <span class="tag">SQL</span>
+            <a class="tag" href="https://cloud.google.com/bigquery" target="_blank" rel="noopener">BigQuery</a>
+            <a class="tag" href="https://www.getdbt.com" target="_blank" rel="noopener">DBT</a>
+            <a class="tag" href="https://www.tensorflow.org" target="_blank" rel="noopener">TensorFlow</a>
+            <a class="tag" href="https://pytorch.org" target="_blank" rel="noopener">PyTorch</a>
+            <a class="tag" href="https://scikit-learn.org" target="_blank" rel="noopener">Scikit-Learn</a>
+            <a class="tag" href="https://numpy.org" target="_blank" rel="noopener">NumPy</a>
+            <a class="tag" href="https://pandas.pydata.org" target="_blank" rel="noopener">Pandas</a>
+            <a class="tag" href="https://www.r-project.org" target="_blank" rel="noopener">R</a>
+            <a class="tag" href="https://www.sas.com" target="_blank" rel="noopener">SAS</a>
+            <a class="tag" href="https://www.ibm.com/spss" target="_blank" rel="noopener">SPSS</a>
+            <a class="tag" href="https://powerbi.microsoft.com" target="_blank" rel="noopener">Power BI</a>
+            <a class="tag" href="https://www.mathworks.com/products/matlab.html" target="_blank" rel="noopener">Matlab</a>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Engineering</h3>
+          <div class="tags">
+            <a class="tag" href="https://www.docker.com" target="_blank" rel="noopener">Docker</a>
+            <a class="tag" href="https://cloud.google.com" target="_blank" rel="noopener">Google Cloud</a>
+            <a class="tag" href="https://aws.amazon.com" target="_blank" rel="noopener">AWS</a>
+            <a class="tag" href="https://azure.microsoft.com" target="_blank" rel="noopener">Azure</a>
+            <a class="tag" href="https://git-scm.com" target="_blank" rel="noopener">Git</a>
+            <a class="tag" href="https://www.linux.org" target="_blank" rel="noopener">Linux</a>
+            <a class="tag" href="https://www.oracle.com" target="_blank" rel="noopener">Oracle</a>
+            <a class="tag" href="https://dev.java" target="_blank" rel="noopener">Java</a>
+            <a class="tag" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener">JavaScript</a>
+            <a class="tag" href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank" rel="noopener">C#</a>
+            <a class="tag" href="https://www.latex-project.org" target="_blank" rel="noopener">LaTeX</a>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>LLM &amp; AI Frameworks</h3>
+          <div class="tags">
+            <a class="tag" href="https://www.langchain.com" target="_blank" rel="noopener">LangChain</a>
+            <a class="tag" href="https://www.llamaindex.ai" target="_blank" rel="noopener">LlamaIndex</a>
+            <a class="tag" href="https://learn.microsoft.com/en-us/semantic-kernel/" target="_blank" rel="noopener">Semantic Kernel</a>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <div class="lang-list">
+            <div class="lang-item">
+              <span class="lang-name">English</span>
+              <span class="lang-level">Proficient</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-name">Spanish</span>
+              <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-item">
+              <span class="lang-name">Hebrew</span>
+              <span class="lang-level">Native</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Eden Rochman &middot; <a href="mailto:erochman@protonmail.com">erochman@protonmail.com</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>
