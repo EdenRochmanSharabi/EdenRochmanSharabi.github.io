@@ -2638,19 +2638,19 @@
           ctx.beginPath(); ctx.ellipse(w / 2, h / 2, w * 0.44 + 3, h * 0.40 + 3, 0, 0, Math.PI * 2);
           ctx.stroke();
 
-          var cw = Math.min(36, w * 0.065), ch = cw * 1.45;
+          var cardW = Math.min(36, w * 0.065), cardH = cardW * 1.45;
           var phaseNames = ['Pre-flop', 'Flop', 'Turn', 'River', 'Showdown'];
 
           // Community cards
-          var totalComW = 5 * cw + 4 * 5;
+          var totalComW = 5 * cardW + 4 * 5;
           var comX = w / 2 - totalComW / 2;
-          var comY = h / 2 - ch / 2 - 5;
+          var comY = h / 2 - cardH / 2 - 5;
           for (var i = 0; i < st.community.length; i++) {
-            pokerDrawCard(ctx, st.community[i], comX + i * (cw + 5), comY, cw, ch, false);
+            pokerDrawCard(ctx, st.community[i], comX + i * (cardW + 5), comY, cardW, cardH, false);
           }
           ctx.setLineDash([3, 3]); ctx.strokeStyle = '#2d5a3e'; ctx.lineWidth = 1;
           for (var i = st.community.length; i < 5; i++) {
-            ctx.beginPath(); ctx.roundRect(comX + i * (cw + 5), comY, cw, ch, 5); ctx.stroke();
+            ctx.beginPath(); ctx.roundRect(comX + i * (cardW + 5), comY, cardW, cardH, 5); ctx.stroke();
           }
           ctx.setLineDash([]);
 
@@ -2661,7 +2661,7 @@
 
           // Phase
           ctx.fillStyle = '#94a3b8'; ctx.font = '500 ' + Math.floor(h * 0.03) + 'px Inter,sans-serif';
-          ctx.fillText(phaseNames[st.phase], w / 2, comY + ch + 16);
+          ctx.fillText(phaseNames[st.phase], w / 2, comY + cardH + 16);
 
           // Players
           var positions = pokerPlayerPositions(st.nPlayers, w, h);
@@ -2678,7 +2678,7 @@
 
             // Player chip/avatar circle
             var circR = Math.min(14, w * 0.025);
-            ctx.beginPath(); ctx.arc(pos.x, pos.y - ch / 2 - circR - 8, circR, 0, Math.PI * 2);
+            ctx.beginPath(); ctx.arc(pos.x, pos.y - cardH / 2 - circR - 8, circR, 0, Math.PI * 2);
             ctx.fillStyle = isBust ? '#7f1d1d' : isActive ? '#fbbf24' : isFolded ? '#3f3f46' : pColors[pi % pColors.length];
             ctx.fill();
             if (isActive) { ctx.strokeStyle = '#fde68a'; ctx.lineWidth = 2; ctx.stroke(); }
@@ -2687,27 +2687,27 @@
             if (st.dealer === pi && !isBust) {
               ctx.fillStyle = '#fafaf9'; ctx.font = 'bold ' + Math.floor(circR) + 'px Inter,sans-serif';
               ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-              ctx.fillText('D', pos.x, pos.y - ch / 2 - circR - 8);
+              ctx.fillText('D', pos.x, pos.y - cardH / 2 - circR - 8);
             } else {
               ctx.fillStyle = isBust ? '#991b1b' : '#fafaf9'; ctx.font = 'bold ' + Math.floor(circR * 0.9) + 'px Inter,sans-serif';
               ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-              ctx.fillText(isBust ? 'X' : '' + (pi + 1), pos.x, pos.y - ch / 2 - circR - 8);
+              ctx.fillText(isBust ? 'X' : '' + (pi + 1), pos.x, pos.y - cardH / 2 - circR - 8);
             }
 
             // Name + stack or BUST
             ctx.textAlign = 'center';
             if (isBust) {
               ctx.fillStyle = '#ef4444'; ctx.font = 'bold ' + Math.floor(h * 0.032) + 'px Inter,sans-serif';
-              ctx.fillText(pNames[pi], pos.x, pos.y + ch / 2 + 14);
+              ctx.fillText(pNames[pi], pos.x, pos.y + cardH / 2 + 14);
               ctx.fillStyle = '#991b1b'; ctx.font = 'bold ' + Math.floor(h * 0.028) + 'px Inter,sans-serif';
-              ctx.fillText('BUST', pos.x, pos.y + ch / 2 + 27);
+              ctx.fillText('BUST', pos.x, pos.y + cardH / 2 + 27);
             } else {
               ctx.fillStyle = isActive ? '#fbbf24' : isFolded ? '#52525b' : '#e4e4e7';
               ctx.font = '600 ' + Math.floor(h * 0.032) + 'px Inter,sans-serif';
-              ctx.fillText(pNames[pi], pos.x, pos.y + ch / 2 + 14);
+              ctx.fillText(pNames[pi], pos.x, pos.y + cardH / 2 + 14);
               ctx.fillStyle = isFolded ? '#52525b' : '#94a3b8';
               ctx.font = '500 ' + Math.floor(h * 0.026) + 'px Inter,sans-serif';
-              ctx.fillText('$' + st.stacks[pi].toFixed(0), pos.x, pos.y + ch / 2 + 26);
+              ctx.fillText('$' + st.stacks[pi].toFixed(0), pos.x, pos.y + cardH / 2 + 26);
             }
 
             // Cards
@@ -2715,17 +2715,17 @@
               // No cards for busted players
             } else if (isFolded) {
               ctx.globalAlpha = 0.25;
-              pokerDrawCard(ctx, 0, pos.x - cw - 1, pos.y - ch / 2, cw, ch, true);
-              pokerDrawCard(ctx, 0, pos.x + 1, pos.y - ch / 2, cw, ch, true);
+              pokerDrawCard(ctx, 0, pos.x - cardW - 1, pos.y - cardH / 2, cardW, cardH, true);
+              pokerDrawCard(ctx, 0, pos.x + 1, pos.y - cardH / 2, cardW, cardH, true);
               ctx.globalAlpha = 1;
             } else {
-              pokerDrawCard(ctx, st.hole[pi][0], pos.x - cw - 1, pos.y - ch / 2, cw, ch, !showCards);
-              pokerDrawCard(ctx, st.hole[pi][1], pos.x + 1, pos.y - ch / 2, cw, ch, !showCards);
+              pokerDrawCard(ctx, st.hole[pi][0], pos.x - cardW - 1, pos.y - cardH / 2, cardW, cardH, !showCards);
+              pokerDrawCard(ctx, st.hole[pi][1], pos.x + 1, pos.y - cardH / 2, cardW, cardH, !showCards);
             }
 
             // Bet amount
             if (st.bets[pi] > 0 && !isBust) {
-              var betX = pos.x, betY = pos.y - ch / 2 - circR * 2 - 20;
+              var betX = pos.x, betY = pos.y - cardH / 2 - circR * 2 - 20;
               ctx.fillStyle = '#fbbf24'; ctx.font = '600 ' + Math.floor(h * 0.028) + 'px Inter,sans-serif';
               ctx.textAlign = 'center';
               ctx.fillText('$' + st.bets[pi].toFixed(0), betX, betY);
