@@ -430,14 +430,15 @@
     }
 
     .showcase-item {
-      margin-bottom: 3.5rem;
+      max-width: 1200px;
+      margin: 0 auto 3.5rem;
       padding-bottom: 3.5rem;
       border-bottom: 1px solid var(--border);
     }
 
     .showcase-item:last-child {
       border-bottom: none;
-      margin-bottom: 0;
+      margin-bottom: 0 !important;
       padding-bottom: 0;
     }
 
@@ -531,12 +532,13 @@
 
     .showcase-canvases canvas {
       width: 100%;
-      max-width: 100%;
+      max-width: 560px;
       aspect-ratio: 3 / 2;
       border-radius: 8px;
       border: 1px solid var(--border);
       background: #1e1e2e;
       cursor: crosshair;
+      image-rendering: -webkit-optimize-contrast;
     }
 
     .canvas-label {
@@ -626,6 +628,157 @@
       font-size: 0.78rem;
       color: var(--muted);
       margin-left: auto;
+    }
+
+    /* ── Poker controls ── */
+    .poker-controls-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      width: 100%;
+    }
+
+    .poker-settings {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1rem;
+      padding: 0.5rem 0.7rem;
+      background: var(--tag-bg);
+      border-radius: 8px;
+      align-items: center;
+    }
+
+    .poker-settings .param-group {
+      gap: 0.3rem;
+    }
+
+    .poker-settings select {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .poker-settings select:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    .poker-action-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      align-items: center;
+    }
+
+    .poker-action-group {
+      display: flex;
+      gap: 0.3rem;
+      align-items: center;
+    }
+
+    .poker-action-group + .poker-action-group {
+      margin-left: 0.2rem;
+      padding-left: 0.5rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .poker-bet-input {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .poker-bet-input input[type="number"] {
+      width: 75px;
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.8rem;
+      font-family: inherit;
+    }
+
+    .poker-bet-input input[type="number"]:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    .poker-btn-fold {
+      border-color: #ef4444 !important;
+      color: #ef4444 !important;
+    }
+    .poker-btn-fold:hover {
+      background: #fef2f2 !important;
+      border-color: #dc2626 !important;
+    }
+    [data-theme="dark"] .poker-btn-fold:hover {
+      background: #451a1a !important;
+    }
+
+    .poker-btn-call {
+      border-color: #22c55e !important;
+      color: #16a34a !important;
+    }
+    .poker-btn-call:hover {
+      background: #f0fdf4 !important;
+      border-color: #16a34a !important;
+    }
+    [data-theme="dark"] .poker-btn-call:hover {
+      background: #14532d !important;
+    }
+
+    .poker-btn-allin {
+      border-color: #f59e0b !important;
+      color: #d97706 !important;
+      font-weight: 600 !important;
+    }
+    .poker-btn-allin:hover {
+      background: #fffbeb !important;
+      border-color: #d97706 !important;
+    }
+    [data-theme="dark"] .poker-btn-allin:hover {
+      background: #451a03 !important;
+    }
+
+    .poker-btn-deal {
+      background: var(--accent) !important;
+      color: #fff !important;
+      border-color: var(--accent) !important;
+      font-weight: 600 !important;
+    }
+    .poker-btn-deal:hover {
+      background: var(--accent-hover) !important;
+      border-color: var(--accent-hover) !important;
+    }
+
+    .poker-btn-stop {
+      background: #ef4444 !important;
+      color: #fff !important;
+      border-color: #ef4444 !important;
+    }
+    .poker-btn-stop:hover {
+      background: #dc2626 !important;
+    }
+
+    .poker-btn-newgame {
+      border-color: var(--muted) !important;
+      color: var(--muted) !important;
+    }
+    .poker-btn-newgame:hover {
+      color: var(--text) !important;
+      border-color: var(--text) !important;
+    }
+
+    .poker-status {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
     }
 
     .showcase-code {
@@ -1030,11 +1183,13 @@
             <button class="problem-tab active" data-problem="mcts-p0">Tic-Tac-Toe</button>
             <button class="problem-tab" data-problem="mcts-p1">Nim</button>
             <button class="problem-tab" data-problem="mcts-p2">Connect 4</button>
+            <button class="problem-tab" data-problem="mcts-p3">Poker</button>
           </div>
         </div>
         <p class="showcase-desc" data-problem="mcts-p0"><strong>Problem:</strong> Choosing the best move in a board game with millions of possible positions. <strong>Real-world:</strong> This is how AlphaGo defeated the world champion at Go. <strong>How MCTS solves it:</strong> It builds a decision tree by simulating thousands of random games from each possible move, tracking win rates per branch, and balancing exploration of new moves vs. exploitation of proven ones. Click the board to place a piece, or use Auto-run to watch it play against itself.</p>
         <p class="showcase-desc" data-problem="mcts-p1" style="display:none"><strong>Problem:</strong> Nim — a pile of 12 stones. Each player takes 1–3 stones per turn; whoever takes the last stone loses. <strong>Real-world:</strong> Nim has a perfect mathematical strategy, making it a great test for whether MCTS converges to optimal play. <strong>How MCTS solves it:</strong> It simulates thousands of games from the current pile size, learning that keeping the pile at multiples of 4 is the winning strategy.</p>
         <p class="showcase-desc" data-problem="mcts-p2" style="display:none"><strong>Problem:</strong> Connect 4 — drop discs into a 7×6 grid, first to get 4 in a row wins. <strong>Real-world:</strong> Connect 4 is a solved game but has over 4 trillion possible positions. Brute-force search is impossible; MCTS approximates optimal play. <strong>How MCTS solves it:</strong> It builds a search tree from the current board, simulating random games down each column to estimate the best drop position.</p>
+        <p class="showcase-desc" data-problem="mcts-p3" style="display:none"><strong>Problem:</strong> No-Limit Texas Hold'em (2-6 players) — poker is the canonical imperfect-information game. Unlike chess or Go, you can't see the opponents' cards. <strong>Real-world:</strong> Facebook AI's ReBeL algorithm achieved superhuman poker play by combining search with self-play. <strong>How ReBeL solves it:</strong> At each decision point, it maintains a belief distribution over opponent hands, solves a depth-limited subgame with CFR, and updates beliefs via Bayesian inference after each observed action. For 2 players, the bot uses full ReBeL; for 3+ players it uses a hand-strength heuristic.</p>
         <div class="showcase-layout">
           <div class="showcase-canvases">
             <div><div class="canvas-label" id="mcts-label-problem">Board State</div><canvas id="mcts-problem" width="720" height="480"></canvas></div>
@@ -1065,16 +1220,70 @@
 <span class="cl-wrap">&nbsp;</span>
 <span class="cl-wrap">    <span class="kw">return</span> root.<span class="fn">best_child</span>()</span></code></pre>
             </div>
+            <div class="showcase-code" id="poker-code" style="display:none">
+            <pre><code><span class="cl-wrap"><span class="kw">def</span> <span class="fn">rebel_solve</span>(public_state, beliefs):</span>
+<span class="cl-wrap">    <span class="cm"># Counterfactual Regret Minimization</span></span>
+<span class="cl-wrap">    regret = {a: <span class="nr">0</span> <span class="kw">for</span> a <span class="kw">in</span> actions}</span>
+<span class="cl-wrap">    avg_strategy = {a: <span class="nr">0</span> <span class="kw">for</span> a <span class="kw">in</span> actions}</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap">    <span class="kw">for</span> t <span class="kw">in</span> <span class="fn">range</span>(cfr_iterations):</span>
+<span class="cl-wrap">        <span class="cm"># 1. Compute strategy from regrets</span></span>
+<span class="cl-wrap">        strategy = <span class="fn">regret_match</span>(regret)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap">        <span class="cm"># 2. Evaluate each action</span></span>
+<span class="cl-wrap">        <span class="kw">for</span> a <span class="kw">in</span> actions:</span>
+<span class="cl-wrap">            value[a] = <span class="fn">rollout</span>(state, a)</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap">        <span class="cm"># 3. Update counterfactual regrets</span></span>
+<span class="cl-wrap">        ev = <span class="fn">sum</span>(strategy[a] * value[a])</span>
+<span class="cl-wrap">        <span class="kw">for</span> a <span class="kw">in</span> actions:</span>
+<span class="cl-wrap">            regret[a] += value[a] - ev</span>
+<span class="cl-wrap">&nbsp;</span>
+<span class="cl-wrap">    <span class="kw">return</span> <span class="fn">argmax</span>(avg_strategy)</span></code></pre>
+            </div>
             <div class="showcase-params">
               <div class="param-group"><label>Exploration (C)</label><input type="range" id="mcts-p-explore" min="50" max="300" value="141"><span class="param-val" id="mcts-v-explore">1.41</span></div>
               <div class="param-group"><label>Sims/step</label><input type="range" id="mcts-p-depth" min="10" max="10000" value="200" step="10"><span class="param-val" id="mcts-v-depth">200</span></div>
               <div class="param-group" data-mcts-problem="0"><label>Board size</label><input type="range" id="mcts-p-bsize" min="3" max="6" value="3"><span class="param-val" id="mcts-v-bsize">3×3</span></div>
+              <div id="poker-settings-wrap" data-mcts-problem="3" style="display:none">
+                <div class="poker-settings">
+                  <div class="param-group"><label>Players</label><select id="poker-players"><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>
+                  <div class="param-group"><label>Buy-in</label><input type="range" id="poker-p-buyin" min="50" max="1000" value="200" step="50"><span class="param-val" id="poker-v-buyin">200</span></div>
+                  <div class="param-group"><label>Blinds</label><select id="poker-blinds"><option value="0.5/1">0.5/1</option><option value="1/2" selected>1/2</option><option value="2/4">2/4</option><option value="5/10">5/10</option><option value="10/20">10/20</option><option value="25/50">25/50</option></select></div>
+                  <div class="param-group"><label>Mode</label><select id="poker-mode"><option value="human">Human vs Bots</option><option value="bot">Bot vs Bot</option></select></div>
+                  <div class="param-group"><label>CFR Iters</label><input type="range" id="poker-p-cfr" min="50" max="5000" value="500" step="50"><span class="param-val" id="poker-v-cfr">500</span></div>
+                </div>
+              </div>
             </div>
             <div class="showcase-controls">
               <button class="showcase-btn" id="mcts-step">Step</button>
               <button class="showcase-btn" id="mcts-run">Auto-run</button>
               <button class="showcase-btn" id="mcts-reset">Reset</button>
               <span class="showcase-stat" id="mcts-stat">Simulations: 0</span>
+            </div>
+            <div class="poker-controls-wrap" id="poker-actions" style="display:none">
+              <div class="poker-action-bar">
+                <div class="poker-action-group">
+                  <button class="showcase-btn poker-btn-fold" id="poker-fold">Fold</button>
+                  <button class="showcase-btn" id="poker-check">Check</button>
+                  <button class="showcase-btn poker-btn-call" id="poker-call">Call</button>
+                </div>
+                <div class="poker-action-group">
+                  <button class="showcase-btn" id="poker-bet50">Bet 50%</button>
+                  <button class="showcase-btn" id="poker-betpot">Bet Pot</button>
+                  <div class="poker-bet-input" id="poker-bet-input-wrap" style="display:none">
+                    <input type="number" id="poker-betcustom" placeholder="Bet $" min="1">
+                    <button class="showcase-btn" id="poker-betgo">Bet</button>
+                  </div>
+                  <button class="showcase-btn poker-btn-allin" id="poker-allin">All-in</button>
+                </div>
+                <div class="poker-action-group">
+                  <button class="showcase-btn poker-btn-deal" id="poker-deal">Deal</button>
+                  <button class="showcase-btn poker-btn-stop" id="poker-stop" style="display:none">Stop</button>
+                  <button class="showcase-btn poker-btn-newgame" id="poker-newgame">New Game</button>
+                </div>
+                <span class="poker-status" id="poker-stat">Hands: 0</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1327,6 +1536,8 @@
       wireParam('mcts-p-explore', 'mcts-v-explore', function (v) { return (v / 100).toFixed(2); });
       wireParam('mcts-p-depth', 'mcts-v-depth', function (v) { return v; });
       wireParam('mcts-p-bsize', 'mcts-v-bsize', function (v) { return v + '×' + v; });
+      wireParam('poker-p-buyin', 'poker-v-buyin', function (v) { return v; });
+      wireParam('poker-p-cfr', 'poker-v-cfr', function (v) { return v; });
       wireParam('ga-p-pop', 'ga-v-pop', function (v) { return v; });
       wireParam('ga-p-mut', 'ga-v-mut', function (v) { return v + '%'; });
       wireParam('ga-p-alt', 'ga-v-alt', function (v) { return v + 'm'; });
@@ -1337,13 +1548,22 @@
       wireParam('nn-p-lr', 'nn-v-lr', function (v) { return (v / 100).toFixed(2); });
       wireParam('nn-p-hidden', 'nn-v-hidden', function (v) { return v; });
 
-      /* Auto-size canvases to match their CSS display size */
+      function cw(c) { return c._logW || c.width; }
+      function ch(c) { return c._logH || c.height; }
+
+      /* Auto-size canvases to match their CSS display size with DPR scaling */
       (function () {
+        var dpr = window.devicePixelRatio || 1;
         document.querySelectorAll('.showcase-canvases canvas').forEach(function (c) {
           var rect = c.getBoundingClientRect();
           if (rect.width > 0 && rect.height > 0) {
-            c.width = Math.round(rect.width);
-            c.height = Math.round(rect.height);
+            var w = Math.round(rect.width);
+            var h = Math.round(rect.height);
+            c.width = Math.round(w * dpr);
+            c.height = Math.round(h * dpr);
+            c.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+            c._logW = w;
+            c._logH = h;
           }
         });
       })();
@@ -1622,6 +1842,1239 @@
           }
         };
 
+        /* ══════════════════════════════════════════════
+           POKER ENGINE — N-Player Texas Hold'em + ReBeL
+           ══════════════════════════════════════════════ */
+        var POKER_FOLD=0, POKER_CHECK=1, POKER_CALL=2, POKER_BET_HALF=3, POKER_BET_POT=4, POKER_ALLIN=5, POKER_BET_CUSTOM=6;
+        var POKER_ACT_NAMES = ['Fold','Check','Call','Bet 50%','Bet Pot','All-in','Bet'];
+        var pokerCustomBetAmount = 0;
+
+        function cardRank(c) { return c % 13; }
+        function cardSuit(c) { return Math.floor(c / 13); }
+        function cardStr(c) { return '23456789TJQKA'[c%13] + ['♠','♥','♦','♣'][Math.floor(c/13)]; }
+        function cardColor(c) { var su=Math.floor(c/13); return su===1||su===2 ? '#ef4444' : '#e4e4e7'; }
+        function suitSymbol(c) { return ['♠','♥','♦','♣'][Math.floor(c/13)]; }
+        function rankStr(c) { return '23456789TJQKA'[c%13]; }
+
+        function pokerMakeDeck() { var d=[]; for(var i=0;i<52;i++) d.push(i); return d; }
+        function pokerShuffle(d) {
+          var a=d.slice();
+          for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+          return a;
+        }
+
+        var P13=[1,13,169,2197,28561,371293];
+        function eval5(c0,c1,c2,c3,c4) {
+          var r=[c0%13,c1%13,c2%13,c3%13,c4%13];
+          var s=[Math.floor(c0/13),Math.floor(c1/13),Math.floor(c2/13),Math.floor(c3/13),Math.floor(c4/13)];
+          r.sort(function(a,b){return b-a;});
+          var isFlush=s[0]===s[1]&&s[1]===s[2]&&s[2]===s[3]&&s[3]===s[4];
+          var isStraight=false,sHi=-1,uniq=true;
+          for(var i=0;i<4;i++) if(r[i]===r[i+1]) uniq=false;
+          if(uniq&&r[0]-r[4]===4){isStraight=true;sHi=r[0];}
+          if(uniq&&r[0]===12&&r[1]===3&&r[2]===2&&r[3]===1&&r[4]===0){isStraight=true;sHi=3;}
+          var freq={};
+          for(var i=0;i<5;i++) freq[r[i]]=(freq[r[i]]||0)+1;
+          var g=[];
+          for(var k in freq) g.push([freq[k],parseInt(k)]);
+          g.sort(function(a,b){return b[0]-a[0]||b[1]-a[1];});
+          var hr,ki;
+          if(isStraight&&isFlush){hr=8;ki=[sHi,0,0,0,0];}
+          else if(g[0][0]===4){hr=7;ki=[g[0][1],g[1][1],0,0,0];}
+          else if(g[0][0]===3&&g[1][0]===2){hr=6;ki=[g[0][1],g[1][1],0,0,0];}
+          else if(isFlush){hr=5;ki=[r[0],r[1],r[2],r[3],r[4]];}
+          else if(isStraight){hr=4;ki=[sHi,0,0,0,0];}
+          else if(g[0][0]===3){hr=3;ki=[g[0][1],g[1][1],g[2][1],0,0];}
+          else if(g[0][0]===2&&g[1][0]===2){var hi=Math.max(g[0][1],g[1][1]),lo=Math.min(g[0][1],g[1][1]);hr=2;ki=[hi,lo,g[2][1],0,0];}
+          else if(g[0][0]===2){hr=1;ki=[g[0][1],g[1][1],g[2][1],g[3][1],0];}
+          else{hr=0;ki=[r[0],r[1],r[2],r[3],r[4]];}
+          return hr*P13[5]+ki[0]*P13[4]+ki[1]*P13[3]+ki[2]*P13[2]+ki[3]*P13[1]+ki[4];
+        }
+        function eval7(cards) {
+          var best=-1;
+          for(var i=0;i<7;i++) for(var j=i+1;j<7;j++){
+            var h=[];for(var k=0;k<7;k++) if(k!==i&&k!==j) h.push(cards[k]);
+            var sc=eval5(h[0],h[1],h[2],h[3],h[4]);
+            if(sc>best) best=sc;
+          }
+          return best;
+        }
+        function handRankName(sc){return['High Card','Pair','Two Pair','Three of a Kind','Straight','Flush','Full House','Four of a Kind','Straight Flush'][Math.floor(sc/P13[5])];}
+
+        function pokerNextActive(st, from) {
+          var n = st.nPlayers;
+          for (var i = 1; i <= n; i++) {
+            var p = (from + i) % n;
+            if (!st.folded[p] && st.stacks[p] >= 0) return p;
+          }
+          return from;
+        }
+
+        function pokerActivePlayers(st) {
+          var c = 0;
+          for (var i = 0; i < st.nPlayers; i++) if (!st.folded[i]) c++;
+          return c;
+        }
+
+        function pokerGetBlinds() {
+          var v = document.getElementById('poker-blinds').value.split('/');
+          return { sb: parseFloat(v[0]), bb: parseFloat(v[1]) };
+        }
+        function pokerGetBuyin() { return parseInt(document.getElementById('poker-p-buyin').value); }
+
+        function pokerNewHand(stacks, dealer, nPlayers) {
+          nPlayers = nPlayers || stacks.length;
+          var blinds = pokerGetBlinds();
+          var deck = pokerShuffle(pokerMakeDeck());
+          var s = stacks.slice();
+          var hole = [];
+          var di = 0;
+          for (var i = 0; i < nPlayers; i++) {
+            hole.push([deck[di++], deck[di++]]);
+          }
+          var folded = [];
+          for (var i = 0; i < nPlayers; i++) folded.push(s[i] <= 0);
+          var bets = [];
+          for (var i = 0; i < nPlayers; i++) bets.push(0);
+          var pot = 0;
+          // Post blinds
+          var sbPos, bbPos;
+          if (nPlayers === 2) { sbPos = dealer; bbPos = 1 - dealer; }
+          else { sbPos = (dealer + 1) % nPlayers; bbPos = (dealer + 2) % nPlayers; }
+          // Skip busted players for blinds
+          while (s[sbPos] <= 0) sbPos = (sbPos + 1) % nPlayers;
+          while (s[bbPos] <= 0 || bbPos === sbPos) bbPos = (bbPos + 1) % nPlayers;
+          var sbAmt = Math.min(blinds.sb, s[sbPos]);
+          s[sbPos] -= sbAmt; bets[sbPos] = sbAmt; pot += sbAmt;
+          var bbAmt = Math.min(blinds.bb, s[bbPos]);
+          s[bbPos] -= bbAmt; bets[bbPos] = bbAmt; pot += bbAmt;
+          // First to act preflop
+          var firstAct;
+          if (nPlayers === 2) firstAct = dealer;
+          else {
+            firstAct = (bbPos + 1) % nPlayers;
+            while (s[firstAct] <= 0 && firstAct !== bbPos) firstAct = (firstAct + 1) % nPlayers;
+          }
+
+          return {
+            deck: deck, deckIdx: di, nPlayers: nPlayers,
+            hole: hole, community: [], pot: pot, stacks: s,
+            bets: bets, phase: 0, toAct: firstAct, dealer: dealer,
+            sb: sbPos, bb: bbPos, folded: folded,
+            minRaise: blinds.bb, actionsThisRound: 0, lastRaiser: -1,
+            handOver: false, winners: [], winAmount: 0, handName: '',
+            showdown: false, actionLog: [],
+            blinds: blinds
+          };
+        }
+
+        function pokerMaxBet(st) {
+          var mx = 0;
+          for (var i = 0; i < st.nPlayers; i++) if (st.bets[i] > mx) mx = st.bets[i];
+          return mx;
+        }
+
+        function pokerLegalActions(st) {
+          if (st.handOver) return [];
+          var p = st.toAct, actions = [POKER_FOLD];
+          var maxBet = pokerMaxBet(st);
+          var toCall = maxBet - st.bets[p];
+          if (toCall <= 0) actions.push(POKER_CHECK);
+          else {
+            if (st.stacks[p] >= toCall) actions.push(POKER_CALL);
+            else { actions.push(POKER_ALLIN); return actions; }
+          }
+          var chipsAfterCall = st.stacks[p] - Math.max(0, toCall);
+          if (chipsAfterCall > 0) {
+            var potAC = st.pot + toCall;
+            var half = Math.round(potAC * 0.5 * 10) / 10;
+            var full = potAC;
+            if (half > 0 && half <= chipsAfterCall && half >= st.minRaise) actions.push(POKER_BET_HALF);
+            if (full <= chipsAfterCall && full >= st.minRaise) actions.push(POKER_BET_POT);
+            actions.push(POKER_ALLIN);
+          }
+          var seen = {};
+          return actions.filter(function(a) { if (seen[a]) return false; seen[a] = true; return true; });
+        }
+
+        function pokerAdvancePhase(s) {
+          for (var i = 0; i < s.nPlayers; i++) s.bets[i] = 0;
+          s.actionsThisRound = 0; s.phase++; s.minRaise = (s.blinds || {bb:1}).bb; s.lastRaiser = -1;
+          if (s.phase === 1) {
+            s.community.push(s.deck[s.deckIdx++], s.deck[s.deckIdx++], s.deck[s.deckIdx++]);
+          } else if (s.phase === 2 || s.phase === 3) {
+            s.community.push(s.deck[s.deckIdx++]);
+          } else if (s.phase >= 4) { pokerShowdown(s); return; }
+          // First to act post-flop: first active left of dealer
+          s.toAct = pokerNextActive(s, s.dealer);
+        }
+
+        function pokerDealRemaining(s) {
+          while (s.community.length < 5) s.community.push(s.deck[s.deckIdx++]);
+          pokerShowdown(s);
+        }
+
+        function pokerShowdown(s) {
+          s.phase = 4; s.handOver = true; s.showdown = true;
+          var bestScore = -1, winners = [];
+          for (var i = 0; i < s.nPlayers; i++) {
+            if (s.folded[i]) continue;
+            var sc = eval7(s.hole[i].concat(s.community));
+            if (sc > bestScore) { bestScore = sc; winners = [i]; }
+            else if (sc === bestScore) winners.push(i);
+          }
+          s.winners = winners;
+          s.winAmount = s.pot;
+          s.handName = handRankName(bestScore);
+        }
+
+        function pokerApplyAction(st, action) {
+          var s = JSON.parse(JSON.stringify(st));
+          var p = s.toAct;
+          var maxBet = pokerMaxBet(s);
+          var toCall = maxBet - s.bets[p];
+
+          s.actionLog.push({ player: p, action: action });
+
+          if (action === POKER_FOLD) {
+            s.folded[p] = true;
+            if (pokerActivePlayers(s) === 1) {
+              s.handOver = true;
+              for (var i = 0; i < s.nPlayers; i++) if (!s.folded[i]) { s.winners = [i]; break; }
+              s.winAmount = s.pot; s.handName = 'Fold';
+              return s;
+            }
+            s.actionsThisRound++;
+            s.toAct = pokerNextActive(s, p);
+            if (pokerShouldAdvance(s)) pokerAdvancePhase(s);
+            return s;
+          }
+
+          if (action === POKER_CHECK) {
+            s.actionsThisRound++;
+            s.toAct = pokerNextActive(s, p);
+            if (pokerShouldAdvance(s)) pokerAdvancePhase(s);
+            return s;
+          }
+
+          if (action === POKER_CALL) {
+            var ca = Math.min(toCall, s.stacks[p]);
+            s.stacks[p] -= ca; s.bets[p] += ca; s.pot += ca;
+            s.actionsThisRound++;
+            if (s.stacks[p] <= 0 && pokerAllInShowdown(s)) {
+              pokerDealRemaining(s);
+              return s;
+            }
+            s.toAct = pokerNextActive(s, p);
+            if (pokerShouldAdvance(s)) pokerAdvancePhase(s);
+            return s;
+          }
+
+          // Bet/Raise
+          if (action === POKER_ALLIN) {
+            var tot = s.stacks[p];
+            s.bets[p] += tot; s.pot += tot;
+            var ar = s.bets[p] - maxBet;
+            if (ar > s.minRaise) s.minRaise = ar;
+            s.stacks[p] = 0;
+          } else {
+            var ra;
+            if (action === POKER_BET_HALF) ra = Math.round((s.pot + toCall) * 0.5 * 10) / 10;
+            else if (action === POKER_BET_CUSTOM) ra = Math.max(s.minRaise, pokerCustomBetAmount);
+            else ra = s.pot + toCall;
+            var tot = Math.max(0, toCall) + ra;
+            if (tot > s.stacks[p]) tot = s.stacks[p];
+            s.stacks[p] -= tot; s.bets[p] += tot; s.pot += tot; s.minRaise = ra;
+          }
+          s.actionsThisRound++;
+          s.lastRaiser = p;
+          s.toAct = pokerNextActive(s, p);
+          if (pokerAllInShowdown(s)) { pokerDealRemaining(s); return s; }
+          return s;
+        }
+
+        function pokerShouldAdvance(s) {
+          var maxBet = pokerMaxBet(s);
+          // All active, non-all-in players must have matched the max bet
+          for (var i = 0; i < s.nPlayers; i++) {
+            if (s.folded[i] || s.stacks[i] <= 0) continue;
+            if (s.bets[i] < maxBet) return false;
+          }
+          // If someone raised, action must have returned to them
+          if (s.lastRaiser >= 0 && s.toAct !== s.lastRaiser) return false;
+          // Everyone must have acted at least once
+          if (s.actionsThisRound < pokerActivePlayers(s)) return false;
+          return true;
+        }
+
+        function pokerAllInShowdown(s) {
+          var active = 0, canAct = 0;
+          for (var i = 0; i < s.nPlayers; i++) {
+            if (!s.folded[i]) {
+              active++;
+              if (s.stacks[i] > 0) canAct++;
+            }
+          }
+          return active >= 2 && canAct <= 1 && pokerMaxBet(s) === Math.max.apply(null,
+            s.bets.map(function(b,i){return s.folded[i]?0:b;}));
+        }
+
+        /* ── Poker CFR / ReBeL Solver ── */
+        function pokerHandStrength(hole, community, samples) {
+          samples = samples || 150;
+          var used={}; hole.forEach(function(c){used[c]=true;}); community.forEach(function(c){used[c]=true;});
+          var avail=[]; for(var i=0;i<52;i++) if(!used[i]) avail.push(i);
+          var wins=0,total=0;
+          for(var t=0;t<samples;t++){
+            // Pick 2 random opponent cards from available
+            var ai=Math.floor(Math.random()*avail.length);
+            var oc0=avail[ai];
+            var aj=Math.floor(Math.random()*(avail.length-1));
+            if(aj>=ai) aj++;
+            var oc1=avail[aj];
+            var board=community.slice();
+            while(board.length<5){
+              var ri=Math.floor(Math.random()*avail.length);
+              var nc=avail[ri];
+              if(nc===oc0||nc===oc1||board.indexOf(nc)>=0) continue;
+              board.push(nc);
+            }
+            var my=eval7(hole.concat(board));
+            var opp=eval7([oc0,oc1].concat(board));
+            if(my>opp)wins++;else if(my===opp)wins+=0.5;
+            total++;
+          }
+          return total>0?wins/total:0.5;
+        }
+
+        /* ═══════════════════════════════════════════
+           ReBeL — Recursive Belief-based Learning
+           ═══════════════════════════════════════════
+
+           Core algorithm (Brown et al., 2020):
+           1. Maintain beliefs (probability distribution over opponent's hands)
+           2. At each decision: solve a depth-limited subgame via CFR
+           3. After opponent acts: Bayesian belief update using computed strategy
+           4. Leaf values estimated via hand equity vs current beliefs
+        */
+
+        var REBEL_BUCKETS = 10;
+
+        // Bucket a hand by equity. Returns 0..(REBEL_BUCKETS-1)
+        function rebelBucket(hole, community, samples) {
+          var hs = pokerHandStrength(hole, community, samples || 60);
+          return Math.min(REBEL_BUCKETS - 1, Math.floor(hs * REBEL_BUCKETS));
+        }
+
+        // Initialize beliefs: uniform over all possible opponent hands
+        function rebelInitBeliefs(myHole, community) {
+          var used = {};
+          myHole.forEach(function(c) { used[c] = true; });
+          community.forEach(function(c) { used[c] = true; });
+          var bel = [];
+          for (var i = 0; i < 52; i++) {
+            if (used[i]) continue;
+            for (var j = i + 1; j < 52; j++) {
+              if (used[j]) continue;
+              bel.push({ hand: [i, j], p: 1 });
+            }
+          }
+          var n = bel.length;
+          for (var i = 0; i < n; i++) bel[i].p = 1 / n;
+          return bel;
+        }
+
+        // Update beliefs after observing opponent action
+        // strategyByBucket[bucket] = prob of taking this action for that bucket
+        function rebelUpdateBeliefs(beliefs, community, strategyByBucket) {
+          var sum = 0;
+          for (var i = 0; i < beliefs.length; i++) {
+            var b = rebelBucket(beliefs[i].hand, community, 20);
+            var actionProb = strategyByBucket[b] || (1 / 6);
+            beliefs[i].p *= Math.max(0.001, actionProb);
+            sum += beliefs[i].p;
+          }
+          if (sum > 0) for (var i = 0; i < beliefs.length; i++) beliefs[i].p /= sum;
+        }
+
+        // Compute equity of my hand vs the current belief distribution
+        function rebelEquity(myHole, community, beliefs) {
+          var wins = 0, tw = 0;
+          var myAll = myHole.concat(community);
+          var needBoard = community.length < 5;
+          // Sample from beliefs proportional to probability
+          var nSamples = Math.min(beliefs.length, 80);
+          // Build CDF for weighted sampling
+          var cdf = [], cs = 0;
+          for (var i = 0; i < beliefs.length; i++) { cs += beliefs[i].p; cdf.push(cs); }
+
+          for (var s = 0; s < nSamples; s++) {
+            // Weighted sample
+            var r = Math.random() * cs;
+            var idx = 0;
+            while (idx < cdf.length - 1 && cdf[idx] < r) idx++;
+            var oppHand = beliefs[idx].hand;
+
+            var board = community.slice();
+            if (needBoard) {
+              var used = {};
+              myHole.forEach(function(c) { used[c] = true; });
+              oppHand.forEach(function(c) { used[c] = true; });
+              board.forEach(function(c) { used[c] = true; });
+              while (board.length < 5) {
+                var nc = Math.floor(Math.random() * 52);
+                if (!used[nc]) { used[nc] = true; board.push(nc); }
+              }
+            }
+            var myScore = eval7(myHole.concat(board));
+            var oppScore = eval7(oppHand.concat(board));
+            if (myScore > oppScore) wins++;
+            else if (myScore === oppScore) wins += 0.5;
+            tw++;
+          }
+          return tw > 0 ? wins / tw : 0.5;
+        }
+
+        // Regret matching: convert regrets to strategy
+        function rebelRegretMatch(regrets) {
+          var n = regrets.length, sum = 0;
+          for (var i = 0; i < n; i++) sum += Math.max(0, regrets[i]);
+          var s = [];
+          if (sum > 0) for (var i = 0; i < n; i++) s.push(Math.max(0, regrets[i]) / sum);
+          else for (var i = 0; i < n; i++) s.push(1 / n);
+          return s;
+        }
+
+        // Depth-limited subgame value: equity × pot adjusted for position
+        function rebelLeafValue(st, myPlayer, beliefs) {
+          var eq = rebelEquity(st.hole[myPlayer], st.community, beliefs);
+          return eq * st.pot - (1 - eq) * (st.pot * 0.5);
+        }
+
+        // CFR Subgame Solver with depth-2 lookahead
+        // Solves: my action → opponent response → leaf value
+        function rebelCFR(st, myPlayer, beliefs, iterations) {
+          var legal = pokerLegalActions(st);
+          if (legal.length <= 1) return { action: legal[0] || POKER_FOLD, strategy: [1], oppStrategies: {} };
+          var nA = legal.length;
+
+          // For each of my actions, compute opponent's legal actions
+          var oppLegals = [], nextStates = [];
+          for (var a = 0; a < nA; a++) {
+            var ns = pokerApplyAction(st, legal[a]);
+            nextStates.push(ns);
+            if (ns.handOver) {
+              oppLegals.push([]);
+            } else {
+              oppLegals.push(pokerLegalActions(ns));
+            }
+          }
+
+          // Regret tables: my regrets and opponent regrets per bucket
+          var myRegret = new Array(nA).fill(0);
+          var myCumStrat = new Array(nA).fill(0);
+
+          // Opponent regrets per bucket per my-action
+          var oppRegret = {};
+          var oppCumStrat = {};
+          for (var a = 0; a < nA; a++) {
+            if (oppLegals[a].length > 0) {
+              oppRegret[a] = [];
+              oppCumStrat[a] = [];
+              for (var b = 0; b < REBEL_BUCKETS; b++) {
+                oppRegret[a].push(new Array(oppLegals[a].length).fill(0));
+                oppCumStrat[a].push(new Array(oppLegals[a].length).fill(0));
+              }
+            }
+          }
+
+          // Pre-compute my hand bucket
+          var myBucket = rebelBucket(st.hole[myPlayer], st.community, 80);
+
+          for (var iter = 0; iter < iterations; iter++) {
+            // My strategy via regret matching
+            var myStrat = rebelRegretMatch(myRegret);
+            for (var a = 0; a < nA; a++) myCumStrat[a] += myStrat[a];
+
+            // Sample an opponent hand from beliefs for this iteration
+            var cs = 0, cdf = [];
+            for (var i = 0; i < beliefs.length; i++) { cs += beliefs[i].p; cdf.push(cs); }
+            var ri = Math.random() * cs;
+            var si = 0;
+            while (si < cdf.length - 1 && cdf[si] < ri) si++;
+            var sampledOpp = beliefs[si].hand;
+            var oppBucket = rebelBucket(sampledOpp, st.community, 20);
+
+            // Evaluate each of my actions
+            var myValues = [];
+            for (var a = 0; a < nA; a++) {
+              var ns = nextStates[a];
+              if (ns.handOver) {
+                // Terminal: exact value
+                if (ns.folded === myPlayer) myValues.push(-ns.winAmount);
+                else if (ns.winner === myPlayer) myValues.push(ns.winAmount);
+                else if (ns.winner === -1) myValues.push(0);
+                else myValues.push(-ns.winAmount);
+              } else if (oppLegals[a].length === 0) {
+                myValues.push(rebelLeafValue(ns, myPlayer, beliefs));
+              } else {
+                // Opponent responds: use opponent's strategy for their bucket
+                var oStrat = rebelRegretMatch(oppRegret[a][oppBucket]);
+                for (var oa = 0; oa < oppLegals[a].length; oa++) oppCumStrat[a][oppBucket][oa] += oStrat[oa];
+
+                // Evaluate opponent's responses
+                var oppValues = [];
+                for (var oa = 0; oa < oppLegals[a].length; oa++) {
+                  var ns2 = pokerApplyAction(ns, oppLegals[a][oa]);
+                  if (ns2.handOver) {
+                    if (ns2.folded === myPlayer) oppValues.push(-ns2.winAmount);
+                    else if (ns2.winner === myPlayer) oppValues.push(ns2.winAmount);
+                    else if (ns2.winner === -1) oppValues.push(0);
+                    else oppValues.push(-ns2.winAmount);
+                  } else {
+                    oppValues.push(rebelLeafValue(ns2, myPlayer, beliefs));
+                  }
+                }
+
+                // My value = weighted sum of opponent responses
+                var myV = 0;
+                for (var oa = 0; oa < oppLegals[a].length; oa++) myV += oStrat[oa] * oppValues[oa];
+                myValues.push(myV);
+
+                // Update opponent regrets (from opponent's perspective: negate values)
+                var oppEV = 0;
+                for (var oa = 0; oa < oppLegals[a].length; oa++) oppEV += oStrat[oa] * (-oppValues[oa]);
+                for (var oa = 0; oa < oppLegals[a].length; oa++) {
+                  oppRegret[a][oppBucket][oa] += (-oppValues[oa]) - oppEV;
+                }
+              }
+            }
+
+            // Update my regrets
+            var myEV = 0;
+            for (var a = 0; a < nA; a++) myEV += myStrat[a] * myValues[a];
+            for (var a = 0; a < nA; a++) myRegret[a] += myValues[a] - myEV;
+          }
+
+          // Compute average strategy
+          var csTotal = 0;
+          for (var a = 0; a < nA; a++) csTotal += myCumStrat[a];
+          var avgStrat = [];
+          for (var a = 0; a < nA; a++) avgStrat.push(csTotal > 0 ? myCumStrat[a] / csTotal : 1 / nA);
+
+          // Pick best action (highest avg strategy weight)
+          var bestA = 0;
+          for (var a = 1; a < nA; a++) if (avgStrat[a] > avgStrat[bestA]) bestA = a;
+
+          // Extract opponent strategy by bucket for belief updates
+          var oppStratByBucket = {};
+          for (var a = 0; a < nA; a++) {
+            if (oppCumStrat[a]) {
+              for (var b = 0; b < REBEL_BUCKETS; b++) {
+                var tot = 0;
+                for (var oa = 0; oa < oppLegals[a].length; oa++) tot += oppCumStrat[a][b][oa];
+                if (!oppStratByBucket[b]) oppStratByBucket[b] = {};
+                for (var oa = 0; oa < oppLegals[a].length; oa++) {
+                  var oAct = oppLegals[a][oa];
+                  oppStratByBucket[b][oAct] = (oppStratByBucket[b][oAct] || 0) + (tot > 0 ? oppCumStrat[a][b][oa] / tot : 0);
+                }
+              }
+            }
+          }
+
+          // Build tree data for visualization
+          var treeNodes = [];
+          for (var a = 0; a < nA; a++) {
+            var node = {
+              action: legal[a], prob: avgStrat[a],
+              chosen: a === bestA, children: []
+            };
+            if (oppLegals[a] && oppLegals[a].length > 0 && oppCumStrat[a]) {
+              // Average over buckets for display
+              var oTotals = new Array(oppLegals[a].length).fill(0);
+              var oTotal = 0;
+              for (var b = 0; b < REBEL_BUCKETS; b++) {
+                for (var oa = 0; oa < oppLegals[a].length; oa++) {
+                  oTotals[oa] += oppCumStrat[a][b][oa];
+                  oTotal += oppCumStrat[a][b][oa];
+                }
+              }
+              for (var oa = 0; oa < oppLegals[a].length; oa++) {
+                node.children.push({
+                  action: oppLegals[a][oa],
+                  prob: oTotal > 0 ? oTotals[oa] / oTotal : 1 / oppLegals[a].length,
+                  terminal: nextStates[a].handOver || !pokerLegalActions(pokerApplyAction(nextStates[a], oppLegals[a][oa])).length
+                });
+              }
+            } else {
+              node.terminal = true;
+            }
+            treeNodes.push(node);
+          }
+
+          return {
+            action: legal[bestA],
+            strategy: avgStrat,
+            legalActions: legal,
+            oppStratByBucket: oppStratByBucket,
+            tree: treeNodes
+          };
+        }
+
+        // ReBeL state that persists across a hand
+        var rebelState = null;
+
+        function rebelNewHand(myHole, community) {
+          rebelState = {
+            beliefs: rebelInitBeliefs(myHole, community),
+            lastOppStrat: null
+          };
+        }
+
+        function rebelObserveOppAction(action, community) {
+          if (!rebelState || !rebelState.lastOppStrat) return;
+          // Build per-bucket action probability for the observed action
+          var stratByBucket = [];
+          for (var b = 0; b < REBEL_BUCKETS; b++) {
+            var s = rebelState.lastOppStrat[b];
+            stratByBucket.push(s && s[action] ? s[action] : 1 / 6);
+          }
+          rebelUpdateBeliefs(rebelState.beliefs, community, stratByBucket);
+        }
+
+        function rebelDecide(st, myPlayer) {
+          if (!rebelState) rebelNewHand(st.hole[myPlayer], st.community);
+
+          // Update beliefs for any new community cards
+          var beliefs = rebelState.beliefs;
+          // Filter out hands that conflict with new community cards
+          var used = {};
+          st.community.forEach(function(c) { used[c] = true; });
+          beliefs = beliefs.filter(function(b) { return !used[b.hand[0]] && !used[b.hand[1]]; });
+          var bsum = 0;
+          for (var i = 0; i < beliefs.length; i++) bsum += beliefs[i].p;
+          if (bsum > 0) for (var i = 0; i < beliefs.length; i++) beliefs[i].p /= bsum;
+          rebelState.beliefs = beliefs;
+
+          var cfr_iters = parseInt(document.getElementById('poker-p-cfr').value);
+          var result = rebelCFR(st, myPlayer, beliefs, cfr_iters);
+
+          // Store opponent strategies for belief updates
+          rebelState.lastOppStrat = result.oppStratByBucket;
+
+          return result;
+        }
+
+        /* ── Poker UI State ── */
+        var pokerSt=null, pokerStacks=null, pokerDealer=0, pokerHands=0, pokerNPlayers=2;
+        var pokerMode='human';
+        var pokerTimer=null, pokerRunning=false;
+        var pokerLastDecision=null;
+        var pokerGameOver=false;
+
+        function pokerGetNPlayers() { return parseInt(document.getElementById('poker-players').value); }
+
+        function pokerInitStacks(n) {
+          var buyin = pokerGetBuyin();
+          var s = [];
+          for (var i = 0; i < n; i++) s.push(buyin);
+          return s;
+        }
+
+        function pokerAlivePlayers() {
+          if (!pokerStacks) return 0;
+          var c = 0;
+          for (var i = 0; i < pokerStacks.length; i++) if (pokerStacks[i] > 0) c++;
+          return c;
+        }
+
+        function pokerNewGame() {
+          pokerNPlayers = pokerGetNPlayers();
+          pokerStacks = pokerInitStacks(pokerNPlayers);
+          pokerDealer = 0; pokerHands = 0;
+          pokerGameOver = false;
+          pokerSt = null; rebelStates = []; rebelState = null;
+          pokerLastDecision = null;
+          pokerRunning = false;
+          document.getElementById('poker-newgame').style.display = 'none';
+          document.getElementById('poker-deal').style.display = '';
+          pokerUpdateUI();
+        }
+
+        function pokerDeal() {
+          if (pokerGameOver) return;
+          pokerNPlayers = pokerGetNPlayers();
+          if (!pokerStacks || pokerStacks.length !== pokerNPlayers) {
+            pokerStacks = pokerInitStacks(pokerNPlayers);
+            pokerDealer = 0; pokerHands = 0;
+          }
+          // Skip to next alive dealer
+          var safety = pokerNPlayers;
+          while (pokerStacks[pokerDealer] <= 0 && safety-- > 0) pokerDealer = (pokerDealer + 1) % pokerNPlayers;
+          pokerSt = pokerNewHand(pokerStacks, pokerDealer, pokerNPlayers);
+          rebelStates = [];
+          for (var i = 0; i < pokerNPlayers; i++) rebelStates.push(null);
+          rebelState = null;
+          pokerLastDecision = null;
+          pokerHands++;
+          pokerUpdateUI();
+        }
+
+        function pokerUpdateUI() {
+          var st = pokerSt;
+          if (!st) return;
+          var pStat = document.getElementById('poker-stat');
+          var blinds = pokerGetBlinds();
+          pStat.textContent = 'Hand #' + pokerHands + '  |  Blinds ' + blinds.sb + '/' + blinds.bb;
+
+          var legal = st.handOver ? [] : pokerLegalActions(st);
+          var isHumanTurn = pokerMode === 'human' && st.toAct === 0 && !st.handOver && !st.folded[0];
+          document.getElementById('poker-fold').style.display = isHumanTurn && legal.indexOf(POKER_FOLD) >= 0 ? '' : 'none';
+          document.getElementById('poker-check').style.display = isHumanTurn && legal.indexOf(POKER_CHECK) >= 0 ? '' : 'none';
+          document.getElementById('poker-call').style.display = isHumanTurn && legal.indexOf(POKER_CALL) >= 0 ? '' : 'none';
+          document.getElementById('poker-bet50').style.display = isHumanTurn && legal.indexOf(POKER_BET_HALF) >= 0 ? '' : 'none';
+          document.getElementById('poker-betpot').style.display = isHumanTurn && legal.indexOf(POKER_BET_POT) >= 0 ? '' : 'none';
+          var canBet = isHumanTurn && (legal.indexOf(POKER_BET_HALF) >= 0 || legal.indexOf(POKER_BET_POT) >= 0);
+          document.getElementById('poker-bet-input-wrap').style.display = canBet ? '' : 'none';
+          if (canBet) {
+            var minB = st.minRaise;
+            var maxB = st.stacks[0];
+            document.getElementById('poker-betcustom').min = minB;
+            document.getElementById('poker-betcustom').max = maxB;
+            document.getElementById('poker-betcustom').placeholder = '$' + minB + '-' + maxB;
+          }
+          document.getElementById('poker-allin').style.display = isHumanTurn && legal.indexOf(POKER_ALLIN) >= 0 ? '' : 'none';
+
+          if (!pokerGameOver && !pokerRunning) {
+            document.getElementById('poker-deal').style.display = st.handOver ? '' : 'none';
+          }
+          if (pokerGameOver) {
+            document.getElementById('poker-deal').style.display = 'none';
+            document.getElementById('poker-stop').style.display = 'none';
+          }
+
+          if (legal.indexOf(POKER_CALL) >= 0) {
+            var toCall = pokerMaxBet(st) - st.bets[st.toAct];
+            document.getElementById('poker-call').textContent = 'Call $' + toCall.toFixed(0);
+          }
+
+          pokerDrawTable();
+          pokerDrawInfo();
+        }
+
+        function pokerDrawCard(ctx, c, x, y, w, h, faceDown) {
+          // Card shadow
+          ctx.fillStyle = 'rgba(0,0,0,0.3)';
+          ctx.beginPath(); ctx.roundRect(x + 2, y + 2, w, h, 5); ctx.fill();
+          // Card body
+          if (faceDown) {
+            var grad = ctx.createLinearGradient(x, y, x + w, y + h);
+            grad.addColorStop(0, '#1e40af'); grad.addColorStop(1, '#1e3a8a');
+            ctx.fillStyle = grad;
+          } else {
+            ctx.fillStyle = '#fafaf9';
+          }
+          ctx.strokeStyle = faceDown ? '#2563eb' : '#d4d4d8';
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.roundRect(x, y, w, h, 5); ctx.fill(); ctx.stroke();
+
+          if (!faceDown) {
+            var r = rankStr(c), su = suitSymbol(c), col = cardColor(c) === '#ef4444' ? '#dc2626' : '#1e1e2e';
+            // Top-left rank + suit
+            ctx.fillStyle = col;
+            ctx.font = 'bold ' + Math.floor(h * 0.28) + 'px Inter,monospace';
+            ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+            ctx.fillText(r, x + 3, y + 2);
+            ctx.font = Math.floor(h * 0.22) + 'px serif';
+            ctx.fillText(su, x + 3, y + Math.floor(h * 0.3));
+            // Center suit large
+            ctx.font = Math.floor(h * 0.4) + 'px serif';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(su, x + w / 2, y + h * 0.55);
+          } else {
+            // Card back pattern
+            ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 1;
+            ctx.strokeRect(x + 4, y + 4, w - 8, h - 8);
+            ctx.fillStyle = '#60a5fa';
+            ctx.font = 'bold ' + Math.floor(h * 0.3) + 'px serif';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText('♦', x + w / 2, y + h / 2);
+          }
+        }
+
+        // Player positions around the table (angles for N players)
+        function pokerPlayerPositions(n, w, h) {
+          var positions = [];
+          var cx = w / 2, cy = h / 2;
+          var rx = w * 0.38, ry = h * 0.36;
+          for (var i = 0; i < n; i++) {
+            // Player 0 at bottom, others clockwise
+            var angle = Math.PI / 2 + (2 * Math.PI * i) / n;
+            positions.push({
+              x: cx + rx * Math.cos(angle),
+              y: cy + ry * Math.sin(angle)
+            });
+          }
+          return positions;
+        }
+
+        function pokerDrawTable() {
+          var st = pokerSt;
+          if (!st) return;
+          var ctx = probCtx, w = cw(probC), h = ch(probC);
+          ctx.clearRect(0, 0, w, h);
+
+          // Background
+          ctx.fillStyle = '#0d1117'; ctx.fillRect(0, 0, w, h);
+
+          // Table felt
+          var grad = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w * 0.45);
+          grad.addColorStop(0, '#1a5c32'); grad.addColorStop(1, '#0f3d1e');
+          ctx.beginPath(); ctx.ellipse(w / 2, h / 2, w * 0.44, h * 0.40, 0, 0, Math.PI * 2);
+          ctx.fillStyle = grad; ctx.fill();
+          // Table rail
+          ctx.strokeStyle = '#8b7355'; ctx.lineWidth = 4; ctx.stroke();
+          ctx.strokeStyle = '#6b5b3e'; ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.ellipse(w / 2, h / 2, w * 0.44 + 3, h * 0.40 + 3, 0, 0, Math.PI * 2);
+          ctx.stroke();
+
+          var cw = Math.min(36, w * 0.065), ch = cw * 1.45;
+          var phaseNames = ['Pre-flop', 'Flop', 'Turn', 'River', 'Showdown'];
+
+          // Community cards
+          var totalComW = 5 * cw + 4 * 5;
+          var comX = w / 2 - totalComW / 2;
+          var comY = h / 2 - ch / 2 - 5;
+          for (var i = 0; i < st.community.length; i++) {
+            pokerDrawCard(ctx, st.community[i], comX + i * (cw + 5), comY, cw, ch, false);
+          }
+          ctx.setLineDash([3, 3]); ctx.strokeStyle = '#2d5a3e'; ctx.lineWidth = 1;
+          for (var i = st.community.length; i < 5; i++) {
+            ctx.beginPath(); ctx.roundRect(comX + i * (cw + 5), comY, cw, ch, 5); ctx.stroke();
+          }
+          ctx.setLineDash([]);
+
+          // Pot
+          ctx.fillStyle = '#fbbf24'; ctx.font = 'bold ' + Math.floor(h * 0.042) + 'px Inter,sans-serif';
+          ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          ctx.fillText('Pot: ' + st.pot.toFixed(0), w / 2, comY - 16);
+
+          // Phase
+          ctx.fillStyle = '#94a3b8'; ctx.font = '500 ' + Math.floor(h * 0.03) + 'px Inter,sans-serif';
+          ctx.fillText(phaseNames[st.phase], w / 2, comY + ch + 16);
+
+          // Players
+          var positions = pokerPlayerPositions(st.nPlayers, w, h);
+          var pColors = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'];
+          var pNames = pokerMode === 'human' ? ['You'] : [];
+          for (var i = pNames.length; i < st.nPlayers; i++) pNames.push('Bot ' + i);
+
+          for (var pi = 0; pi < st.nPlayers; pi++) {
+            var pos = positions[pi];
+            var showCards = (pi === 0 && pokerMode === 'human') || st.showdown || pokerMode === 'bot';
+            var isFolded = st.folded[pi];
+            var isBust = pokerStacks && pokerStacks[pi] <= 0 && st.stacks[pi] <= 0;
+            var isActive = st.toAct === pi && !st.handOver;
+
+            // Player chip/avatar circle
+            var circR = Math.min(14, w * 0.025);
+            ctx.beginPath(); ctx.arc(pos.x, pos.y - ch / 2 - circR - 8, circR, 0, Math.PI * 2);
+            ctx.fillStyle = isBust ? '#7f1d1d' : isActive ? '#fbbf24' : isFolded ? '#3f3f46' : pColors[pi % pColors.length];
+            ctx.fill();
+            if (isActive) { ctx.strokeStyle = '#fde68a'; ctx.lineWidth = 2; ctx.stroke(); }
+
+            // Dealer button or player number
+            if (st.dealer === pi && !isBust) {
+              ctx.fillStyle = '#fafaf9'; ctx.font = 'bold ' + Math.floor(circR) + 'px Inter,sans-serif';
+              ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+              ctx.fillText('D', pos.x, pos.y - ch / 2 - circR - 8);
+            } else {
+              ctx.fillStyle = isBust ? '#991b1b' : '#fafaf9'; ctx.font = 'bold ' + Math.floor(circR * 0.9) + 'px Inter,sans-serif';
+              ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+              ctx.fillText(isBust ? 'X' : '' + (pi + 1), pos.x, pos.y - ch / 2 - circR - 8);
+            }
+
+            // Name + stack or BUST
+            ctx.textAlign = 'center';
+            if (isBust) {
+              ctx.fillStyle = '#ef4444'; ctx.font = 'bold ' + Math.floor(h * 0.032) + 'px Inter,sans-serif';
+              ctx.fillText(pNames[pi], pos.x, pos.y + ch / 2 + 14);
+              ctx.fillStyle = '#991b1b'; ctx.font = 'bold ' + Math.floor(h * 0.028) + 'px Inter,sans-serif';
+              ctx.fillText('BUST', pos.x, pos.y + ch / 2 + 27);
+            } else {
+              ctx.fillStyle = isActive ? '#fbbf24' : isFolded ? '#52525b' : '#e4e4e7';
+              ctx.font = '600 ' + Math.floor(h * 0.032) + 'px Inter,sans-serif';
+              ctx.fillText(pNames[pi], pos.x, pos.y + ch / 2 + 14);
+              ctx.fillStyle = isFolded ? '#52525b' : '#94a3b8';
+              ctx.font = '500 ' + Math.floor(h * 0.026) + 'px Inter,sans-serif';
+              ctx.fillText('$' + st.stacks[pi].toFixed(0), pos.x, pos.y + ch / 2 + 26);
+            }
+
+            // Cards
+            if (isBust) {
+              // No cards for busted players
+            } else if (isFolded) {
+              ctx.globalAlpha = 0.25;
+              pokerDrawCard(ctx, 0, pos.x - cw - 1, pos.y - ch / 2, cw, ch, true);
+              pokerDrawCard(ctx, 0, pos.x + 1, pos.y - ch / 2, cw, ch, true);
+              ctx.globalAlpha = 1;
+            } else {
+              pokerDrawCard(ctx, st.hole[pi][0], pos.x - cw - 1, pos.y - ch / 2, cw, ch, !showCards);
+              pokerDrawCard(ctx, st.hole[pi][1], pos.x + 1, pos.y - ch / 2, cw, ch, !showCards);
+            }
+
+            // Bet amount
+            if (st.bets[pi] > 0 && !isBust) {
+              var betX = pos.x, betY = pos.y - ch / 2 - circR * 2 - 20;
+              ctx.fillStyle = '#fbbf24'; ctx.font = '600 ' + Math.floor(h * 0.028) + 'px Inter,sans-serif';
+              ctx.textAlign = 'center';
+              ctx.fillText('$' + st.bets[pi].toFixed(0), betX, betY);
+            }
+          }
+
+          // Result overlay
+          if (st.handOver) {
+            ctx.fillStyle = 'rgba(0,0,0,0.55)';
+            ctx.beginPath(); ctx.roundRect(w * 0.15, h * 0.42, w * 0.7, h * 0.18, 8); ctx.fill();
+            ctx.fillStyle = '#fbbf24'; ctx.font = 'bold ' + Math.floor(h * 0.042) + 'px Inter,sans-serif';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            var resultText;
+            if (st.winners.length === 1) {
+              var wn = st.winners[0];
+              var wnName = (wn === 0 && pokerMode === 'human') ? 'You' : pNames[wn];
+              resultText = wnName + ' win' + (wn === 0 && pokerMode === 'human' ? '' : 's') + '!  +$' + st.winAmount.toFixed(0) + '  (' + st.handName + ')';
+            } else {
+              resultText = 'Split pot $' + st.winAmount.toFixed(0) + '  (' + st.handName + ')';
+            }
+            ctx.fillText(resultText, w / 2, h * 0.49);
+            // Game over
+            if (pokerGameOver) {
+              ctx.fillStyle = '#4ade80'; ctx.font = 'bold ' + Math.floor(h * 0.038) + 'px Inter,sans-serif';
+              var winner = -1;
+              for (var i = 0; i < pokerStacks.length; i++) if (pokerStacks[i] > 0) winner = i;
+              var gName = (winner === 0 && pokerMode === 'human') ? 'You' : pNames[winner >= 0 ? winner : 0];
+              ctx.fillText('GAME OVER — ' + gName + ' won everything!', w / 2, h * 0.56);
+            }
+          }
+        }
+
+        function pokerDrawInfo() {
+          var ctx = treeCtx, w = cw(treeC), h = ch(treeC);
+          ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#1e1e2e'; ctx.fillRect(0, 0, w, h);
+          if (!pokerSt) return;
+          var st = pokerSt;
+
+          // Title
+          ctx.fillStyle = '#e4e4e7'; ctx.font = '600 13px Inter,sans-serif'; ctx.textAlign = 'left';
+          ctx.fillText('Decision Tree — ReBeL CFR', 15, 22);
+
+          var y = 42;
+          ctx.fillStyle = '#94a3b8'; ctx.font = '500 10px Inter,sans-serif';
+          var bl = st.blinds || {sb:1,bb:2};
+          ctx.fillText('Hand #' + pokerHands + '  |  ' + ['Pre-flop', 'Flop', 'Turn', 'River', 'Done'][st.phase] + '  |  Pot: $' + st.pot.toFixed(0) + '  |  ' + bl.sb + '/' + bl.bb, 15, y);
+          y += 20;
+
+          // Hand equity bar
+          if (!st.handOver && st.hole[0] && st.hole[0].length === 2 && (pokerMode === 'human' || pokerMode === 'bot')) {
+            var hs = pokerHandStrength(st.hole[0], st.community, 80);
+            ctx.fillStyle = '#60a5fa'; ctx.font = '600 11px Inter,sans-serif';
+            ctx.fillText('Your Equity: ' + (hs * 100).toFixed(0) + '%', 15, y);
+            var barX = 120, barW = w - barX - 20, barH = 8;
+            ctx.fillStyle = '#3f3f46'; ctx.beginPath(); ctx.roundRect(barX, y - 7, barW, barH, 3); ctx.fill();
+            ctx.fillStyle = hs > 0.6 ? '#4ade80' : hs > 0.4 ? '#fbbf24' : '#ef4444';
+            ctx.beginPath(); ctx.roundRect(barX, y - 7, Math.round(barW * hs), barH, 3); ctx.fill();
+            y += 22;
+          }
+
+          // Full decision tree visualization (2 levels: my action → opponent response)
+          if (pokerLastDecision && pokerLastDecision.tree) {
+            y += 3;
+            ctx.fillStyle = '#e4e4e7'; ctx.font = '600 11px Inter,sans-serif';
+            ctx.fillText('Decision Tree', 15, y); y += 6;
+
+            var tree = pokerLastDecision.tree;
+            var chosen = pokerLastDecision.action;
+            var nNodes = tree.length;
+            var margin = 12;
+            var nodeW = Math.min(38, (w - margin * 2) / nNodes - 4);
+            var nodeH = 16;
+
+            // Root node
+            var rootX = w / 2, rootY = y + 12;
+            ctx.fillStyle = '#3b82f6';
+            ctx.beginPath(); ctx.arc(rootX, rootY, 9, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#fafaf9'; ctx.font = 'bold 9px Inter,sans-serif';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText('Bot', rootX, rootY);
+
+            // Level 1: my actions
+            var l1Y = rootY + 40;
+            var l1Xs = [];
+            for (var a = 0; a < nNodes; a++) {
+              var ax = margin + (w - margin * 2) * (a + 0.5) / nNodes;
+              l1Xs.push(ax);
+              var nd = tree[a];
+              var isChosen = nd.chosen;
+              var lineW = Math.max(0.5, nd.prob * 3);
+
+              // Line from root
+              ctx.strokeStyle = isChosen ? '#fbbf24' : '#4b5563';
+              ctx.lineWidth = isChosen ? 2 : lineW;
+              ctx.beginPath(); ctx.moveTo(rootX, rootY + 9); ctx.lineTo(ax, l1Y - nodeH / 2); ctx.stroke();
+
+              // Node
+              ctx.fillStyle = isChosen ? '#fbbf24' : '#374151';
+              ctx.beginPath(); ctx.roundRect(ax - nodeW / 2, l1Y - nodeH / 2, nodeW, nodeH, 3); ctx.fill();
+              if (isChosen) { ctx.strokeStyle = '#fde68a'; ctx.lineWidth = 1; ctx.stroke(); }
+              ctx.fillStyle = isChosen ? '#1e1e2e' : '#e4e4e7';
+              ctx.font = (isChosen ? 'bold ' : '') + '7px Inter,sans-serif';
+              ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+              var actName = POKER_ACT_NAMES[nd.action];
+              if (actName.length > 6) actName = actName.substring(0, 5) + '.';
+              ctx.fillText(actName, ax, l1Y);
+              // Probability below
+              ctx.fillStyle = isChosen ? '#fbbf24' : '#71717a'; ctx.font = '500 7px Inter,sans-serif';
+              ctx.fillText((nd.prob * 100).toFixed(0) + '%', ax, l1Y + nodeH / 2 + 8);
+            }
+
+            // Level 2: opponent responses (only for chosen branch + one more for contrast)
+            var l2Y = l1Y + 50;
+            var drewL2 = false;
+            for (var a = 0; a < nNodes; a++) {
+              var nd = tree[a];
+              if (!nd.children || nd.children.length === 0) continue;
+              if (!nd.chosen && drewL2) continue; // Only draw chosen + first non-chosen
+              var ax = l1Xs[a];
+              var nC = nd.children.length;
+              var cSpan = Math.min(nodeW * nC + 10, (w - margin * 2) / nNodes);
+              for (var c = 0; c < nC; c++) {
+                var ch = nd.children[c];
+                var cx = ax - cSpan / 2 + cSpan * (c + 0.5) / nC;
+                var lineW2 = Math.max(0.5, ch.prob * 3);
+
+                ctx.strokeStyle = nd.chosen ? '#6b7280' : '#3f3f46';
+                ctx.lineWidth = lineW2;
+                ctx.beginPath(); ctx.moveTo(ax, l1Y + nodeH / 2); ctx.lineTo(cx, l2Y - 7); ctx.stroke();
+
+                var isTerminal = ch.terminal;
+                ctx.fillStyle = isTerminal ? '#1e3a2e' : '#2d2d3d';
+                ctx.beginPath(); ctx.roundRect(cx - 15, l2Y - 7, 30, 14, 3); ctx.fill();
+                ctx.fillStyle = '#94a3b8'; ctx.font = '500 6px Inter,sans-serif';
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                var cName = POKER_ACT_NAMES[ch.action] || '?';
+                if (cName.length > 5) cName = cName.substring(0, 4) + '.';
+                ctx.fillText(cName, cx, l2Y);
+                ctx.fillStyle = '#52525b'; ctx.font = '500 6px Inter,sans-serif';
+                ctx.fillText((ch.prob * 100).toFixed(0) + '%', cx, l2Y + 12);
+              }
+              drewL2 = true;
+            }
+            y = (drewL2 ? l2Y + 25 : l1Y + 25);
+          } else if (pokerLastDecision && pokerLastDecision.legalActions) {
+            // Fallback for heuristic bot (no tree data)
+            y += 3;
+            ctx.fillStyle = '#e4e4e7'; ctx.font = '600 11px Inter,sans-serif';
+            ctx.fillText('Decision', 15, y); y += 14;
+            ctx.font = '500 9px Inter,sans-serif';
+            var dec = pokerLastDecision;
+            for (var a = 0; a < dec.legalActions.length; a++) {
+              var isChosen = dec.legalActions[a] === dec.action;
+              ctx.fillStyle = isChosen ? '#fbbf24' : '#71717a';
+              ctx.fillText((isChosen ? '> ' : '  ') + POKER_ACT_NAMES[dec.legalActions[a]] + ': ' + ((dec.strategy[a] || 0) * 100).toFixed(0) + '%', 15, y);
+              y += 12;
+            }
+            y += 5;
+          }
+
+          // Action log
+          if (st.actionLog && st.actionLog.length > 0) {
+            y += 5;
+            ctx.fillStyle = '#e4e4e7'; ctx.font = '600 11px Inter,sans-serif'; ctx.textAlign = 'left';
+            ctx.fillText('Action Log', 15, y); y += 14;
+            ctx.font = '500 9px Inter,monospace';
+            var startIdx = Math.max(0, st.actionLog.length - 8);
+            for (var i = startIdx; i < st.actionLog.length; i++) {
+              var log = st.actionLog[i];
+              var pName = (log.player === 0 && pokerMode === 'human') ? 'You' : 'Bot ' + log.player;
+              ctx.fillStyle = log.player === 0 ? '#60a5fa' : '#94a3b8';
+              ctx.fillText(pName + ': ' + POKER_ACT_NAMES[log.action], 15, y);
+              y += 13;
+              if (y > h - 20) break;
+            }
+          }
+
+          // Showdown result
+          if (st.handOver && st.showdown) {
+            y += 8;
+            ctx.fillStyle = '#e4e4e7'; ctx.font = '600 11px Inter,sans-serif'; ctx.textAlign = 'left';
+            ctx.fillText('Showdown', 15, y); y += 16;
+            ctx.font = '500 10px Inter,sans-serif';
+            for (var i = 0; i < st.nPlayers; i++) {
+              if (st.folded[i]) continue;
+              var sc = eval7(st.hole[i].concat(st.community));
+              var isWinner = st.winners.indexOf(i) >= 0;
+              ctx.fillStyle = isWinner ? '#4ade80' : '#94a3b8';
+              var label = (i === 0 && pokerMode === 'human') ? 'You' : 'Bot ' + i;
+              ctx.fillText((isWinner ? '✓ ' : '  ') + label + ': ' + handRankName(sc) + ' (' + cardStr(st.hole[i][0]) + ' ' + cardStr(st.hole[i][1]) + ')', 15, y);
+              y += 14;
+              if (y > h - 10) break;
+            }
+          }
+        }
+
+        // Per-player ReBeL state
+        var rebelStates = [];
+
+        function pokerBotAct() {
+          if (!pokerSt || pokerSt.handOver) return;
+          var player = pokerSt.toAct;
+          var n = pokerSt.nPlayers;
+
+          // For 2-player: use ReBeL. For 3+: use hand-strength heuristic
+          var action, decision;
+          if (n === 2) {
+            if (!rebelStates[player]) {
+              rebelStates[player] = {
+                beliefs: rebelInitBeliefs(pokerSt.hole[player], pokerSt.community),
+                lastOppStrat: null
+              };
+            }
+            rebelState = rebelStates[player];
+            decision = rebelDecide(pokerSt, player);
+            rebelStates[player] = rebelState;
+            action = decision.action;
+          } else {
+            decision = pokerHeuristicBot(pokerSt, player);
+            action = decision.action;
+          }
+
+          pokerLastDecision = decision;
+          pokerSt = pokerApplyAction(pokerSt, action);
+          if (pokerSt.handOver) pokerFinishHand();
+          pokerUpdateUI();
+        }
+
+        // Heuristic bot for N-player games
+        function pokerHeuristicBot(st, player) {
+          var legal = pokerLegalActions(st);
+          if (legal.length <= 1) return { action: legal[0] || POKER_FOLD, strategy: [1], legalActions: legal };
+          var hs = pokerHandStrength(st.hole[player], st.community, 80);
+          var maxBet = pokerMaxBet(st);
+          var toCall = maxBet - st.bets[player];
+          var potOdds = toCall > 0 ? toCall / (st.pot + toCall) : 0;
+
+          var strat = [];
+          for (var i = 0; i < legal.length; i++) strat.push(0);
+          var chosen;
+
+          if (hs > 0.85 && legal.indexOf(POKER_BET_POT) >= 0) chosen = POKER_BET_POT;
+          else if (hs > 0.7 && legal.indexOf(POKER_BET_HALF) >= 0) chosen = POKER_BET_HALF;
+          else if (hs > potOdds + 0.05 && legal.indexOf(POKER_CALL) >= 0) chosen = POKER_CALL;
+          else if (legal.indexOf(POKER_CHECK) >= 0) chosen = POKER_CHECK;
+          else if (hs < 0.25 || (toCall > st.pot * 0.5 && hs < 0.4)) chosen = POKER_FOLD;
+          else if (legal.indexOf(POKER_CALL) >= 0) chosen = POKER_CALL;
+          else chosen = legal[legal.length - 1];
+
+          for (var i = 0; i < legal.length; i++) strat[i] = legal[i] === chosen ? 0.85 : 0.15 / (legal.length - 1);
+
+          return { action: chosen, strategy: strat, legalActions: legal };
+        }
+
+        function pokerHumanAct(action) {
+          if (!pokerSt || pokerSt.handOver || pokerSt.toAct !== 0) return;
+          pokerSt = pokerApplyAction(pokerSt, action);
+          if (pokerSt.handOver) { pokerFinishHand(); pokerUpdateUI(); return; }
+          pokerUpdateUI();
+          pokerBotLoop();
+        }
+
+        function pokerBotLoop() {
+          if (!pokerSt || pokerSt.handOver) return;
+          if (pokerMode === 'human' && pokerSt.toAct === 0) return;
+          setTimeout(function() {
+            if (!pokerSt || pokerSt.handOver) return;
+            pokerBotAct();
+            pokerBotLoop();
+          }, 500);
+        }
+
+        function pokerFinishHand() {
+          pokerStacks = pokerSt.stacks.slice();
+          var w = pokerSt.winners;
+          if (w.length === 1) pokerStacks[w[0]] += pokerSt.winAmount;
+          else {
+            var share = pokerSt.winAmount / w.length;
+            for (var i = 0; i < w.length; i++) pokerStacks[w[i]] += share;
+          }
+          pokerDealer = (pokerDealer + 1) % pokerSt.nPlayers;
+          // Check if game is over (only 1 player with chips)
+          if (pokerAlivePlayers() <= 1) {
+            pokerGameOver = true;
+            pokerRunning = false;
+            document.getElementById('poker-deal').style.display = 'none';
+            document.getElementById('poker-newgame').style.display = '';
+          }
+        }
+
+        function pokerBotVsBot() {
+          if (pokerGameOver || !pokerRunning) return;
+          if (!pokerSt || pokerSt.handOver) {
+            if (pokerRunning && !pokerGameOver) { pokerDeal(); setTimeout(pokerBotVsBot, 600); }
+            return;
+          }
+          pokerBotAct();
+          if (!pokerSt.handOver) setTimeout(pokerBotVsBot, 400);
+          else if (pokerRunning && !pokerGameOver) setTimeout(pokerBotVsBot, 1500);
+        }
+
+        function pokerStop() {
+          pokerRunning = false;
+          document.getElementById('poker-stop').style.display = 'none';
+          if (pokerSt && pokerSt.handOver) document.getElementById('poker-deal').style.display = '';
+        }
+
+        // Wire poker action buttons
+        document.getElementById('poker-fold').onclick = function() { pokerHumanAct(POKER_FOLD); };
+        document.getElementById('poker-check').onclick = function() { pokerHumanAct(POKER_CHECK); };
+        document.getElementById('poker-call').onclick = function() { pokerHumanAct(POKER_CALL); };
+        document.getElementById('poker-bet50').onclick = function() { pokerHumanAct(POKER_BET_HALF); };
+        document.getElementById('poker-betpot').onclick = function() { pokerHumanAct(POKER_BET_POT); };
+        document.getElementById('poker-betgo').onclick = function() {
+          var val = parseFloat(document.getElementById('poker-betcustom').value);
+          if (isNaN(val) || val <= 0) return;
+          pokerCustomBetAmount = val;
+          pokerHumanAct(POKER_BET_CUSTOM);
+        };
+        document.getElementById('poker-betcustom').onkeydown = function(e) {
+          if (e.key === 'Enter') document.getElementById('poker-betgo').click();
+        };
+        document.getElementById('poker-allin').onclick = function() { pokerHumanAct(POKER_ALLIN); };
+        document.getElementById('poker-deal').onclick = function() {
+          pokerDeal();
+          if (pokerMode === 'human' && pokerSt && pokerSt.toAct !== 0) pokerBotLoop();
+          if (pokerMode === 'bot') {
+            pokerRunning = true;
+            document.getElementById('poker-stop').style.display = '';
+            document.getElementById('poker-deal').style.display = 'none';
+            setTimeout(pokerBotVsBot, 400);
+          }
+        };
+        document.getElementById('poker-newgame').onclick = function() { pokerNewGame(); };
+        document.getElementById('poker-stop').onclick = function() { pokerStop(); };
+        document.getElementById('poker-mode').onchange = function() {
+          pokerMode = this.value;
+          pokerRunning = false;
+          pokerNewGame();
+        };
+        document.getElementById('poker-players').onchange = function() {
+          pokerRunning = false;
+          pokerNewGame();
+        };
+        document.getElementById('poker-blinds').onchange = function() {
+          pokerRunning = false;
+          pokerNewGame();
+        };
+
         /* ── Game array and current game ── */
         var games = [tttGame, nimGame, c4Game];
         var game = games[0];
@@ -1642,7 +3095,39 @@
         }
         var root;
 
+        var isPoker = false;
+        function showPokerUI(show) {
+          isPoker = show;
+          document.getElementById('poker-actions').style.display = show ? '' : 'none';
+          document.getElementById('mcts-step').parentElement.style.display = show ? 'none' : '';
+          var mctsCode = document.querySelector('#showcase .showcase-item .showcase-code:not(#poker-code)');
+          if (mctsCode) mctsCode.style.display = show ? 'none' : '';
+          document.getElementById('poker-code').style.display = show ? '' : 'none';
+          if (show) {
+            probLabel.textContent = 'Texas Hold\'em';
+            stat.textContent = '';
+          }
+        }
+
         function init() {
+          if (problemIdx === 3) {
+            showPokerUI(true);
+            pokerNPlayers = pokerGetNPlayers();
+            pokerStacks = null; pokerDealer = 0; pokerHands = 0;
+            pokerRunning = false; clearInterval(pokerTimer);
+            pokerSt = null; rebelStates = []; rebelState = null;
+            pokerLastDecision = null;
+            pokerMode = document.getElementById('poker-mode').value;
+            treeCtx.clearRect(0, 0, cw(treeC), ch(treeC));
+            treeCtx.fillStyle = '#1e1e2e'; treeCtx.fillRect(0, 0, cw(treeC), ch(treeC));
+            probCtx.clearRect(0, 0, cw(probC), ch(probC));
+            probCtx.fillStyle = '#0d1117'; probCtx.fillRect(0, 0, cw(probC), ch(probC));
+            treeCtx.fillStyle = '#94a3b8'; treeCtx.font = '500 14px Inter,sans-serif';
+            treeCtx.textAlign = 'center'; treeCtx.fillText('Click "Deal" to start', cw(treeC) / 2, ch(treeC) / 2);
+            document.getElementById('poker-stat').textContent = 'Click Deal to start';
+            return;
+          }
+          showPokerUI(false);
           game = games[problemIdx];
           nodeId = 0; simCount = 0; bestMove = -1; gameOver = false;
           state = game.init();
@@ -1738,7 +3223,7 @@
         }
 
         function step() {
-          if (gameOver) return;
+          if (isPoker || gameOver) return;
           highlight('mcts', 1);
           var simsPerStep = getSims();
           var lastPath;
@@ -1761,7 +3246,7 @@
           }
 
           stat.textContent = 'Simulations: ' + simCount;
-          layoutTree(root, 0, 5, treeC.width - 5);
+          layoutTree(root, 0, 5, cw(treeC) - 5);
           drawTree(); drawProblem();
           setTimeout(function () { highlight('mcts', 4); }, 300);
           setTimeout(function () {
@@ -1786,7 +3271,7 @@
         }
 
         function drawTree() {
-          var w = treeC.width, h = treeC.height;
+          var w = cw(treeC), h = ch(treeC);
           treeCtx.clearRect(0, 0, w, h); treeCtx.fillStyle = '#1e1e2e'; treeCtx.fillRect(0, 0, w, h);
           var nodes = allNodes(root);
           for (var i = 0; i < nodes.length; i++) {
@@ -1804,15 +3289,15 @@
         }
 
         function drawProblem() {
-          game.drawBoard(probCtx, state, probC.width, probC.height, bestMove);
+          game.drawBoard(probCtx, state, cw(probC), ch(probC), bestMove);
         }
 
         probC.addEventListener('click', function (e) {
-          if (gameOver) return;
+          if (isPoker || gameOver) return;
           var rect = probC.getBoundingClientRect();
-          var mx = (e.clientX - rect.left) * (probC.width / rect.width);
-          var my = (e.clientY - rect.top) * (probC.height / rect.height);
-          var m = game.clickToMove(state, mx, my, probC.width, probC.height);
+          var mx = (e.clientX - rect.left) * (cw(probC) / rect.width);
+          var my = (e.clientY - rect.top) * (ch(probC) / rect.height);
+          var m = game.clickToMove(state, mx, my, cw(probC), ch(probC));
           if (m >= 0) applyMove(m);
         });
 
@@ -2123,7 +3608,7 @@
 
         /* --- Draw fitness canvas (top) --- */
         function drawFitness() {
-          var w = fitC.width, h = fitC.height;
+          var w = cw(fitC), h = ch(fitC);
           var pad = 20, gw = w - pad * 2, gh = h - pad * 2 - 14;
           fitCtx.clearRect(0, 0, w, h); fitCtx.fillStyle = '#1e1e2e'; fitCtx.fillRect(0, 0, w, h);
 
@@ -2230,7 +3715,7 @@
 
         /* --- Draw problem canvas (bottom) --- */
         function drawProblem() {
-          var w = probC.width, h = probC.height;
+          var w = cw(probC), h = ch(probC);
           probCtx.clearRect(0, 0, w, h); probCtx.fillStyle = '#1e1e2e'; probCtx.fillRect(0, 0, w, h);
 
           var b = findBest();
@@ -2634,10 +4119,10 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
 
         function canvasToGrid(e) {
           var rect = drawC.getBoundingClientRect();
-          var mx = (e.clientX - rect.left) * (drawC.width / rect.width);
-          var my = (e.clientY - rect.top) * (drawC.height / rect.height);
-          var pixSz = Math.min(Math.floor((drawC.width * 0.6) / GW), Math.floor((drawC.height - 20) / GH));
-          var ox = 10, oy = (drawC.height - GH * pixSz) / 2;
+          var mx = (e.clientX - rect.left) * (cw(drawC) / rect.width);
+          var my = (e.clientY - rect.top) * (ch(drawC) / rect.height);
+          var pixSz = Math.min(Math.floor((cw(drawC) * 0.6) / GW), Math.floor((ch(drawC) - 20) / GH));
+          var ox = 10, oy = (ch(drawC) - GH * pixSz) / 2;
           var gx = Math.floor((mx - ox) / pixSz), gy = Math.floor((my - oy) / pixSz);
           return { gx: gx, gy: gy };
         }
@@ -2651,7 +4136,7 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
         drawC.addEventListener('touchend', function () { drawing = false; });
 
         function drawDrawCanvas() {
-          var w = drawC.width, h = drawC.height;
+          var w = cw(drawC), h = ch(drawC);
           drawCtx.clearRect(0, 0, w, h); drawCtx.fillStyle = '#1e1e2e'; drawCtx.fillRect(0, 0, w, h);
 
           var pixSz = Math.min(Math.floor((w * 0.6) / GW), Math.floor((h - 20) / GH));
@@ -2700,26 +4185,28 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
         }
 
         function drawHeatmap() {
-          var w = drawC.width, h = drawC.height;
+          var w = cw(drawC), h = ch(drawC);
           var pad = 35;
           var gw = w - pad * 2, gh = h - pad * 2;
 
-          /* Draw heatmap (sample every 4 pixels for performance) */
-          var imgData = drawCtx.createImageData(w, h);
+          /* Draw heatmap on offscreen canvas, then blit (avoids DPR/putImageData issues) */
+          var tmpC = document.createElement('canvas');
+          tmpC.width = w; tmpC.height = h;
+          var tmpCtx = tmpC.getContext('2d');
+          tmpCtx.fillStyle = '#1e1e2e'; tmpCtx.fillRect(0, 0, w, h);
+          var imgData = tmpCtx.createImageData(w, h);
           var data = imgData.data;
           for (var py = pad; py < pad + gh; py += 4) {
             for (var px = pad; px < pad + gw; px += 4) {
               var inp = [(px - pad) / gw, (py - pad) / gh];
               var probs = forward(inp).probs;
-              var p = probs[1]; /* probability of class 1 */
+              var p = probs[1];
               var r, g, b;
               if (problemIdx === 1) {
-                /* Blue to Red (tumor) */
                 r = Math.round(30 + p * 200);
                 g = Math.round(30 + (1 - Math.abs(p - 0.5) * 2) * 40);
                 b = Math.round(30 + (1 - p) * 200);
               } else {
-                /* Green to Red (fraud) */
                 r = Math.round(30 + p * 200);
                 g = Math.round(30 + (1 - p) * 200);
                 b = 30;
@@ -2732,7 +4219,6 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
               }
             }
           }
-          /* Fill padding area with background */
           for (var py = 0; py < h; py++) {
             for (var px = 0; px < w; px++) {
               if (px < pad || px >= pad + gw || py < pad || py >= pad + gh) {
@@ -2741,7 +4227,9 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
               }
             }
           }
-          drawCtx.putImageData(imgData, 0, 0);
+          tmpCtx.putImageData(imgData, 0, 0);
+          drawCtx.clearRect(0, 0, w, h);
+          drawCtx.drawImage(tmpC, 0, 0, w, h);
 
           /* Draw data points */
           var colors = problemIdx === 1 ? ['#60a5fa', '#f87171'] : ['#4ade80', '#f87171'];
@@ -2947,7 +4435,7 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
         }
 
         function drawGraph() {
-          var w = graphC.width, h = graphC.height;
+          var w = cw(graphC), h = ch(graphC);
           graphCtx.clearRect(0, 0, w, h); graphCtx.fillStyle = '#1e1e2e'; graphCtx.fillRect(0, 0, w, h);
 
           /* Use left 55% for graph, right 40% for network diagram */
@@ -3102,11 +4590,17 @@ b2:[-0.1586,0.6082,-0.3033,0.1424,0.0579,-0.1822,-0.0534,0.0692,-0.253,0.0729]
       }
 
       function resizeCanvases() {
+        var dpr = window.devicePixelRatio || 1;
         document.querySelectorAll('.showcase-canvases canvas').forEach(function (c) {
           var rect = c.getBoundingClientRect();
           if (rect.width > 0 && rect.height > 0) {
-            c.width = Math.round(rect.width);
-            c.height = Math.round(rect.height);
+            var w = Math.round(rect.width);
+            var h = Math.round(rect.height);
+            c.width = Math.round(w * dpr);
+            c.height = Math.round(h * dpr);
+            c.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+            c._logW = w;
+            c._logH = h;
           }
         });
       }
